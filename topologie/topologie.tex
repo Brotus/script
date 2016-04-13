@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt,fleqn]{scrartcl}
+ 
+%**** Benutzte Packages
+
+% utf8 Zeichen verwendbar
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+%http://www.guntherkrauss.de/computer/tex/diagramme.html
+\usepackage[arrow, matrix, curve]{xy}
+
+
+%**** Selbst definierte Befehle
+
+% Abkürzungen
+\newcommand{\gdw}{\Leftrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\impl}{\Rightarrow}
+\newcommand{\la}{\lambda}
+\newcommand{\al}{\alpha}
+\newcommand{\SeiV}{Sei $V$ ein $K$-Vektorraum }
+\newcommand{\summeA}{\sum_{i\in I}}
+\newcommand{\summeB}{\sum_{i=1}^n}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\fa}[1]{\mathop{\forall}\limits_{#1}}
+\newcommand{\ex}[1]{\mathop{\exists}\limits_{#1}}
+\newcommand{\sk}{\mbox{}\\*}
+
+%rowcounter zurücksetzen
+\newcommand{\resetRows}{\setcounter{equation}{0}}
+
+%**** Theoreme
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{satz}{Satz}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{plain}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{korollar}{Korollar}
+
+\theoremstyle{remark}
+\newtheorem*{bemerkung}{Bemerkung}
+\newtheorem*{beispiel}{Beispiel}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\textsc{\LARGE Topologie}\\[2.0cm]
+\rule{\linewidth}{0.5mm}
+Eine Mitschrift der Vorlesung Topologie von Dr. Bartsch im SS 16 an der TU Darmstadt.
+\rule{\linewidth}{0.5mm}\\[2.0cm]
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft}
+\large \emph{Author:}\\\textsc{Johannes Struve\\Julian Keinrath}\\[1.0cm]
+\end{flushleft}
+\end{minipage}
+\vfill
+Zuletzt bearbeitet am {\large \today}.
+\end{center}
+\end{titlepage}
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+% nächste Seite
+\newpage
+
+\section{Grundbegriffe}
+
+
+\end{document}
