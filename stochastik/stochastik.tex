@@ -12,6 +12,7 @@
 \usepackage{amsthm}
 \usepackage{tikz}
 \usepackage{mathtools}
+\usepackage{enumerate}
 %http://www.guntherkrauss.de/computer/tex/diagramme.html
 \usepackage[arrow, matrix, curve]{xy}
 
@@ -93,7 +94,7 @@ Ausgangspunkt: Zufallsexperiment (kurz: ZE)
 Ein \emph{Zufallsexperiment} ist ein Experiment mit vorher unbestimmtem Ergebnis, das im Prinzip unbeeinflusst voneinander beliebig oft wiederholt werden kann.
 \end{definition}
 \begin{beispiel}
-für ZE:\\
+für ZE:
 \begin{itemize}
 \item Werfen eines Würfels, Ergebnis ist Zahl oben
 \item Wiederholtes Werfen eines Würfels, das Ergebnis ist die Zahl der Würfe, bis zum ersten Mal $6$ gewürfelt wird.
@@ -124,14 +125,90 @@ bzw.
 die \emph{absolute} bzw. \emph{relative Häufigkeit} des Eintretens von $A$.
 \end{definition}
 \begin{bemerkung}[Empirisches Gesetz der großen Zahlen]
-Führt man ein ZE unbeeinflusst voneinander immer wieder durch, so nähert sich für große Anzahlen von WIederholungen die relative Häufigkeit des Eintretens eines beliebigen Ereignisses $A$ einer Zahl
+Führt man ein ZE unbeeinflusst voneinander immer wieder durch, so nähert sich für große Anzahlen von Wiederholungen die relative Häufigkeit des Eintretens eines beliebigen Ereignisses $A$ einer Zahl
 \[\prob{A} \in\unit\]
 an. Wir bezeichnen $\prob{A}$ als \emph{Wahrscheinlichkeit} von $A$.
 \end{bemerkung}
 \begin{beispiel}
-Werten eines echten Würfels, Ergebnis = Zahl oben\\
+Werfen eines echten Würfels, Ergebnis = Zahl oben\\
 Relative Häufigkeiten der Elementarereignisse nähern sich immer mehr $1/6$ an.
 \[\prob{\{ 1\}}=\ldots=\prob{\{ 6\} }=\frac{1}{6}\]
 \end{beispiel}
 Ziel im Weiteren: Bestimmung von Wahrscheinlichkeiten ohne wiederholte Durchführung des ZE. Manchmal ist die \emph{Kombinatorik} hilfreich dabei.
+
+\subsection{Grundlagen der Kombinatorik}
+Ziehen von $k$ Elementen aus einer Menge mit Mächtigkeit $n$.\\
+\\
+4 Möglichkeiten:
+\begin{itemize}
+\item Ziehen mit bzw. ohne Zurücklegen
+\item Ziehen mit bzw. ohne Beachtung der Reihenfolge
+\end{itemize}
+Sei $N$ die Anzahl der möglichen Stichproben. Dann gilt...
+\begin{enumerate}[a)]
+\item ...beim \emph{Ziehen mit Zurücklegen und mit Beachtung der Reihenfolge}:
+\[N = n \cdot n \cdot \ldots \cdot n = n^{k}\]
+\item ...beim \emph{Ziehen ohne Zurücklegen und mit Beachtung der Reihenfolge}:
+\[N = n \cdot (n-1) \cdot \ldots \cdot (n-k+1) = \frac{n!}{(n-k)!}\]
+\item ...beim \emph{Ziehen ohne Zurücklegen und ohne Bachtung der Reihenfolge}:\\
+Ordnet man jede der Stichproben auf alle $k!$ möglichen Arten (vgl. b)), so erhält man alle Stichproben beim Ziehen ohne Zurücklegen und mit Beachtung der Reihenfolge.
+\[\impl N \cdot k! = \frac{n!}{(n-k)!}\]
+\[\impl N = \frac{n!}{(n-k)! \cdot k!} = \binom{n}{k}\]
+\item ...beim \emph{Ziehen mit Zurücklegen und ohne Beachtung der Reihenfolge}:
+\[N = \binom{n+k-1}{k}\]
+Begründung: Gesucht ist $\mid \Omega \mid$, wobei 
+\[\Omega=\{(x_1, \ldots, x_k) \in \N^{k}:1 \leq x_1 \leq x_2 \leq \ldots \leq x_k \leq n\}.\]
+Setze \[\Omega^\prime=\{(y_1, \ldots, y_k) \in \N^{k}:1 \leq y_1 < y_2 < \ldots < y_k \leq n+k-1\}\] und definiere $f: \Omega \rightarrow \Omega^\prime$ durch $f((x_1, x_2, x_3, \ldots, x_k)) = (x_1, x_2+1, x_3+2, \ldots, x_k+k-1)$. Zu zeigen ist, dass $f$ eine (wohldefinierte) bijektive Abbildung ist. Dazu:
+\begin{enumerate}[(i)]
+\item $f$ ist wohldefiniert, denn $1 \leq x_1 \leq \ldots \leq x_k \impl 1 \leq x_1 < \ldots < x_k+k-1$.
+\item $f$ ist injektiv:
+\begin{align*}
+&f((x_1, x_2, \ldots, x_k)) = f((\widetilde{x_1}, \widetilde{x_2}, \ldots, \widetilde{x_k})) \\
+\impl & (x_1, x_2+1, \ldots, x_k+k-1) = (\widetilde{x_1}, \widetilde{x_2}+1, \ldots, \widetilde{x_k}+k-1) \\
+\impl & (x_1, x_2, \ldots, x_k) = (\widetilde{x_1}, \widetilde{x_2}, \ldots, \widetilde{x_k})
+\end{align*}
+\item $f$ ist surjektiv:
+\begin{align*}
+&(y_1, y_2, \ldots, y_k) \in \Omega^\prime \\
+\impl & 1 \leq y_1 < y_2 <\ldots < y_k \leq n+k-1 \\
+\impl & 1 \leq y_1 \leq y_2-1 \leq \ldots \leq y_k-k+1 \leq n \\
+\impl & (y_1,y_2-1, \ldots , y_k-k+1) \in \Omega
+\end{align*}
+Dann ist $\widetilde{y} \in \Omega$ und $f(\widetilde{y})=(y_1, \ldots, y_k) \in \Omega^\prime$. \\
+$\impl \mid \Omega \mid = \mid \Omega^\prime \mid = \binom{n+k-1}{k}$
+\end{enumerate}
+\end{enumerate}
+\begin{beispiel}[Binomischer Lehrsatz]
+Für $a, b \in \R, n \in \N$ gilt 
+\[(a+b)^{n} = \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k}.\]
+Begründung:
+\[(a+b)^{n} = \sum_{k=0}^{n} n_k a^{k} b^{n-k}\]
+Hier bezeichnet $n_k$ die Anzahl der Mögichkeiten, um aus $n$ Faktoren $k$ auszuwählen (bei denen $a$ gewählt wird) ohne Zurücklegen und ohne Beachtung der Reihenfolge. Ohne Zurücklegen, da kein Faktor doppelt gewählt werden kann; ohne Beachtung der Reihenfolge, da Reihenfolge beim Produkt egal ist. Aus c) folgt $n_k = \binom{n}{k}$.
+\end{beispiel}
+
+\subsection{Drei Beispiele}
+\begin{beispiel}
+Ein (echter) Würfel wird solange geworfen, bis er zum ersten Mal mit $6$ oben landet. Wie groß ist die Wahrscheinlichkeit, dass die Anzahl der Würfe gerade ist?\\
+Das Ergebnis des ZE ist die Zahl der Würfe bis zur ersten $6$, wobei der letzte Wurf mitgezählt wird.\\
+Hier ist
+\[\Omega = \{1,2,3,\ldots\} \cup \{\infty\}\]
+und gesucht ist die Wahrscheinlichkeit des Ereignisses
+\[A=\{2,4,6,8,\ldots\}.\]
+Ansatz: $\prob{A} = \sum_{k \in A} \prob{\{k\}}$ \\
+Die Wahrscheinlichkeit eines Ereignisses ist die Summe der Wahrscheinlichkeiten aller darin enthaltenen Elementarereignisse.\\
+\\
+Bestimmung von $\prob{\{k\}}$ für $k \in \N$: \\
+Stimmt mit Wahrscheinlichkeit überein, dass beim k-maligen Werfen eines echten Würfels (Ziehen von $k$ Elementen aus einer Grundmenge von Umfang $6$ mit Zurücklegen, mit Beachtung der Reihenfolge)\\
+Von diesen erscheint bei genau
+\[5^{k-1} \cdot 1 = 5^{k-1}\]
+beim $k$-ten Wurf die erste $6$. Jedes der $6^{k}$ Elementarereignisse hat (wegen der Symmetrie) die gleiche Wahrscheinlichkeit von $6^{-k}$.
+\[\impl \prob{\{k\}}=\frac{5^{k-1}}{6^{k}}=\frac{1}{6}(\frac{5}{6})^{k-1}\]
+Damit ist
+\begin{align*}
+\prob{A}&=\sum_{k \in A} \prob{\{k\}}=\frac{1}{6}\sum_{k \in A}(\frac{5}{6})^{k-1}=\frac{1}{6}\sum_{i=1}^{\infty}(\frac{5}{6})^{2i-1}=\frac{1}{6}\sum_{i=1}^{\infty}(\frac{5}{6})^{2(i-1)+1} \\
+&=\frac{1}{6}\cdot\frac{5}{6}\sum_{i=0}^{\infty}((\frac{5}{6})^{2})^{i}=\frac{5}{36}\sum_{i=1}^{\infty}(\frac{25}{36})^{i}=\frac{5}{36}\cdot\frac{1}{1-\frac{25}{36}}=\frac{5}{36-25} \\
+&=\frac{5}{11}.
+\end{align*}
+\end{beispiel}
+
 \end{document}
