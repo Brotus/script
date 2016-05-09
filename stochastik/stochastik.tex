@@ -31,6 +31,7 @@
 \newcommand{\m}[1]{\mathcal{ #1 }}
 % Für Wahrscheinlichkeit, \prob{A}=P(A)
 \newcommand{\prob}[1]{\text{P(} #1 \text{)}}
+\newcommand{\p}[1]{\text{P(} #1 \text{)}}
 % Implikation
 \newcommand{\impl}{\Rightarrow}
 % geschlossenes reelles Einheitsintervall
@@ -251,4 +252,35 @@ $I\neq\emptyset$ Indexmenge, $\m{A}_i$ $\sigma$-Algebra über $\Omega$ für $i\i
 \[\m{B}:=\bigcap\{\m{A}|\m{A}\text{ ist }\sigma\text{-Algebra über }\R\text{ und enthält alle Intervalle}\}\]
 $\m{B}$ ist nicht gleich der Potenzmenge von $\R$.
 \end{bemerkung}
+\begin{definition}
+$\Omega\neq\emptyset,\m{A} \sigma$-Algebra über $\Omega$. Jede Abbildung $\text{P}:\m{A}\to\R$ mit
+\begin{enumerate}[i]
+\item $\fa{A\in\m{A}}:\prob{A}\in\left[ 0,1\right]$,
+\item $\prob{\emptyset}=0,\prob{\Omega}=1$,
+\item $A\in\m{A}\impl \prob{A^C}=1-\prob{A}$,
+\item $A,B\in\m{A},A\subset B\impl \prob{A}\leq \prob{B}$,
+\item $(A_i)_{i\in I}$, $I$ abzählbar, $A_i$ paarweise disjunkt: $\prob{\bigcup_{i\in I}} A_i=\sum_{i\in I}\prob{A_k}$
+\end{enumerate}
+heißt \emph{Wahrscheinlichkeitsmaß} (kurz: W-Maß).
+\end{definition}
+\begin{lemma}
+$\text{P}:\m{A}\to\R$ ist W-Maß, genau dann wenn:
+\begin{enumerate}
+\item $\p{A}\geq 0$
+\item $\p{\Omega}=1$
+\item $\sigma$-Additivität
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+"$\impl$" trivial. "$\Leftarrow$": Es gilt
+\begin{itemize}
+\item $\p{\emptyset}=\p{\bigcup_{n\in\N}\emptyset}=\sum_{n\in\N}\p{\emptyset}\impl\p{\emptyset}=0$
+\item $\p{ A\cup B}=\p{ A\cup B\cup\emptyset\ldots}=\p{ A}+\p{ B}$
+\item $A\subseteq B\impl B=A\cup (B\setminus A)\impl\p{ B}=\p{A}+\p{B\setminus A}\geq\p{A}$
+\item $1=\p{\Omega}=\p{A}+\p{\Omega\setminus A}\impl\p{A^C}=1-\p{A}$
+\end{itemize}
+\end{proof}
+\begin{definition}
+Ist $\Omega\neq\emptyset$, $\m{A}$ $\sigma$-Algebra über $\Omega$ und $\text{P}:\m{A}\to\R$ ein W-Maß, so heißt $(\Omega,\m{A},\text{P})$ \emph{Wahrscheinlichkeitsraum} (kurz: W-Raum). In diesem Fall heißt $\p{A}$ \emph{Wahrscheinlichkeit} (kurz: Wk.).
+\end{definition}
 \end{document}
