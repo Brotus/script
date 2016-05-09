@@ -27,6 +27,8 @@
 \newcommand{\N}{\mathbb{N}}
 % reelle Zahlen
 \newcommand{\R}{\mathbb{R}}
+% kaligraphische Buchstaben
+\newcommand{\m}[1]{\mathcal{ #1 }}
 % Für Wahrscheinlichkeit, \prob{A}=P(A)
 \newcommand{\prob}[1]{\text{P(} #1 \text{)}}
 % Implikation
@@ -211,4 +213,42 @@ Damit ist
 \end{align*}
 \end{beispiel}
 
+
+% Ab hier 9.5.
+\begin{beispiel}
+Eine Zahl wird rein zufällig aus $\left[ 0,5\right]$ gezogen. wie groß ist die Wahrscheinlichkeit, dass sie zwischen $2$ und $4$ liegt.  Hier ist $\Omega=\left[ 0,5\right]$, gesucht ist die Wahrscheinlichkeit von $A=\left[ 2,4\right]$. Da alle Teile von $\Omega$ "gleichberechtigt" sind, machen wir den Ansatz
+\[\prob{\left[ a,b\right]}.\]
+Es folgt
+\[\prob{\left[ 2,4\right]}=\frac{4-2}{5}=0.4.\]
+\begin{bemerkung}
+Hier ist
+\[\prob{A}=\sum_{\omega\in A}\prob{\{\omega \} }\]
+nicht möglich, da $\prob{\{ x\} }$ für alle $x\in\Omega$.
+\end{bemerkung}
+\end{beispiel}
+\begin{bemerkung}[Problem]
+Ansätze unsystematisch! Gibt es auch systematischen Zugang?
+\end{bemerkung}
+
+\subsection{Der Begriff des Wahrscheinlichkeitsraumes}
+\begin{definition}
+$\Omega\neq\emptyset$. Eine Menge $\m{A}\subset\m{P}(\Omega)$  heißt $\sigma$-Algebra (über $\Omega$), falls gilt
+\begin{enumerate}
+\item $\emptyset\in\m{A}$
+\item $A\in\m{A}\impl \Omega\setminus A\in\m{A}$
+\item $(A_n)_{n\in\N}\impl\bigcup_{n\in\N}A_n$
+\end{enumerate}
+\end{definition}
+\begin{beispiel}
+\begin{enumerate}[a]
+\item $\m{A}=\m{P}(\Omega)$
+\item $\m{A}=\{\emptyset,\Omega\}$
+\item Die kleinste $\sigma$-Algebra über $\R$, die alle Intervalle enthält, ist die sogenannte \emph{Borelsche $\sigma$-Algebra} $\m{B}$
+\end{enumerate}
+\end{beispiel}
+\begin{bemerkung}[Zur Existenz von $\m{B}$]
+$I\neq\emptyset$ Indexmenge, $\m{A}_i$ $\sigma$-Algebra über $\Omega$ für $i\in I$ impliziert $\cap_{i\in I}\m{A}_i$ ist $\sigma$-Algebra über $\Omega$. Setze dann:
+\[\m{B}:=\bigcap\{\m{A}|\m{A}\text{ ist }\sigma\text{-Algebra über }\R\text{ und enthält alle Intervalle}\}\]
+$\m{B}$ ist nicht gleich der Potenzmenge von $\R$.
+\end{bemerkung}
 \end{document}
