@@ -211,57 +211,51 @@ Damit ist
 \end{beispiel}
 
 \begin{beispiel}
-Jackpot beim Lotto "6 aus 49" im Dezember 07: 43 Mio. Euro \\
-Beobachtung: In den 4599 Ziehungen von Oktober 55 bis Dezember 07 wurde die 38 am häufigsten gezogen, nämlich 614-mal. \\
+Jackpot beim Lotto \glqq6 aus 49\grqq im Dezember 2007: 43 Mio. Euro \\
+Beobachtung: In den $4599$ Ziehungen von Oktober 1955 bis Dezember 2007 wurde die $38$ am häufigsten gezogen, nämlich $614$-mal. \\
 Zum Vergleich
-\begin{align*}
-\frac{4599*6}{49} = 563
-\end{align*}
+\[\frac{4599 \cdot 6}{49} = 563\]
 Frage: Zufall? \\
 \underline{Grundidee in der Stochastik zur Beantwortung dieser Frage:}
 \begin{itemize}
-\item[Nimm an, dass die 6 Zahlen zufällig gezogen werden, d.h. jede Zahlenkombination tritt mit gleicher Wahrscheinlichkeit auf.]
-\item[Berechne unter dieser Annahme Wahrscheinlichkeit, dass das Resultat beobachtet wird, welches so stark gegen die Annahme spricht, wie das tatsächlich beobachtete.]
-\item[Falls Wahrscheinlichkeit klein ist (z.b. $\leq$ 0.05), verwirf Annahme, andernfalls nicht.]
+\item Nimm an, dass die $6$ Zahlen zufällig gezogen werden, d.h. jede Zahlenkombination tritt mit gleicher Wahrscheinlichkeit auf.
+\item Berechne unter dieser Annahme Wahrscheinlichkeit, dass das Resultat beobachtet wird, welches so stark gegen die Annahme spricht, wie das tatsächlich beobachtete.
+\item Falls Wahrscheinlichkeit klein ist (z.B. $\leq 0.05$), verwirf die Annahme, andernfalls nicht.
 \end{itemize}
-Im folgenden: Bestimmen der Wahrscheinlichkeit, dass bei n = 4599 Ziehungen die 38 mindestens 614-mal gezogen wird. \\
+Im Folgenden: Bestimmen der Wahrscheinlichkeit, dass bei $n = 4599$ Ziehungen die $38$ mindestens $614$-mal gezogen wird. \\
 Dazu:
 \begin{align*}
-\prob{Bei \ n \ Ziehungen\ 38\ mindestens\ 614-mal} = \sum_{k = 614}^{n} (\prob{Bei \ n \ Ziehungen \ 38 \ genau \ k-mal})
+&\prob{\text{Bei } n \text{ Ziehungen } 38 \text{ mindestens } 614 \text{-mal}}\\
+= &\sum_{k = 614}^{n} (\prob{\text{Bei } n \text{ Ziehungen } 38 \text{ genau } k \text{-mal}})
 \end{align*}
 Nun gilt: \\
-Wahrscheinlichkeit dass 38 bei einer Ziehung gezogen wird
+Wahrscheinlichkeit, dass $38$ bei einer Ziehung gezogen wird
 \begin{align*}
-= \frac{ \# günstige \ Fälle}{ \# mögliche \ Fälle} \\
-= \frac{1 * \binom{48}{5}}{\binom{49}{6}} \\
-= \frac{\frac{48!}{(48-5)!*5!}}{\frac{49!}{(49-6)!}} = \frac{6}{49} =: p
+&= \frac{ \text{\# günstigste Fälle}}{\text{\# mögliche Fälle}} \\
+&= \frac{1 \cdot \binom{48}{5}}{\binom{49}{6}} \\
+&= \frac{\frac{48!}{(48-5)! \cdot 5!}}{\frac{49!}{(49-6)!}} = \frac{6}{49} =: p
 \end{align*}
-[obere Vorgehensweise benutzt ohne zurücklegen und ohne Beachtung der Reihenfolge, in diesem Fall ist es aber auch möglich Mit Beachtung der Reihenfolge zu betrachten.] \\
+(Obere Vorgehensweise benutzt ohne Zurücklegen und ohne Beachtung der Reihenfolge, in diesem Fall ist es aber auch möglich mit Beachtung der Reihenfolge zu betrachten.) \\
 
-Wahrscheinlichkeit, dass 38 bei n = 4599 aufeinanderfolgenden Ziehungen genau k-mal auftritt.
+Wahrscheinlichkeit, dass $38$ bei $n = 4599$ aufeinanderfolgenden Ziehungen genau $k$-mal auftritt.
 \begin{align*}
-= \frac{ \# günstige \ Fälle}{ \# mögliche \ Fälle} \\
-= \frac{\binom{n}{k}* (\binom{48}{5})^k * (\binom{49}{6} - \binom{48}{5})^(n-k) }{(\binom{49}{6})^n}
+&= \frac{\text{\# günstige Fälle}}{\text{\# mögliche Fälle}} \\
+&= \frac{\binom{n}{k} \cdot \binom{48}{5}^k \cdot (\binom{49}{6} - \binom{48}{5})^{(n-k)} }{\binom{49}{6}^n}
 \end{align*}
 Anmerkungen zu den Faktoren: \\ 
-$\binom{n}{k}$ = Position der k Ziehungen \\
-$(\binom{48}{5})^k$ = k Ziehungen mit 38 \\
-$(\binom{49}{6} - \binom{48}{5})^(n-k)$ = n-k Ziehungen ohne 38
+$\binom{n}{k}$ = Position der $k$ Ziehungen \\
+$\binom{48}{5}^k$ = $k$ Ziehungen mit $38$ \newpage
 \begin{align*}
-= \binom{n}{k} * (\frac{\binom{48}{5}}{\binom{49}{6}})^k * (1- \frac{\binom{48}{5}}{\binom{49}{6}})^(n-k) \\
-= \binom{n}{k} * p^k * (1-p)^(n-k) \\
-\leftarrow \prob{Bei \ n\ Ziehungen\ 38\ mindestens\ 614-mal} \\
-= \sum_{k=614}^n (\binom{n}{k} * p^k * (1-p)^(n-k)) \approx 0.01
+(\binom{49}{6} - \binom{48}{5})^{(n-k)} &= n-k \text{ Ziehungen ohne } 38 \\
+&= \binom{n}{k} \cdot (\frac{\binom{48}{5}}{\binom{49}{6}})^k \cdot (1 - \frac{\binom{48}{5}}{\binom{49}{6}})^{(n-k)} \\
+&= \binom{n}{k} \cdot p^k \cdot (1-p)^{(n-k)} \\
+\impl &\prob{\text{Bei } n \text{ Ziehungen } 38 \text{ mindestens } 614\text{-mal}} \\
+&=\sum_{k=614}^n (\binom{n}{k} \cdot p^k \cdot (1-p)^{(n-k)}) \approx 0.01
 \end{align*}
-
-Dies ist sehr klein. ABER Es spricht eigentlich jedes Resultat gegen die Annahme, bei dem irgendeine Zahl mindesten 614-mal auftritt. \\
-Wahrscheinlichkeit, dass irgendeine der 49 Zahlen bei n=4599 Ziehungen mindesten 614-mal gezogen wird (per Computersimulation) 
-\begin{align*}
-\approx 0.47
-\end{align*}
-......was nicht klein ist! \\
-FAZIT: Annahme kann nicht verworfen werden.
-
+Dies ist sehr klein. Aber es spricht eigentlich jedes Resultat gegen die Annahme, bei dem irgendeine Zahl mindesten $614$-mal auftritt. \\
+Wahrscheinlichkeit, dass irgendeine der $49$ Zahlen bei $n=4599$ Ziehungen mindestens $614$-mal gezogen wird (per Computersimulation) 
+\[\approx 0.47,\]
+was nicht klein ist! \\
+Fazit: Annahme kann nicht verworfen werden.
 \end{beispiel}
-
 \end{document}
