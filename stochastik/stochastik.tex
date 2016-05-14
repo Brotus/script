@@ -31,6 +31,11 @@
 % Für Wahrscheinlichkeit, \prob{A}=P(A)
 \newcommand{\prob}[1]{\text{P(} #1 \text{)}}
 \newcommand{\p}[1]{\text{P(} #1 \text{)}}
+% Abkürzungen
+\newcommand{\ZE}{Zufallsexperiment}
+\newcommand{\WR}{Wahrscheinlichkeitsraum}
+\newcommand{\WM}{Wahrscheinlichkeitsmaß}
+\newcommand{\Wk}{Wahrscheinlichkeit}
 % Implikation
 \newcommand{\impl}{\Rightarrow}
 % geschlossenes reelles Einheitsintervall
@@ -47,20 +52,22 @@
 %**** Theoreme
 
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
-\newtheorem*{satz}{Satz}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{satz}[definition]{Satz}
 \newtheorem*{theorem}{Theorem}
 
 \theoremstyle{plain}
-\newtheorem*{lemma}{Lemma}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem*{lemma*}{Lemma}
 \newtheorem*{korollar}{Korollar}
 
 \theoremstyle{remark}
 \newtheorem*{bemerkung}{Bemerkung}
-\newtheorem*{beispiel}{Beispiel}
+\newtheorem{beispiel}[definition]{Beispiel}
+\newtheorem*{beispiel*}{Beispiel}
 
 \begin{document}
-
+\setcounter{section}{3}
 \begin{titlepage}
 \begin{center}
 \textsc{\LARGE Einführung in die Stochastik}\\[2.0cm]
@@ -96,20 +103,20 @@ Ausgangspunkt: Zufallsexperiment (kurz: ZE)
 Ein \emph{Zufallsexperiment} ist ein Experiment mit vorher unbestimmtem Ergebnis, das im Prinzip unbeeinflusst voneinander beliebig oft wiederholt werden kann.
 \end{definition}
 \begin{beispiel}
-für ZE:
+für \ZE:
 \begin{itemize}
 \item Werfen eines Würfels, Ergebnis ist Zahl oben
 \item Wiederholtes Werfen eines Würfels, das Ergebnis ist die Zahl der Würfe, bis zum ersten Mal $6$ gewürfelt wird.
 \end{itemize}
-kein ZE:
+kein \ZE:
 \begin{itemize}
 \item Nächste Bundestagswahl (kann nicht unbeeinflusst voneinander wiederholt werden)
 \end{itemize}
 \end{beispiel}
-Ziel: Aussagen über Ergebnisse von ZE:
+Ziel: Aussagen über Ergebnisse von \ZE en:
 \begin{definition}
 \begin{itemize}
-\item Die Menge aller möglichen Ergebnisse des ZE wird als \emph{Grundmenge} $\Omega$ bezeichnet.
+\item Die Menge aller möglichen Ergebnisse des \ZE s wird als \emph{Grundmenge} $\Omega$ bezeichnet.
 \item Jede Teilmenge der Grundmenge heißt \emph{Ereignis}. Die einelementigen Teilmengen der Grundmenge heißen \emph{Elementarereignis}.
 \item Ein Ereignis $A$ \emph{tritt ein}, falls das Ergebnis des Zufallsexperiments in $A$ liegt. Andernfalls tritt $A$ nicht ein.
 \end{itemize}
@@ -120,14 +127,14 @@ Werfen eines echten Würfels. Ergebnis = Zahl oben
 Das Ereignis $A=\{ 2,4,6\}$ tritt genau dann ein, wenn eine gerade Zahl gewürfelt wird.
 \end{beispiel}
 \begin{definition}
-ZE mit Grundmenge $\Omega$. Sind $x_1,\ldots,x_n\in\Omega$ die bei wiederholtem Durchführen des ZE auftretenden Werte, so heißen
+\ZE mit Grundmenge $\Omega$. Sind $x_1,\ldots,x_n\in\Omega$ die bei wiederholtem Durchführen des \ZE s auftretenden Werte, so heißen
 \[\mid \{ 1\leq i\leq n:x_i\in A\}\mid\]
 bzw.
 \[\frac{\mid \{ 1\leq i\leq n:x_i\in A\}\mid}{n}\]
 die \emph{absolute} bzw. \emph{relative Häufigkeit} des Eintretens von $A$.
 \end{definition}
 \begin{bemerkung}[Empirisches Gesetz der großen Zahlen]
-Führt man ein ZE unbeeinflusst voneinander immer wieder durch, so nähert sich für große Anzahlen von Wiederholungen die relative Häufigkeit des Eintretens eines beliebigen Ereignisses $A$ einer Zahl
+Führt man ein \ZE unbeeinflusst voneinander immer wieder durch, so nähert sich für große Anzahlen von Wiederholungen die relative Häufigkeit des Eintretens eines beliebigen Ereignisses $A$ einer Zahl
 \[\prob{A} \in\unit\]
 an. Wir bezeichnen $\prob{A}$ als \emph{Wahrscheinlichkeit} von $A$.
 \end{bemerkung}
@@ -136,7 +143,7 @@ Werfen eines echten Würfels, Ergebnis = Zahl oben\\
 Relative Häufigkeiten der Elementarereignisse nähern sich immer mehr $1/6$ an.
 \[\prob{\{ 1\}}=\ldots=\prob{\{ 6\} }=\frac{1}{6}\]
 \end{beispiel}
-Ziel im Weiteren: Bestimmung von Wahrscheinlichkeiten ohne wiederholte Durchführung des ZE. Manchmal ist die \emph{Kombinatorik} hilfreich dabei.
+Ziel im Weiteren: Bestimmung von Wahrscheinlichkeiten ohne wiederholte Durchführung des \ZE s. Manchmal ist die \emph{Kombinatorik} hilfreich dabei.
 
 \subsection{Grundlagen der Kombinatorik}
 Ziehen von $k$ Elementen aus einer Menge mit Mächtigkeit $n$.\\
@@ -191,7 +198,7 @@ Hier bezeichnet $n_k$ die Anzahl der Mögichkeiten, um aus $n$ Faktoren $k$ ausz
 \subsection{Drei Beispiele}
 \begin{beispiel}
 Ein (echter) Würfel wird solange geworfen, bis er zum ersten Mal mit $6$ oben landet. Wie groß ist die Wahrscheinlichkeit, dass die Anzahl der Würfe gerade ist?\\
-Das Ergebnis des ZE ist die Zahl der Würfe bis zur ersten $6$, wobei der letzte Wurf mitgezählt wird.\\
+Das Ergebnis des \ZE s ist die Zahl der Würfe bis zur ersten $6$, wobei der letzte Wurf mitgezählt wird.\\
 Hier ist
 \[\Omega = \{1,2,3,\ldots\} \cup \{\infty\}\]
 und gesucht ist die Wahrscheinlichkeit des Ereignisses
@@ -213,7 +220,7 @@ Damit ist
 \end{align*}
 \end{beispiel}
 \begin{beispiel}
-Jackpot beim Lotto \glqq6 aus 49\grqq im Dezember 2007: 43 Mio. Euro \\
+Jackpot beim Lotto \glqq6 aus 49\grqq \, im Dezember 2007: 43 Mio. Euro \\
 Beobachtung: In den $4599$ Ziehungen von Oktober 1955 bis Dezember 2007 wurde die $38$ am häufigsten gezogen, nämlich $614$-mal. \\
 Zum Vergleich
 \[\frac{4599 \cdot 6}{49} = 563\]
@@ -263,14 +270,14 @@ Fazit: Annahme kann nicht verworfen werden.
 
 % Ab hier 9.5.
 \begin{beispiel}
-Eine Zahl wird rein zufällig aus $\left[ 0,5\right]$ gezogen. wie groß ist die Wahrscheinlichkeit, dass sie zwischen $2$ und $4$ liegt.  Hier ist $\Omega=\left[ 0,5\right]$, gesucht ist die Wahrscheinlichkeit von $A=\left[ 2,4\right]$. Da alle Teile von $\Omega$ "gleichberechtigt" sind, machen wir den Ansatz
+Eine Zahl wird rein zufällig aus $\left[ 0,5\right]$ gezogen. Wie groß ist die Wahrscheinlichkeit, dass sie zwischen $2$ und $4$ liegt?  Hier ist $\Omega=\left[ 0,5\right]$, gesucht ist die Wahrscheinlichkeit von $A=\left[ 2,4\right]$. Da alle Teile von $\Omega$ \glqq gleichberechtigt\grqq \, sind, machen wir den Ansatz
 \[\prob{\left[ a,b\right]}.\]
 Es folgt
 \[\prob{\left[ 2,4\right]}=\frac{4-2}{5}=0.4.\]
 \begin{bemerkung}
 Hier ist
 \[\prob{A}=\sum_{\omega\in A}\prob{\{\omega \} }\]
-nicht möglich, da $\prob{\{ x\} }$ für alle $x\in\Omega$.
+nicht möglich, da $\prob{\{ x\} } = 0$ für alle $x\in\Omega$.
 \end{bemerkung}
 \end{beispiel}
 \begin{bemerkung}[Problem]
@@ -299,7 +306,7 @@ $I\neq\emptyset$ Indexmenge, $\m{A}_i$ $\sigma$-Algebra über $\Omega$ für $i\i
 $\m{B}$ ist nicht gleich der Potenzmenge von $\R$.
 \end{bemerkung}
 \begin{definition}
-$\Omega\neq\emptyset,\m{A} \sigma$-Algebra über $\Omega$. Jede Abbildung $\text{P}:\m{A}\to\R$ mit
+$\Omega\neq\emptyset,\m{A} \text{ } \sigma$-Algebra über $\Omega$. Jede Abbildung $\text{P}:\m{A}\to\R$ mit
 \begin{enumerate}[i]
 \item $\fa{A\in\m{A}}:\prob{A}\in\left[ 0,1\right]$,
 \item $\prob{\emptyset}=0,\prob{\Omega}=1$,
@@ -310,7 +317,7 @@ $\Omega\neq\emptyset,\m{A} \sigma$-Algebra über $\Omega$. Jede Abbildung $\text
 heißt \emph{Wahrscheinlichkeitsmaß} (kurz: W-Maß).
 \end{definition}
 \begin{lemma}
-$\text{P}:\m{A}\to\R$ ist W-Maß, genau dann wenn:
+$\text{P}:\m{A}\to\R$ ist ein \WM, genau dann wenn:
 \begin{enumerate}
 \item $\p{A}\geq 0$
 \item $\p{\Omega}=1$
@@ -318,7 +325,8 @@ $\text{P}:\m{A}\to\R$ ist W-Maß, genau dann wenn:
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-"$\impl$" trivial. "$\Leftarrow$": Es gilt
+\grqq $\impl$\grqq: trivial. \\
+\grqq $\Leftarrow$\grqq: Es gilt
 \begin{itemize}
 \item $\p{\emptyset}=\p{\bigcup_{n\in\N}\emptyset}=\sum_{n\in\N}\p{\emptyset}\impl\p{\emptyset}=0$
 \item $\p{ A\cup B}=\p{ A\cup B\cup\emptyset\ldots}=\p{ A}+\p{ B}$
@@ -327,6 +335,105 @@ $\text{P}:\m{A}\to\R$ ist W-Maß, genau dann wenn:
 \end{itemize}
 \end{proof}
 \begin{definition}
-Ist $\Omega\neq\emptyset$, $\m{A}$ $\sigma$-Algebra über $\Omega$ und $\text{P}:\m{A}\to\R$ ein W-Maß, so heißt $(\Omega,\m{A},\text{P})$ \emph{Wahrscheinlichkeitsraum} (kurz: W-Raum). In diesem Fall heißt $\p{A}$ \emph{Wahrscheinlichkeit} (kurz: Wk.).
+Ist $\Omega\neq\emptyset$, $\m{A}$ $\sigma$-Algebra über $\Omega$ und $\text{P}:\m{A}\to\R$ ein \WM, so heißt $(\Omega,\m{A},\text{P})$ \emph{Wahrscheinlichkeitsraum} (kurz: W-Raum). In diesem Fall heißt $\p{A}$ \emph{Wahrscheinlichkeit} (kurz: Wk.).
 \end{definition}
+
+% 13.05.2016
+\begin{lemma}
+Sei $(\Omega, \m{A}, P)$ ein \WR. Dann gilt
+\begin{enumerate}[a)]
+\item $A, B \in \m{A}, A \subseteq B \impl \p{B \backslash A} = \p{B} - \p{A}$
+\item $A_1, A_2, \ldots , A_n \in \m{A} \impl \p{\bigcup_{k=1}^n A_k} \leq \sum_{k=1}^n \p{A_k}$ und $\p{\bigcup_{k=1}^\infty A_k} \leq \sum_{k=1}^\infty \p{A_k}$ (sogenannte $\sigma$-Subadditivität)
+\item $A, B \in \m{A} \impl \p{A \cup B} = \p{A} + \p{B} - \p{A \cap B}$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[a)]
+\item Seien $A, B \in \m{A}$ mit $A \subseteq B$.
+\begin{align*}
+& \impl B \backslash A, A \in \m{A} \text{ disjunkt, und } B = (B \backslash A) \cup A \\
+& \impl \p{B} = \p{(B \backslash A) \cup A} = \p{B \backslash A} + \p{A}, \text{ da } P \text{ ein \WM \, ist} \\
+& \impl \p{B \backslash A} = \p{B} - \p{A}
+\end{align*}
+\item $\bigcup_{k=1}^n A_k = A_1 \cup \bigcup_{k=1}^n (A_k \backslash (\bigcup_{l=1}^{k-1} A_l))$, wobei $A_1, A_k \backslash (\bigcup_{l=1}^{k-1} A_l) \in \m{A}$ gilt, da $\m{A}$ eine $\sigma$-Algebra ist und beide paarweise disjunkt sind. Da $P$ ein \WM \, ist, gilt
+\begin{align*}
+\p{\bigcup_{k=1}^n A_k} &= \p{A_1} + \sum_{k=2}^n \p{A_k \backslash (\bigcup_{l=1}^{k-1} A_l)} \\
+&\leq \p{A_1} + \sum_{k=2}^n \p{A_k},
+\end{align*}
+da $A_k \backslash (\bigcup_{l=1}^{k-1} A_l) \subseteq A_k.$ Der zweite Teil funktioniert analog.
+\item Es gilt $A \cup B = (A \backslash (A \cap B)) \cup (B \backslash (a \cap B)) \cup (A \cap B)$, wobei $A \backslash (A \cap B), B \backslash (a \cap B), A \cap B \in \m{A}$ gilt, da $\m{A}$ eine $\sigma$-Algebra ist. Zudem sind sie paarweise disjunkt. Da $P$ ein \WM \, ist, gilt
+\begin{align*}
+\p{A \cup B} &= \p{A \backslash (A \cap B)} + \p{B \backslash (A \cap B)} + \p{A \cap B} \\
+&= \p{A} - \p{A \cap B} + \p{B} - \p{A \cap B} + \p{A \cap B} \\
+&= \p{A} + \p{B} - \p{A \cap B}
+\end{align*}
+\end{enumerate}
+\end{proof}
+\begin{lemma*}[von Borel-Cantelli]
+Sei $(\Omega, \m{A}, P)$ ein \WR, $A_n \in \m{A} \, (n \in \N)$ und 
+\[\limsup A_n := \bigcap_{k=1}^\infty \bigcup_{k=n}^\infty A_k.\]
+Aus $\sum_{k=1}^\infty \p{A_n} < \infty$ folgt $\p{\limsup A_n} = 0$.
+\end{lemma*}
+\begin{bemerkung}
+Es ist einfach zu sehen, dass
+\[\limsup A_n = \{\omega \in \Omega : \text{Für unendlich viele } n \text{ gilt } \omega \in A_n\}\]
+\end{bemerkung}
+\begin{beispiel*}
+Ein Student S macht bei $n$-ter Aufgabe einen Fehler mit \Wk \, $\frac{1}{n^2}$. Dann gilt
+\begin{align*}
+&\p{\text{\glqq Student S mcht unendlich viele Fehler \grqq}} \\
+= \, &\p{\limsup A_n} \text{ mit } A_n = \text{\glqq Fehler bei } n \text{-ter Aufgabe \grqq} \\
+= \, &0 \text{, da } \sum_{k=1}^n \p{A_k} = \sum_{k=1}^\infty \frac{1}{k^2} < \infty.
+\end{align*}
+\end{beispiel*}
+\begin{proof}[Beweis des Lemmas von Borel-Cantelli]
+Es gilt $limsup A_n = \bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_k \subseteq \bigcup_{k=N}^\infty A_k$ für jedes $N \in \N$. Daraus folgt
+\begin{align*}
+&\p{\limsup A_n} \leq \p{\bigcup_{k=n}^\infty A_k} \leq \sum_{k=n}^\infty \p{A_k} \stackrel{\N \rightarrow \infty}{\rightarrow} 0 \text{, da } \sum_{k=1}^\infty \p{A_k} < \infty. \\
+\impl \, &\p{\limsup A_n} \leq 0 \\
+\impl \, &\p{\limsup A_n} = 0,
+\end{align*}
+da $\p{A} \geq 0$ für alle $A \in \m{A}$, da $P$ ein \WM \, ist.
+\end{proof}
+\subsection{Der Laplacesche \WR}
+Wir bertachten \ZE e, bei denen:
+\begin{enumerate}[a)]
+\item nur endlich viele verschiedene Werte als mögliches Ergebnis vorkommen
+\item jeder dieser Werte mit gleicher Wahrscheinlichkeit auftritt.
+\end{enumerate}
+\begin{satz}
+Sei $\Omega \neq \emptyset$ endlich und $P: \m{P}(\Omega) \rightarrow \R$ definiert durch
+\[\p{A} = \frac{\mid A \mid}{\mid \Omega \mid} \quad (A \in \m{P}(\Omega)).\]
+Dann ist $(\Omega, \m{P}(\Omega), P)$ ein \WR. In diesem gilt
+\[\p{\{\omega\}} = \frac{1}{\mid \Omega \mid} \quad (\omega \in \Omega).\]
+\end{satz}
+\begin{proof}
+Nach Lemma 4.14 genügt es, Folgendes zu zeigen:
+\begin{enumerate}[(1)]
+\item $\p{A} \geq 0 \, (A \in \m{P}(\Omega))$
+\item $\p{\Omega} = 1$
+\item $P$ ist $\sigma$-additiv
+\end{enumerate}
+Dazu:
+\begin{enumerate}[(1)]
+\item ist klar.
+\item $\p{\Omega} = \frac{\mid \Omega \mid}{\mid \Omega \mid} = 1$
+\item Seien $A_1, A_2, \ldots, A_n \in \m{P}(\Omega)$ paarweise disjunkt. Da $\Omega$ endlich ist, gilt $A_i = \emptyset$ für alle $i > k$ für ein geeignetes $k \in \N$. Daraus folgt
+\begin{align*}
+\p{\bigcup_{n=1}^\infty A_n} &= \p{\bigcup_{n=1}^k A_n} = \frac{\mid \bigcup_{n=1}^k A_n \mid}{\mid \Omega \mid} = \frac{\sum_{n=1}^k \mid A_n \mid}{\mid \Omega \mid} \\
+&= \sum_{n=1}^k \frac{\mid A_n \mid}{\mid \Omega \mid} = \sum_{n=1}^k \p{A_n} = \sum_{n=1}^\infty \p{A_n},
+\end{align*}
+da $A_i = \emptyset$ für $i > k$ und $\p{\emptyset} = 0$ ist.
+\end{enumerate}
+\end{proof}
+\begin{definition}
+Der \WR \, in Satz 4.17 heißt \emph{Laplacescher \WR}.
+\end{definition}
+\begin{bemerkung}
+Im Laplaceschen \WR \, gilt immer
+\[\p{A} = \frac{\mid A \mid}{\mid \Omega \mid} = \frac{\text{\# für } A \text{ günstige Fälle}}{\text{\# mögliche Fälle}}.\]
+\end{bemerkung}
+\begin{beispiel}
+Eine echte Münze wird viermal unbeeinflusst voneinander geworfen. Wie groß ist die Wahrscheinlichkeit, dass die Münze mindestens einmal mit Kopf oben landet?
+\end{beispiel}
 \end{document}
