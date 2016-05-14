@@ -351,9 +351,10 @@ Sei $(\Omega, \m{A}, P)$ ein \WR. Dann gilt
 \begin{enumerate}[a)]
 \item Seien $A, B \in \m{A}$ mit $A \subseteq B$.
 \begin{align*}
-& \impl B \backslash A, A \in \m{A} \text{ disjunkt, und } B = (B \backslash A) \cup A \\
-& \impl \p{B} = \p{(B \backslash A) \cup A} = \p{B \backslash A} + \p{A}, \text{ da } P \text{ ein \WM \, ist} \\
-& \impl \p{B \backslash A} = \p{B} - \p{A}
+\impl &B \backslash A, A \in \m{A} \text{ disjunkt, und } B = (B \backslash A) \cup A \\
+\impl &\p{B} = \p{(B \backslash A) \cup A} = \p{B \backslash A} + \p{A}, \\
+&\text{ da } P \text{ ein \WM \, ist} \\
+\impl &\p{B \backslash A} = \p{B} - \p{A}
 \end{align*}
 \item $\bigcup_{k=1}^n A_k = A_1 \cup \bigcup_{k=1}^n (A_k \backslash (\bigcup_{l=1}^{k-1} A_l))$, wobei $A_1, A_k \backslash (\bigcup_{l=1}^{k-1} A_l) \in \m{A}$ gilt, da $\m{A}$ eine $\sigma$-Algebra ist und beide paarweise disjunkt sind. Da $P$ ein \WM \, ist, gilt
 \begin{align*}
@@ -361,7 +362,7 @@ Sei $(\Omega, \m{A}, P)$ ein \WR. Dann gilt
 &\leq \p{A_1} + \sum_{k=2}^n \p{A_k},
 \end{align*}
 da $A_k \backslash (\bigcup_{l=1}^{k-1} A_l) \subseteq A_k.$ Der zweite Teil funktioniert analog.
-\item Es gilt $A \cup B = (A \backslash (A \cap B)) \cup (B \backslash (a \cap B)) \cup (A \cap B)$, wobei $A \backslash (A \cap B), B \backslash (a \cap B), A \cap B \in \m{A}$ gilt, da $\m{A}$ eine $\sigma$-Algebra ist. Zudem sind sie paarweise disjunkt. Da $P$ ein \WM \, ist, gilt
+\item Es gilt $A \cup B = (A \backslash (A \cap B)) \cup (B \backslash (A \cap B)) \cup (A \cap B)$, wobei $A \backslash (A \cap B), B \backslash (A \cap B), A \cap B \in \m{A}$ gilt, da $\m{A}$ eine $\sigma$-Algebra ist. Zudem sind sie paarweise disjunkt. Da $P$ ein \WM \, ist, gilt
 \begin{align*}
 \p{A \cup B} &= \p{A \backslash (A \cap B)} + \p{B \backslash (A \cap B)} + \p{A \cap B} \\
 &= \p{A} - \p{A \cap B} + \p{B} - \p{A \cap B} + \p{A \cap B} \\
@@ -381,7 +382,7 @@ Es ist einfach zu sehen, dass
 \begin{beispiel*}
 Ein Student S macht bei $n$-ter Aufgabe einen Fehler mit \Wk \, $\frac{1}{n^2}$. Dann gilt
 \begin{align*}
-&\p{\text{\glqq Student S mcht unendlich viele Fehler \grqq}} \\
+&\p{\text{\glqq Student S macht unendlich viele Fehler \grqq}} \\
 = \, &\p{\limsup A_n} \text{ mit } A_n = \text{\glqq Fehler bei } n \text{-ter Aufgabe \grqq} \\
 = \, &0 \text{, da } \sum_{k=1}^n \p{A_k} = \sum_{k=1}^\infty \frac{1}{k^2} < \infty.
 \end{align*}
@@ -396,7 +397,7 @@ Es gilt $limsup A_n = \bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_k \subseteq \b
 da $\p{A} \geq 0$ für alle $A \in \m{A}$, da $P$ ein \WM \, ist.
 \end{proof}
 \subsection{Der Laplacesche \WR}
-Wir bertachten \ZE e, bei denen:
+Wir betrachten \ZE e, bei denen:
 \begin{enumerate}[a)]
 \item nur endlich viele verschiedene Werte als mögliches Ergebnis vorkommen
 \item jeder dieser Werte mit gleicher Wahrscheinlichkeit auftritt.
