@@ -437,4 +437,78 @@ Im Laplaceschen \WR \, gilt immer
 \begin{beispiel}
 Eine echte Münze wird viermal unbeeinflusst voneinander geworfen. Wie groß ist die Wahrscheinlichkeit, dass die Münze mindestens einmal mit Kopf oben landet?
 \end{beispiel}
+
+% 23.5. Johannes
+\begin{definition}
+Sei $n\in\N,p\in\left[ 0,1\right]$. Das gemäß Satz 4.20 durch $\Omega=\N_0$ und die Zähldichte $(b(n,p,k))_{k\in\N_0}$ mit
+\[b(n,p,k)=\begin{cases}
+\binom{n}{k}p^k(1-p)^{n-k}&,k\in\{ 0,1,\ldots,n\}\\
+0&,sonst
+\end{cases}\]
+festgelegte \WM heißt \emph{Binomialverteilung} mit Parametern $n$ und $p$.
+\end{definition}
+\begin{bemerkung}
+Zähldichte, da
+\[1=(p+(1-p))^n=\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}\]
+\end{bemerkung}
+\begin{lemma}
+Für $p_n\in\left[ 0,1\right]$ mit $n\cdot p_n\to\lambda\in\R_{\geq 0}$ gilt für jedes $k\in\N_0$:
+\[\binom{n}{k}p_n^k(1-p_n)^{n-k}\to\frac{\lambda^k}{k!}e^{-\lambda}.\]
+\end{lemma}
+\begin{proof}
+Es gilt:
+\begin{align}
+p_n=&\frac{n\cdot p_n}{n}\to 0\\
+\impl &\binom{n}{k}p_n^k(1-p_n)^{n-k}\\
+=&\frac{n(n-1)\cdot\ldots\cdot(n-k+1)}{k!}p_n^k(1-p_n)^{n-k}\\
+=&\frac{1}{k!}np_n(np_n-p_n)\ldots(np_n-(k-1)p_n)(1-p_n)^{-k}(1-p_n)^n\\ 
+=&\frac{1}{k!}np_n(np_n-p_n)\ldots(np_n-(k-1)p_n)(1-p_n)^{-k}\exp(np_n\frac{\log(1-p_n)}{p_n})\\ 
+\rightarrow\frac{\lambda^k}{k!}e^{-\lambda}
+\end{align}
+(Die mittleren Faktoren in $(4)$ konvergieren jeweils gegen $\lambda$ und mit de l'Hopital folgt die Konvergenz zu $\exp(-\lambda)$)
+\end{proof}
+\begin{definition}
+Sei $\lambda>0$. Das gemäß Satz 4.20 durch $\Omega=\N_0$ und die Zähldichte
+\[\pi(\lambda;k)=\frac{\lambda^k}{n!}e^{-\lambda}\]
+für $k\in\N_0$ festgelegte \WM heißt \emph{Poisson-Verteilung} mit Paramter $\lambda$
+\end{definition}
+\begin{bemerkung}
+Zähldichte, da
+\begin{align*}
+\sum_{k\in\N_0}\frac{\lambda^k}{k!}e^{-\lambda}=e^{-\lambda}\sum_{k\in\N_0}\frac{\lambda^k}{k!}=1
+\end{align*}
+\end{bemerkung}
+\subsection{Wahrscheinlichkeitsräume mit Dichten}
+In diesem Abschnitt: $\Omega$ überabzählbar.
+Hierbei ist
+\[\prob{A}=\sum_{\omega\in A}\prob{\{\omega\}}\]
+nicht sinnvoll, da eventuell über überabzählbare Mengen summiert wird oder die $\prob{\{\omega\}}=0$ für alle $\omega\in\Omega$, vgl. Bsp. 4.10. Deswegen wird die Summe durch ein Integral approximiert.
+\begin{satz}
+Ist $f:\R\to\R$ eine Funktion mit $f\geq 0$ und 
+\begin{equation*}\label{eq:4.2}
+\int_{\R}f\mathrm{d}x=1,
+\end{equation*}
+so wird durch $(\Omega,\m{A},\text{P})$ mit $\Omega=\R$, $\m{A}=\m{B}$ und
+\begin{equation*}\label{eq:4.3}
+\prob{B}=\int_{B}f(x)\mathrm{d}x,(B\in\m{B})
+\end{equation*}
+ein \WR definiert.
+\end{satz}
+\begin{proof}
+Wegen \eqref{eq:4.2} gilt:
+\[\prob{B}=\int_Bf(x)\mathrm{d}x\geq 0\]
+und
+\[\prob{\Omega}=\int_{\R}f(x)\mathrm{d}x=1.\]
+Nach Lemma 4.14 genügt es daher zu zeigen: Sind $A_1,A_2,...\in \m{B}$ paarweise disjunkt, so gilt
+\begin{align*}
+\sum_{n\in\N}\prob{A_n}=&\sum_{n\in\N}\int_{A_n}f(x)\mathrm{d}x\\
+=&\sum_{n\in\N}\int_{\R}f(x)\m{X}_{A_n}(x)\mathrm{d}x\\
+=&\int_{\R}\sum_{n\in\N}f(x)\cdot\m{X}_{A_n}(x)\mathrm{d}x\\
+=&\int_{\R}f(x)\cdot\sum_{n\in\N}\m{X}_{A_n}(x)\mathrm{d}x\\
+=&\int_{\R}f(x)\cdot\m{X}_{\bigcup_{n\in\N}A_n}(x)\mathrm{d}x\\
+=&\int_{\bigcup_{n\in\N}A_n}f(x)\mathrm{d}x\\
+=&\prob{\bigcup_{n\in\N}A_n}
+\end{align*}
+(Summe und Integral sind hier nach dem Satz über monotone Konvergenz vertauschbar)
+\end{proof}
 \end{document}
