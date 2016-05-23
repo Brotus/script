@@ -434,9 +434,90 @@ Der \WR \, in Satz 4.17 heißt \emph{Laplacescher \WR}.
 Im Laplaceschen \WR \, gilt immer
 \[\p{A} = \frac{\mid A \mid}{\mid \Omega \mid} = \frac{\text{\# für } A \text{ günstige Fälle}}{\text{\# mögliche Fälle}}.\]
 \end{bemerkung}
+
+% 20.5. Julian
 \begin{beispiel}
-Eine echte Münze wird viermal unbeeinflusst voneinander geworfen. Wie groß ist die Wahrscheinlichkeit, dass die Münze mindestens einmal mit Kopf oben landet?
+Eine echte Münze wird viermal unbeeinflusst voneinander geworfen. Wie groß ist die Wahrscheinlichkeit, dass die Münze mindestens einmal mit Kopf oben landet? \\
+Wir betrachten $ \ZE $ durch Laplaceschen W-Raum $( \Omega , \m{P}(\Omega)  , p)$ mit 
+\begin{align*}
+\Omega = \{ (w_1, w_2, w_3, w_4) : w_i \in \{ K , Z \} (i = 1,...,4) \} 
+\end{align*} 
+und 
+\begin{align*}
+ \p{A} = \frac{|A|}{|\Omega|} = \frac{|A|}{16}
+\end{align*}
+Gesucht: \Wk von  $B = \{ (w_1,...,w_4) \in \Omega : w_i = K \} $ für mindestens ein $ i \in \{1,...,4 \} $. \\
+Mit 
+\begin{align*}
+B^c = \{ (Z,Z,Z,Z) \} 
+\end{align*}
+folgt
+\begin{align*}
+\p{B} = 1- \p{B^c}
+&= 1- \frac{|B^c}{16}
+&= 1- \frac{1}{16}
+&= \frac{15}{16}
+\end{align*}
 \end{beispiel}
+
+\underline{W-Räume mit Zähldichte}
+
+Im folgenden: $\Omega$ endlich oder abzählbar unendlich. \\
+Wegen der $\sigma$-Additivität gilt:
+\begin{align*}
+A = \cup_{w \in A} {w} \implies \p{A} = \sum_{w \in A}{\p{w}}
+\end{align*}
+W-Maße sind eindeutig bestimmt durch die \Wk der Elementarereignisse.
+
+\begin{satz}
+	$\Omega = \{ x_1,x_2,... \}$ abzählbar unendliche Menge, paarweise verschieden.
+	$(p_k)_{k \in N}$ Folge in $\mathbb{R}$ mit $ 0 \leq p_k \leq 1$
+	\begin{align*}
+	\sum_{k=1}^{\infty}{p_k} = 1
+\end{align*}	 
+Dann wird durch $( \Omega , \m{P}(\Omega)  , p)$ mit 
+\begin{align*}
+\p{A} = \sum_{k:x_k \in A}{p_k}
+\end{align*}
+ein W-Raum definiert mit $\p( \{ x_k \} = p_k$
+\end{satz}
+\begin{proof}
+\begin{itemize}
+\item wohldefiniert, da unendliche Summen nicht-negativer Zahlen nicht von Summationsreihenfolge abhängen.
+\item $\p{A} \geq 0$ da $p_k \geq 0$
+\item $\p{ \Omega } = \sum_{k:x_k \in A}{p_k} = \sum_{k=1}^{\infty}{p_k} = 1$
+\item $A_1, A_2,... \subset \Omega $ paarweise disjunkt. Wir zeigen $ \p{ \bigcup_{k=1}^{ \infty }{A_k} } = \sum_{k=1}^{\infty}{\p{A_k}}$     
+Auf beiden Seiten werden die gleichen Zahlen aufaddiert, nur in anderer Reihenfolge. Da diese bei Summen nichtnegativer Zahlen keine Rolle spielt, folgt Gleichheit \\
+Mit Lemma 4.14 folgt p ist W-Maß.
+\end{itemize}
+\end{proof}
+
+\begin{bemerkung}
+Satz 4.20 gilt analog auch im endlichen
+\end{bemerkung}
+
+\begin{definition}
+Die Folge $(p_k)_{k \in \mathbb{N}}$ heißt Zähldichte des W-Maßes in Satz 4.20
+\end{definition}
+
+\begin{beispiel}
+Bei einer Umfrage werden $n$ Personen rein zufällig ausgewählt und gefragt, welche Partei sie nächsten Sonntag Wählen würden. Wie groß ist \Wk , dass relativer Anteil an SPD Wählern unter den Befragten um nicht mehr als 1% vom entsprechenden Amteil p in der gesamten Bevölkerung abweicht? \\
+
+Vereinfachung: Anteil SPD-Wähler ändert sich nach Herausgreifen eines Befragten nicht. \\
+
+Sei N die Anzahl der befragten Personen \Wk , dass genau k SPD-Wähler unter n Befragten sind 
+\begin{align*}
+\frac{\text{\# günstige Fälle}}{\text{\# mögliche Fälle}}
+&= \frac{\binom{n}{k} (Np)^k (N-Np)^{n-k}}{N^n}
+\end{align*}
+Wegen $|\frac{k}{n} - p | \leq 0.01 \iff np-n0,01 \leq np + n0,01$ ist gesuchte \Wk gleich : $ \p{ \{ k \in \{ 0,1,...,n \} : |\frac{k}{n} -p| \leq 0,01 \}}$
+\begin{align*}
+&= \sum_{k \in \{ 0,1,...,n \}: np-n0.01 \leq k \leq np+n0.01}{  \binom{n}{k} p^k (1-p)^{n-k}}
+\end{align*}
+Hängt also nicht von N ab 
+\end{beispiel}
+
+
 
 % 23.5. Johannes
 \begin{definition}
