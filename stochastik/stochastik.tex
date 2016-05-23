@@ -511,4 +511,22 @@ Nach Lemma 4.14 genügt es daher zu zeigen: Sind $A_1,A_2,...\in \m{B}$ paarweis
 \end{align*}
 (Summe und Integral sind hier nach dem Satz über monotone Konvergenz vertauschbar)
 \end{proof}
+\begin{definition}
+Die Funktion $f:\R\to\R$ mit $f\geq 0$ und
+\[\int_{\R}f(x)\mathrm{d}x=1\]
+heißt \emph{Dichte} bezüglich des Lebesgue-Borel-Maßes vom \WM in Satz 4.26.
+\end{definition}
+\begin{bemerkung}
+Ist P das zu einer Dichte $f$ gehörende \WM, so gilt für jedes $x\in\R$:
+\[\prob{\{ x\}}=0\]
+\end{bemerkung}
+\begin{beispiel}
+\begin{enumerate}[a)]
+Die Gleichverteilung $U(a,b)$ mit Parametern $a,b\in\R$, $a<b$ ist das durch die Dichte
+\[f(x)=\begin{cases}\frac{1}{b-a}&,a\leq x\leq b\\
+0&,sonst
+\end{cases}\]
+festgelegte \WM.
+\end{enumerate}
+\end{beispiel}
 \end{document}
