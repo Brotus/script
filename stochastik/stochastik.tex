@@ -159,7 +159,7 @@ Sei $N$ die Anzahl der möglichen Stichproben. Dann gilt...
 \[N = n \cdot n \cdot \ldots \cdot n = n^{k}\]
 \item ...beim \emph{Ziehen ohne Zurücklegen und mit Beachtung der Reihenfolge}:
 \[N = n \cdot (n-1) \cdot \ldots \cdot (n-k+1) = \frac{n!}{(n-k)!}\]
-\item ...beim \emph{Ziehen ohne Zurücklegen und ohne Bachtung der Reihenfolge}:\\
+\item ...beim \emph{Ziehen ohne Zurücklegen und ohne Beachtung der Reihenfolge}:\\
 Ordnet man jede der Stichproben auf alle $k!$ möglichen Arten (vgl. b)), so erhält man alle Stichproben beim Ziehen ohne Zurücklegen und mit Beachtung der Reihenfolge.
 \[\impl N \cdot k! = \frac{n!}{(n-k)!}\]
 \[\impl N = \frac{n!}{(n-k)! \cdot k!} = \binom{n}{k}\]
@@ -438,7 +438,7 @@ Im Laplaceschen \WR \, gilt immer
 % 20.5. Julian
 \begin{beispiel}
 Eine echte Münze wird viermal unbeeinflusst voneinander geworfen. Wie groß ist die Wahrscheinlichkeit, dass die Münze mindestens einmal mit Kopf oben landet? \\
-Wir betrachten $ \ZE $ durch Laplaceschen W-Raum $( \Omega , \m{P}(\Omega)  , p)$ mit 
+Wir betrachten \ZE durch Laplaceschen \WR \, $( \Omega , \m{P}(\Omega)  , P)$ mit 
 \begin{align*}
 \Omega = \{ (w_1, w_2, w_3, w_4) : w_i \in \{ K , Z \} (i = 1,...,4) \} 
 \end{align*} 
@@ -603,11 +603,60 @@ Ist P das zu einer Dichte $f$ gehörende \WM, so gilt für jedes $x\in\R$:
 \end{bemerkung}
 \begin{beispiel}
 \begin{enumerate}[a)]
-Die Gleichverteilung $U(a,b)$ mit Parametern $a,b\in\R$, $a<b$ ist das durch die Dichte
+\item Die \emph{Gleichverteilung} $U(a,b)$ mit Parametern $a,b\in\R$, $a<b$ ist das durch die Dichte
 \[f(x)=\begin{cases}\frac{1}{b-a}&,a\leq x\leq b\\
 0&,sonst
 \end{cases}\]
 festgelegte \WM.
+
+% 27.5. Timo
+\item Die \emph{Exponentialverteilung} $exp(\lambda)$ mit Parameter $\lambda > 0$ ist das durch die Dichte
+\[f(x)=\begin{cases}\lambda \cdot e^{-\lambda x} &,x \geq 0 \\ 0 &, x < 0\end{cases}\]
+festgelegte \WM.\\
+Anwendung: Modellierung von Lebensdauern/Wartezeiten\\
+Es gilt: $f(x) \geq 0 \, (x \in \R)$ und
+\[\int_{\R}f(x)\mathrm{d}x = \int_0^\infty \lambda \cdot e^{-\lambda x} \mathrm{d}x = \left. -e^{-\lambda x} \right|_{x=0}^\infty = 0 - (-1) = 1 \impl f(x) \text{ ist Dichte.}\]
+\item Die \emph{Normalverteilung} $\m{N}(\mu, \sigma^2)$ mit Parameter $\mu \in \R$ und $\sigma > 0$ ist das durch die Dichte
+\[f(x)=\frac{1}{\sqrt{2\pi} \sigma} \cdot e^{-\frac{(x-\mu)^2}{2 \sigma^2}}\]
+festgelegte \WM \, $(x \in \R)$. Es handelt sich um eine Dichte, da $f(x) \geq 0 \, (x \in \R)$ und
+\[\int_{\R}f(x)\mathrm{d}x = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi} \sigma} \cdot e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \mathrm{d}x = \frac{1}{\sqrt{2 \pi}} e^{-\frac{u^2}{2}} \mathrm{d}u = 1\]
+mit $u = \frac{x-\mu}{\sigma} \impl \mathrm{d}u = \frac{1}{\sigma} \mathrm{d}x$.
 \end{enumerate}
 \end{beispiel}
+\begin{beispiel}
+Die Lebensdauer einer Glühbirne in Monaten wird durch eine $exp(\frac{1}{12})$-Verteilung beschrieben. Dann tritt ein Ausfall der Glühbirne innerhalb von 36 Monaten mit folgender \Wk \, ein:
+\[\p{[0,36]} = \int_0^{36} \frac{1}{12} \cdot e^{-\frac{1}{12}x} \mathrm{d}x = \left. -e^{-\frac{1}{12}x} \right|_{x=0}^{36} = -e^{-\frac{36}{12}}-(-1) \approx 0.95\]
+\end{beispiel}
+\subsection{Bedingte Wahrscheinlichkeiten}
+Wie verändert sich das wahrscheinlichkeitstheoretische Verhalten eines \ZE s, falls eine Zusatzinformation über das Ergebnis bekannt wird?
+\begin{beispiel}
+Wie verändert sich die \Wk, an Hautkrebs (neu) erkrankt zu sein, falls ein Verdachtsfall beim Hautkrebsscreening auftritt? \\
+Gesucht: Bedingte \Wk \, $\p{A \mid B}$ von $A$ unter der Bedingung, dass $B$ eingetreten ist ($A, B$ Ereignisse)\\
+Idee: Das \ZE \, $n$-mal durchführen, seien $n_A, n_B, n_{A \cap B}$ die Anzahlen des Eintretens von $A, B, A \cap B$. Dann gilt
+\[\p{A \mid B} \approx \frac{n_{A \cap B}}{n_B} = \frac{\frac{n_{A \cap B}}{n}}{\frac{n_B}{n}} \approx \frac{\p{A \cap B}}{\p{B}}\]
+\end{beispiel}
+\begin{definition}
+Sei $(\Omega, \m{A}, P)$ ein \WR, $A,B \in \m{A}$ mit $\p{B} > 0$. Dann heißt $\p{A \mid B} = \frac{\p{A \cap B}}{\p{B}}$ \emph{bedingte \Wk \, von $A$ unter der Bedingung $B$}.
+\end{definition}
+\begin{lemma}
+Sei $(\Omega, \m{A}, P)$ ein \WR, $A,B \in \m{A}$ mit $\p{B} > 0$. Dann ist $\tilde{P}: \m{A} \rightarrow \R, \tilde{P}(A) := \p{A \mid B}$ ein \WM. Hierbei gilt $\tilde{P}(B)=1$ (d.h. das \WM \, $\tilde{P}$ ist auf $B$ konzentriert).
+\end{lemma}
+\begin{proof}
+Es gilt:
+\begin{enumerate}[(1)]
+\item $\tilde{P}(A) = \p{A \mid B} = \frac{\p{A \cap B}}{\p{B}} \geq 0$, da $P$ ein \WM \, ist
+\item $\tilde{P}(\Omega) = \p{\Omega \mid B} = \frac{\p{\Omega \cap B}}{\p{B}} = \frac{\p{B}}{\p{B}} = 1$
+\item Seien $A_1, A_2, \cdots \in \m{A}$ paarweise disjunkt. Dann ist
+\begin{align*}
+\tilde{P}(\bigcup_{n=1}^\infty A_n) &= \p{\bigcup_{n=1}^\infty A_n \mid B} = \frac{\p{(\bigcup_{n=1}^\infty A_n) \cap B}}{\p{B}} = \frac{\p{\bigcup_{n=1}^\infty (A_n \cap B)}}{\p{B}} \\
+&= \frac{\sum_{n=1}^\infty \p{A_n \cap B}}{\p{B}} = \sum_{n=1}^\infty \p{A_n \mid B} = \sum_{n=1}^\infty \tilde{P}(A_n)
+\end{align*}
+und somit ist $\tilde{P}$ $\sigma$-additiv.
+\end{enumerate}
+Mit Lemma 4.14 folgt die Behauptung (1. Teil). Weiter gilt: $\tilde{P}(B) = \p{B \mid B} = \frac{\p{B \cap B}}{\p{B}} = 1$.
+\end{proof}
+\begin{bemerkung}
+Folglich gilt z.B. $\p{A^C \mid B} = 1 - \p{A \mid B}, \p{A_1 \cup A_2 \mid B} = \p{A_1 \mid B} + \p{A_2 \mid B} - \p{A_1 \cap A_2 \mid B}.$
+\end{bemerkung}
+In Beispiel 4.30 gesucht: $\p{A \mid B}$ mit $A=$ \glqq Neuerkrankung Hautkrebs\grqq, $B=$ \glqq Verdachtsfall Hautkrebsscreen\grqq. Bekannt sind $\p{A} \approx 0.00328, \p{B \mid A} \approx 0.78, \p{B \mid A^C} \approx 0.26$. Wie bekommt man daraus $\p{A \mid B}$?
 \end{document}
