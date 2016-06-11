@@ -882,5 +882,101 @@ P[X \in A] \\
 und analog $P[Y \in B] = \frac{|B|}{6}$. Also sind X und Y unabhängig.
 \end{beispiel}
 
+% 10.06. Timo
+\begin{definition}
+Sei $(\Omega, \m{A}, P)$ ein \WR \, und seien $(\Omega, \m{A}_i) \, (i \in \N)$ Messräume sowie $X_i: \Omega \rightarrow  \Omega \, (i \in \N)$ Zufallsvariablen.
+\begin{enumerate}[a)]
+\item $X_1, \ldots , X_n$ heißen genau dann \emph{unabhängig}, wenn $P[X_1 \in A_1, \ldots , X_n \in A_n] = P[X_1 \in A_1] \cdot \ldots \cdot P[X_n \in A_n]$ für alle $A_1 \in \m{A}_1, \ldots , A_n \in \m{A}_n$ gilt.
+\item $(X_n)_n$ ist \emph{unabhängig}, wenn $X_1, \ldots , X_n$ für alle $n \in \N$ unabhängig sind.
+\end{enumerate}
+\end{definition}
+\begin{lemma}
+Seien $X_1, \ldots , X_n$ unabhängige reelle Zufallsvariablen definiert auf $(\Omega, \m{A}, P)$. Für $h_1, \ldots , h_n : \R \rightarrow \R$ mit
+\[h_i^{-1}(B) \in \m{B} \text{ für alle } B \in \m{B} \, (i=1, \ldots , n)\]
+gilt dann: Die Zahlen
+\[h_1 \circ X_1, \ldots , h_n \circ X_n\]
+sind unabhängig.
+\end{lemma}
+\begin{proof}
+Für $B \in \m{B}$ gilt:
+\[(h_i \circ X_i)^{-1}(B) = X_i^{-1}(h_i^{-1}(B)) \in \m{A},\]
+da $X_i$ reelle Zufallsvariablen sind und $h_i^{-1}(B) \in \m{B}$ nach Voraussetzung ist. Also sind $h_i \circ X_i$ reelle Zufallsvariablen. Weiter gilt für $B_1, \ldots , B_n \in \m{B}$:
+\begin{align*}
+&P[h_1 \circ X_1 \in B_1, \ldots , h_n \circ X_n \in B_n] \\
+=&P(\{\omega \in \Omega : (h_1 \circ X_1)(\omega) \in B_1, \ldots , (h_n \circ X_n)(\omega) \in B_n\})\\
+=&P(\{\omega \in \Omega : X_1(\omega) \in h_1^{-1}(B_1), \ldots ,X_n(\omega) \in h_n^{-1}(B_n)\})\\
+=&P[X_1 \in h_1^{-1}(B_1), \ldots, X_n \in h_n^{-1}(B_n)]\\
+=&P[X_1 \in h_1^{-1}(B_1)] \cdot \ldots \cdot P[X_n \in h_n^{-1}(B_n)]\\
+=&P[h_1 \circ X_1 \in B_1] \cdot \ldots \cdot P[h_n \circ X_n \in B_n]
+\end{align*}
+\end{proof}
 
+\textbf{Folgerung:} Mit $X, Y$ sind z.B. auch $X^2, exp(Y)$ unabhängig.\\
+\textbf{Erweiterung:} Mit $X_1, \ldots , X_4$ sind auch $X_1 \cdot X_2, exp(X_3 + X_4)$ unabhängig (vgl. Wahrscheinlichkeitstheorie).
+
+\subsection{Der Erwartungswert}
+
+Ziel: Definition des \glqq mittleren Wertes\grqq \, eines Zufallsexperiments mit reellen Ergebnissen.
+\begin{beispiel}
+Es gibt zehn Enten und zehn perfekte Schützen. Jeder Schütze wählt unbeeinflusst von den anderen rein zufällig eine Ente aus, auf die er schießt. Wie viele Enten überleben im Mittel? \\
+$X=$ zufällige Zahl überlebender Enten, d.h.
+\[X(\omega) \in \{0,1, \ldots, 9\}.\]
+Gesucht ist ein \glqq mittlerer Wert\grqq \, $EX$ (sog. \emph{Erwartungswert}) von $X$. Wir setzen
+\[EX = \int_\Omega \m{X} \mathrm{d}P\]
+als das sog. Maßintegral.
+\end{beispiel}
+\begin{definition}
+Wir setzen $\bar{\R} = \R \cup \{\infty, - \infty\}$ mit Rechenregeln
+\begin{align*}
+&a + \infty = \infty = \infty + a, \\
+&a - \infty = - \infty = - \infty + a, \\
+&\infty + \infty = \infty, \\
+&- \infty - \infty = - \infty
+\end{align*}
+für $a \in \R$ und
+\[b \cdot \infty = \infty \cdot b = \infty\]
+für $b \in \R_+ \backslash \{0\}$ und
+\begin{align*}
+&\infty \cdot \infty = \infty, \\
+&\infty \cdot 0 = 0 = 0 \cdot \infty
+\end{align*}
+\end{definition}
+\begin{bemerkung}
+Nicht definiert sind z.B. $\infty - \infty, \frac{\infty}{\infty}.$
+\end{bemerkung}
+\begin{definition}
+Sei $\Omega \neq \emptyset, \m{A} \, \sigma$-Algebra über $\Omega$. Eine Funktion $\mu: \m{A} \rightarrow \bar{\R}$ heißt Maß, falls folgende Eigenschaften gelten:
+\begin{enumerate}[(i)]
+\item $\mu(A) \geq 0 \, (A \in \m{A})$
+\item $\mu(\emptyset) = 0$
+\item $A, B \in \m{A}$ mit $A \subseteq B$: $\mu(A) \leq \mu(B)$
+\item $A, B \in \m{A}$ mit $A \cap B = \emptyset \impl \mu(A \cap B) = \mu(A) + \mu(B)$
+\item $A_1, \ldots , A_n \in \m{A}$ paarweise disjunkt $\impl \mu(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n \mu(A_i)$
+\item $A_1, A_2, \ldots \in \m{A}$ paarweise disjunkt $\impl \mu(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty \mu(A_i)$
+\end{enumerate}
+In diesem Fall heißt $(\Omega, \m{A}, \mu)$ \emph{Maßraum}.
+\end{definition}
+\begin{bemerkung}
+$P$ ist ein \WM \, $\Leftrightarrow P$ ist ein Maß und $P(\Omega)=1$.
+\end{bemerkung}
+\begin{definition}
+Sei $(\Omega, \m{A})$ ein Messraum. Eine Funktion $f: \Omega \rightarrow \R$ heißt $\m{A}-\m{B}-$messbar (kurz: messbar), wenn
+\[f^{-1}(B) \in \m{A} \text{ für alle } B \in \m{B}\]
+gilt.
+\end{definition}
+\begin{bemerkung}
+Sei $(\Omega, \m{A}, P)$ ein \WR, dann ist jede messbare Abbildung $X: \Omega \rightarrow \R$ eine reelle Zufallsvariable.
+\end{bemerkung}
+Im Folgenden definieren wir ein Integral 
+\[\int_\Omega h \mathrm{d}\mu\]
+für den Maßraum $(\Omega, \m{A}, \mu)$ und eine messbare Funktion $h: \Omega \rightarrow \R$.\\
+Die Definition erfolgt in drei Schritten:
+\begin{definition}
+Sei $(\Omega, \m{A})$ ein Messraum. Jede Funktion
+\[h = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}\]
+mit $n \in \N, A_1, \ldots, A_n \in \m{A}$ Partionen von $\Omega$ und $\alpha_1, \ldots, \alpha_n \in \R$ heißt \emph{einfache Funktion}.\\
+\\
+Schritt 1: Ist $h = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}$ eine nichtnegative einfache Funktion, so setzen wir
+\[\int_\Omega h \mathrm{d}\mu = \sum_{i=1}^n \alpha_i \cdot \mu(A_i).\]
+\end{definition}
 \end{document}
