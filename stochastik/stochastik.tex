@@ -702,20 +702,20 @@ W-Raum $( \Omega , \m{A} , P)$ oft interessieren nur Teilaspekte des Ergebnisses
 Betrachte daher $X( \omega ) $ für ein $X : \Omega \rightarrow \Omega^\prime$ \\
 \begin{beispiel}
 Abstimmung über 2 Vorschläge A und B. r=3000 Personen Stimmen für A, n=1000000 Personen entscheiden sich unbeeinflusst voneinander rein zufällig. \Wk, dass A angenommen wird? \\
-Modellierung: Abstimmunsverhalten der n=1000000 Personen wird beschrieben durch $\omega = ( \omega_1, ...., \omega_n) \in \{ 0,1 \}^n$ mit $\omega_i =\begin{cases}1&\text{falls i-te Person für A stimmt}\\2&\text{sonst}\end{cases}$
-Wir modellieren es durch Laplaceschen W-Raum $(\Omega , \m{A} , P)$ mit $\ Omega = \{ 0,1 \}^n , \m{A} = \m{P}(\Omega) , P(A) = \frac{|A|}{| \Omega|}$ \\
-Interessiert sind wir an der Anzahl Stimmen für A bei diesen n Personen, d.h. $X( \omega) = \sum_{i=1}^{n}{ \omega_i }$.
-Frage: wie bestimmt man W-Raum, der \ZE mit Ergebnis $X( \omega)$ beschreibt? \\
+Modellierung: Abstimmunsverhalten der n=1000000 Personen wird beschrieben durch $\omega = ( \omega_1, ...., \omega_n) \in \{ 0,1 \}^n$ mit $\omega_i =\begin{cases}1&\text{falls i-te Person für A stimmt}\\0&\text{sonst}\end{cases}$
+Wir modellieren es durch Laplaceschen W-Raum $(\Omega , \m{A} , P)$ mit $ \Omega = \{ 0,1 \}^n , \m{A} = \m{P}(\Omega) , P(A) = \frac{|A|}{| \Omega|}$ \\
+Interessiert sind wir an der Anzahl Stimmen für A bei diesen n Personen, d.h. $X( \omega) = \sum_{i=1}^{n}{ \omega_i }$. \\
+Frage: wie bestimmt man W-Raum, der \ZE \  mit Ergebnis $X( \omega)$ beschreibt? \\
 Idee: Für Menge $A^\prime \subset \Omega^\prime$ setze $P_x(A^\prime) := P[X \in A^\prime] := P( \{ \omega \in \Omega : X( \omega ) \in A^\prime \} = P(X^{-1}(A^\prime))$ \\
-Damit diese \Wk definiert ist muss gelten $X^{-1}(A^\prime) = \{ \omega \in \Omega : X( \omega ) \in A^\prime \}$
+Damit diese \Wk \ definiert ist muss gelten $X^{-1}(A^\prime) = \{ \omega \in \Omega : X( \omega ) \in A^\prime \}$
 \end{beispiel}
 \begin{definition}
-$\Omega \neq \emptyset , A^\prime \sigma$-Algebra über $\Omega^\prime$. Dann heißt $(\Omega^\prime, \m{A}^\prime)$ Messraum.
+$\Omega \neq \emptyset , \m{A}^\prime \sigma$-Algebra über $\Omega^\prime$. Dann heißt $(\Omega^\prime, \m{A}^\prime)$ Messraum.
 \end{definition}
 \begin{definition}
 Sei $( \Omega , \m{A} , P)$ W-Raum , $(\Omega^\prime, \m{A}^\prime)$ Messraum. Dann heißt jede Abbildung $X: \Omega \rightarrow \Omega^\prime$ mit
 \begin{align*}
- X^{-1}(A^\prime) \in \m{A} \forall A^\prime \in \m{A}^\prime \text{ (*) }
+ X^{-1}(A^\prime) \in \m{A} \ \forall A^\prime \in \m{A}^\prime \text{ (*) }
 \end{align*} 
 Zufallsvariable. \\
 Im Falle $\Omega^\prime = \R, \m{A}^\prime = \m{B}$ heißt X reele \ZV.
@@ -724,11 +724,11 @@ Im Falle $\Omega^\prime = \R, \m{A}^\prime = \m{B}$ heißt X reele \ZV.
 \begin{itemize}
 \item (*) heißt auch $ \m{A} - \m{A}^\prime$-Messbarkeit der Abbildung $X$.
 \item Im Falle $\m{A} = \m{P}( \Omega ) oder A^\prime = \{ \emptyset , \Omega \}$ erfüllt jede Abbildung (*).
-\item Im Falle $( \Omega , \m{A}) = ( \Omega^\prime , \m{A}^\prime) = ( \R , \m{B}$ kann man nur schwer Abbildungen "anschaulich konstruieren", die (*) nicht erfüllen.
+\item Im Falle $( \Omega , \m{A}) = ( \Omega^\prime , \m{A}^\prime) = ( \R , \m{B} ) $ kann man nur schwer Abbildungen " anschaulich konstruieren", die (*) nicht erfüllen.
 \end{itemize}
 \end{bemerkung}
 \begin{satz}
-$( \Omega , \m{A} , P)$ W-Raum , $(\Omega^\prime, \m{A}^\prime)$ Messraum, $X : \Omega \rightarrow \Omega^\prime$ \ZV. Dann ist $( \Omega^\prime , \m{A}^\prime , P_x) $ mit $ P_x(A^\prime) = P(X^{-1}(A^\prime)), ( A^\prime \in \m{A}^\prime$.
+$( \Omega , \m{A} , P)$ W-Raum , $(\Omega^\prime, \m{A}^\prime)$ Messraum, $X : \Omega \rightarrow \Omega^\prime$ \ZV. Dann ist $( \Omega^\prime , \m{A}^\prime , P_x) $ mit $ P_x(A^\prime) = P(X^{-1}(A^\prime)), ( A^\prime \in \m{A}^\prime ) $.
 \end{satz}
 \begin{proof}
 \begin{itemize}
@@ -769,13 +769,13 @@ P[X > \frac{n-r}{2} ] \\
 Bestimmung von $P_X( \{ k \} ) = P( \{ \omega \in \Omega : \omega_1 + ... + \omega_n = k \} )$.  Diese Menge besteht aus allen n-Tupeln von Nullen und Einsen, die genau k Einsen enthalten. Da es genau  $\binom{n}{k}$   solcher n-Tupel gibt und jedes dieser n-Tupel im Laplaceschen W-Raum  $( \Omega , \m{A} , P)$ die \Wk $\frac{1}{2^n}$ hat gilt $P_X(k) = \binom{n}{k} \cdot \frac{1}{2^n}. P_X$  ist also Binomialverteilung mit Parametern n und p = 0.5. Die gesuchte \Wk ist $\sum_{k= \frac{n-r}{2} +1}^n{\binom{n}{k} \cdot \frac{1}{2^n}}$
 
 \begin{definition}
-Das W-Maß $P_X$ im Satz 5.4 heißt Verteilung der \ZV X.
+Das W-Maß $P_X$ im Satz 5.4 heißt Verteilung der \ZV  \ X.
 \end{definition}
 
 \begin{bemerkung}
 Die Begriffe W-Maß und Verteilung werden Synonym verwendet, denn: \\
 Jede Verteilung ist W-Maß \\
-Jedes W-Ma? ist Verteilung einer \ZV, nämlich $X: \Omega \rightarrow \Omega X( \omega) = \omega $
+Jedes W-Maß ist Verteilung einer \ZV, nämlich $X: \Omega \rightarrow \Omega X( \omega) = \omega $
 \end{bemerkung}
 Im Folgenden: Ubertragung der Bezeichnungen für W-Maße auf Verteilungen. \\
 Schreibweisen : 
@@ -785,8 +785,8 @@ P[X = x] := P( \{ \omega \in \Omega : X(\omega ) = x \} )
 \end{align*}
 
 \begin{definition}
-Reelle \ZV heißt diskrete \ZV, falls für abzählbar undendliche Menge $ A \subset \R $ gilt $ P_X(A) = 1 $. In diesem Fall heißt für $(x_k)_{k \in \N } \subset A $ die folge $ (P[x = x_k])_{k \in \N } $ bzw. $(P[x = x_k])_{k = 1,...,N } $ mit $P_X( \{ x_k \} ) = 1$ bzw. $P_X( \{ x_k \} k = 1,...,N ) = 1$ Zähldichte von X. \\
-Und stetig verteilte \ZV mit Dichte $ f: \R \rightarrow \R $ falls gilt $ P_X(B) = \int_B f(x) dx ( B \in \m{B} ) $ In diesem Fall heißt f Dichte von X. 
+Reelle \ZV \ heißt diskrete \ZV \ , falls für abzählbar undendliche Menge $ A \subset \R $ gilt $ P_X(A) = 1 $. In diesem Fall heißt für $(x_k)_{k \in \N } \subset A $ die folge $ (P[x = x_k])_{k \in \N } $ bzw. $(P[x = x_k])_{k = 1,...,N } $ mit $P_X( \{ x_k \} ) = 1$ bzw. $P_X( \{ x_k \} k = 1,...,N ) = 1$ Zähldichte von X. \\
+Und stetig verteilte \ZV \ mit Dichte $ f: \R \rightarrow \R $ falls gilt $ P_X(B) = \int_B f(x) dx ( B \in \m{B} ) $ In diesem Fall heißt f Dichte von X. 
 \end{definition}
 
 \begin{definition}
@@ -820,7 +820,7 @@ $( \Omega , \m{A} , P), A,B \in \m{A} $ W-Raum $ A,B \in \m{A} $ heißen unabhä
 Rein zufälliges Werfen zweier echter Würfel \\
 A = " 1. Würfel 6" \\
 B = " 2. Würfel 3 " \\
-C = " Summe $\geq$ 11 \\
+C = " \ Summe $\geq$ 11 \\
 Dann gilt A,B unabhängig und A,C nicht unabhängig. \\
 
 Begründung: Laplacescher W-Raum mit $ \Omega = \{ (i,j) i,j \in \{ 1,...,6 \} \}$ Dann 
@@ -828,7 +828,7 @@ Begründung: Laplacescher W-Raum mit $ \Omega = \{ (i,j) i,j \in \{ 1,...,6 \} \
 A = \{ (6,1),(6,2),...,(6,6) \} \\
 B = \{ (1,3),(2,3),...,(6,3) \} \\
 C = \{ (6,5),(5,6),(6,6) \} \\
-\Rightarrow P(a \cap B) = P( \{ (6,3) \} ) = \frac{1}{36} \\
+\Rightarrow P(A \cap B) = P( \{ (6,3) \} ) = \frac{1}{36} \\
 P(A)P(B) = \frac{6}{36} \frac{6}{36} = \frac{1}{36}
 \end{align*}
 Also sind A,B unabhängig 
@@ -858,9 +858,9 @@ X,Y \text{unabhängig} \Leftrightarrow \forall A \in \m{A}_X , B \in \m{A}_Y = P
 \end{bemerkung}
 \begin{beispiel}
 Werfen zweier echter Würfel \\
-X = " Augenzahl 1. Würfel " \\
-Y = " Augenzahl 2. Würfel " \\
-Z = " Summe Augenzahl " \\
+X = " \  Augenzahl 1. Würfel " \\
+Y = " \  Augenzahl 2. Würfel " \\
+Z = " \  Summe Augenzahl " \\
 Dann gilt a) X,Y unabhängig und b) X,Z nicht unabhängig \\
 Begründung: b) Wie in bsp. 5.10 folgt $P[ X \in \{ 6 \} , Z \in \{ 11 , 12 \} ] \neq P[X \in \{ 6 \} ]P[Z \in \{ 11 , 12 \} ]$ \\
 a) Laplacescher W-Raum mit $ \Omega \{ ( i,j) i,j \in \{ 1,..,6 \} \} , X,Y ; \Omega \rightarrow \{ 1,..,6 \} , \m{A}_X = \m{A}_Y = P( \{ 1,...,6 \} ) , X((i,j)) = i , Y((i,j))=j$ \\
