@@ -73,11 +73,11 @@
 \begin{center}
 \textsc{\LARGE Einführung in die Stochastik}\\[2.0cm]
 \rule{\linewidth}{0.5mm}
-Eine Mitschrift der Vorlesung Einführung in die Stochastik von Prof. Dr. Kohler im SS 16 an der TU Darmstadt.
+Eine Mitschrift der Vorlesung Einführung in die Stochastik von Prof. Dr. Kohler im Sommersemester 2016 an der TU Darmstadt.
 \rule{\linewidth}{0.5mm}\\[2.0cm]
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft}
-\large \emph{Author:}\\\textsc{Johannes Struve\\Timo Seiche\\Julian Keinrath}\\[1.0cm]
+\large \emph{Autoren:}\\\textsc{Johannes Struve\\Timo Seiche\\Julian Keinrath}\\[1.0cm]
 \end{flushleft}
 \end{minipage}
 \vfill
@@ -123,24 +123,24 @@ Ziel: Aussagen über Ergebnisse von \ZE en:
 \end{itemize}
 \end{definition}
 \begin{beispiel}
-Werfen eines echten Würfels. Ergebnis = Zahl oben
+Werfen eines echten Würfels. Das Ergebnis ist die Zahl oben.
 \[\impl\Omega=\{ 1,2,3,4,5,6\}\]
 Das Ereignis $A=\{ 2,4,6\}$ tritt genau dann ein, wenn eine gerade Zahl gewürfelt wird.
 \end{beispiel}
 \begin{definition}
-\ZE mit Grundmenge $\Omega$. Sind $x_1,\ldots,x_n\in\Omega$ die bei wiederholtem Durchführen des \ZE s auftretenden Werte, so heißen
+\ZE \, mit Grundmenge $\Omega$. Sind $x_1,\ldots,x_n\in\Omega$ die bei wiederholtem Durchführen des \ZE s auftretenden Werte, so heißen
 \[\mid \{ 1\leq i\leq n:x_i\in A\}\mid\]
 bzw.
 \[\frac{\mid \{ 1\leq i\leq n:x_i\in A\}\mid}{n}\]
 die \emph{absolute} bzw. \emph{relative Häufigkeit} des Eintretens von $A$.
 \end{definition}
 \begin{bemerkung}[Empirisches Gesetz der großen Zahlen]
-Führt man ein \ZE unbeeinflusst voneinander immer wieder durch, so nähert sich für große Anzahlen von Wiederholungen die relative Häufigkeit des Eintretens eines beliebigen Ereignisses $A$ einer Zahl
+Führt man ein \ZE \, unbeeinflusst voneinander immer wieder durch, so nähert sich für große Anzahlen von Wiederholungen die relative Häufigkeit des Eintretens eines beliebigen Ereignisses $A$ einer Zahl
 \[\prob{A} \in\unit\]
 an. Wir bezeichnen $\prob{A}$ als \emph{Wahrscheinlichkeit} von $A$.
 \end{bemerkung}
 \begin{beispiel}
-Werfen eines echten Würfels, Ergebnis = Zahl oben\\
+Werfen eines echten Würfels, das Ergebnis ist die Zahl oben.\\
 Relative Häufigkeiten der Elementarereignisse nähern sich immer mehr $1/6$ an.
 \[\prob{\{ 1\}}=\ldots=\prob{\{ 6\} }=\frac{1}{6}\]
 \end{beispiel}
@@ -149,7 +149,7 @@ Ziel im Weiteren: Bestimmung von Wahrscheinlichkeiten ohne wiederholte Durchfüh
 \subsection{Grundlagen der Kombinatorik}
 Ziehen von $k$ Elementen aus einer Menge mit Mächtigkeit $n$.\\
 \\
-4 Möglichkeiten:
+Hier werden 4 Möglichkeiten betrachtet:
 \begin{itemize}
 \item Ziehen mit bzw. ohne Zurücklegen
 \item Ziehen mit bzw. ohne Beachtung der Reihenfolge
@@ -263,7 +263,7 @@ $\binom{48}{5}^k$ = $k$ Ziehungen mit $38$ \newpage
 &=\sum_{k=614}^n (\binom{n}{k} \cdot p^k \cdot (1-p)^{(n-k)}) \approx 0.01
 \end{align*}
 Dies ist sehr klein. Aber es spricht eigentlich jedes Resultat gegen die Annahme, bei dem irgendeine Zahl mindesten $614$-mal auftritt. \\
-Wahrscheinlichkeit, dass irgendeine der $49$ Zahlen bei $n=4599$ Ziehungen mindestens $614$-mal gezogen wird (per Computersimulation) 
+Die Wahrscheinlichkeit, dass irgendeine der $49$ Zahlen bei $n=4599$ Ziehungen mindestens $614$-mal gezogen wird (per Computersimulation) 
 \[\approx 0.47,\]
 was nicht klein ist! \\
 Fazit: Annahme kann nicht verworfen werden.
@@ -287,7 +287,7 @@ Ansätze unsystematisch! Gibt es auch systematischen Zugang?
 
 \subsection{Der Begriff des Wahrscheinlichkeitsraumes}
 \begin{definition}
-$\Omega\neq\emptyset$. Eine Menge $\m{A}\subset\m{P}(\Omega)$  heißt $\sigma$-Algebra (über $\Omega$), falls gilt
+Sei $\Omega\neq\emptyset$. Eine Menge $\m{A}\subset\m{P}(\Omega)$  heißt $\sigma$-Algebra (über $\Omega$), falls gilt
 \begin{enumerate}
 \item $\emptyset\in\m{A}$
 \item $A\in\m{A}\impl \Omega\setminus A\in\m{A}$
@@ -295,20 +295,20 @@ $\Omega\neq\emptyset$. Eine Menge $\m{A}\subset\m{P}(\Omega)$  heißt $\sigma$-A
 \end{enumerate}
 \end{definition}
 \begin{beispiel}
-\begin{enumerate}[a]
+\begin{enumerate}[a)]
 \item $\m{A}=\m{P}(\Omega)$
 \item $\m{A}=\{\emptyset,\Omega\}$
-\item Die kleinste $\sigma$-Algebra über $\R$, die alle Intervalle enthält, ist die sogenannte \emph{Borelsche $\sigma$-Algebra} $\m{B}$
+\item Die kleinste $\sigma$-Algebra über $\R$, die alle Intervalle enthält, ist die sogenannte \emph{Borelsche $\sigma$-Algebra} $\m{B}$.
 \end{enumerate}
 \end{beispiel}
 \begin{bemerkung}[Zur Existenz von $\m{B}$]
-$I\neq\emptyset$ Indexmenge, $\m{A}_i$ $\sigma$-Algebra über $\Omega$ für $i\in I$ impliziert $\cap_{i\in I}\m{A}_i$ ist $\sigma$-Algebra über $\Omega$. Setze dann:
+Sei $I\neq\emptyset$ eine Indexmenge, $\m{A}_i$ $\sigma$-Algebra über $\Omega$ für $i\in I$ impliziert $\bigcap_{i\in I}\m{A}_i$ ist $\sigma$-Algebra über $\Omega$. Setze dann:
 \[\m{B}:=\bigcap\{\m{A}|\m{A}\text{ ist }\sigma\text{-Algebra über }\R\text{ und enthält alle Intervalle}\}\]
 $\m{B}$ ist nicht gleich der Potenzmenge von $\R$.
 \end{bemerkung}
 \begin{definition}
-$\Omega\neq\emptyset,\m{A} \text{ } \sigma$-Algebra über $\Omega$. Jede Abbildung $\text{P}:\m{A}\to\R$ mit
-\begin{enumerate}[i]
+Sei $\Omega\neq\emptyset,\m{A} \, \sigma$-Algebra über $\Omega$. Jede Abbildung $\text{P}:\m{A}\to\R$ mit
+\begin{enumerate}[i.]
 \item $\fa{A\in\m{A}}:\prob{A}\in\left[ 0,1\right]$,
 \item $\prob{\emptyset}=0,\prob{\Omega}=1$,
 \item $A\in\m{A}\impl \prob{A^C}=1-\prob{A}$,
@@ -336,7 +336,7 @@ $\text{P}:\m{A}\to\R$ ist ein \WM, genau dann wenn:
 \end{itemize}
 \end{proof}
 \begin{definition}
-Ist $\Omega\neq\emptyset$, $\m{A}$ $\sigma$-Algebra über $\Omega$ und $\text{P}:\m{A}\to\R$ ein \WM, so heißt $(\Omega,\m{A},\text{P})$ \emph{Wahrscheinlichkeitsraum} (kurz: W-Raum). In diesem Fall heißt $\p{A}$ \emph{Wahrscheinlichkeit} (kurz: Wk.).
+Ist $\Omega\neq\emptyset$, $\m{A}$ $\sigma$-Algebra über $\Omega$ und $\text{P}:\m{A}\to\R$ ein \WM, so heißt $(\Omega,\m{A},\text{P})$ \emph{Wahrscheinlichkeitsraum} (kurz: W-Raum). In diesem Fall heißt $\p{A}$ \emph{Wahrscheinlichkeit} (kurz: Wk).
 \end{definition}
 
 % 13.05.2016
@@ -439,86 +439,63 @@ Im Laplaceschen \WR \, gilt immer
 % 20.5. Julian
 \begin{beispiel}
 Eine echte Münze wird viermal unbeeinflusst voneinander geworfen. Wie groß ist die Wahrscheinlichkeit, dass die Münze mindestens einmal mit Kopf oben landet? \\
-Wir betrachten \ZE durch Laplaceschen \WR \, $( \Omega , \m{P}(\Omega)  , P)$ mit 
+Wir betrachten das \ZE \, durch Laplaceschen \WR \, $( \Omega , \m{P}(\Omega)  , P)$ mit 
 \begin{align*}
-\Omega = \{ (w_1, w_2, w_3, w_4) : w_i \in \{ K , Z \} (i = 1,...,4) \} 
+\Omega = \{ (w_1, w_2, w_3, w_4) : w_i \in \{ K , Z \} \, (i = 1,...,4) \} 
 \end{align*} 
 und 
 \begin{align*}
  \p{A} = \frac{|A|}{|\Omega|} = \frac{|A|}{16}
 \end{align*}
-Gesucht: \Wk von  $B = \{ (w_1,...,w_4) \in \Omega : w_i = K \} $ für mindestens ein $ i \in \{1,...,4 \} $. \\
+Gesucht: \Wk \, von  $B = \{ (w_1,...,w_4) \in \Omega : w_i = K \} $ für mindestens ein $ i \in \{1,...,4 \} $. \\
 Mit 
-\begin{align*}
-B^c = \{ (Z,Z,Z,Z) \} 
-\end{align*}
+\[B^c = \{ (Z,Z,Z,Z) \} \]
 folgt
-\begin{align*}
-\p{B} = 1- \p{B^c}
-&= 1- \frac{|B^c}{16}
-&= 1- \frac{1}{16}
-&= \frac{15}{16}
-\end{align*}
+\[\p{B} = 1- \p{B^c} = 1- \frac{|B^c|}{16} = 1- \frac{1}{16} = \frac{15}{16}\]
 \end{beispiel}
 
-\underline{W-Räume mit Zähldichte}
+\subsection{Wahrscheinlichkeitsräume mit Zähldichte}
 
-Im folgenden: $\Omega$ endlich oder abzählbar unendlich. \\
+Im Folgenden: $\Omega$ endlich oder abzählbar unendlich. \\
 Wegen der $\sigma$-Additivität gilt:
-\begin{align*}
-A = \cup_{w \in A} {w} \implies \p{A} = \sum_{w \in A}{\p{w}}
-\end{align*}
-W-Maße sind eindeutig bestimmt durch die \Wk der Elementarereignisse.
+\[A = \bigcup_{w \in A} \{w\} \impl \p{A} = \sum_{w \in A} \p{\{w\}}\]
+\WM e sind eindeutig bestimmt durch die \Wk \, der Elementarereignisse.
 
 \begin{satz}
-	$\Omega = \{ x_1,x_2,... \}$ abzählbar unendliche Menge, paarweise verschieden.
-	$(p_k)_{k \in N}$ Folge in $\mathbb{R}$ mit $ 0 \leq p_k \leq 1$
-	\begin{align*}
-	\sum_{k=1}^{\infty}{p_k} = 1
-\end{align*}	 
-Dann wird durch $( \Omega , \m{P}(\Omega)  , p)$ mit 
-\begin{align*}
-\p{A} = \sum_{k:x_k \in A}{p_k}
-\end{align*}
-ein W-Raum definiert mit $\p( \{ x_k \} = p_k$
+Sei $\Omega = \{ x_1,x_2,... \}$ eine abzählbar unendliche Menge mit paarweise verschiedenen Elementen, $(p_k)_{k \in N}$ eine Folge in $\R$ mit $0 \leq p_k \leq 1$ und
+\[\sum_{k=1}^{\infty}{p_k} = 1.\]	 
+Dann wird durch $( \Omega , \m{P}(\Omega)  , P)$ mit 
+\[\p{A} = \sum_{k:x_k \in A}{p_k}\]
+ein \WR \, definiert mit $\p{x_k} = p_k.$
 \end{satz}
 \begin{proof}
 \begin{itemize}
 \item wohldefiniert, da unendliche Summen nicht-negativer Zahlen nicht von Summationsreihenfolge abhängen.
 \item $\p{A} \geq 0$ da $p_k \geq 0$
 \item $\p{ \Omega } = \sum_{k:x_k \in A}{p_k} = \sum_{k=1}^{\infty}{p_k} = 1$
-\item $A_1, A_2,... \subset \Omega $ paarweise disjunkt. Wir zeigen $ \p{ \bigcup_{k=1}^{ \infty }{A_k} } = \sum_{k=1}^{\infty}{\p{A_k}}$     
-Auf beiden Seiten werden die gleichen Zahlen aufaddiert, nur in anderer Reihenfolge. Da diese bei Summen nichtnegativer Zahlen keine Rolle spielt, folgt Gleichheit \\
-Mit Lemma 4.14 folgt p ist W-Maß.
+\item Seien $A_1, A_2,... \subset \Omega $ paarweise disjunkt. Wir zeigen $ \p{ \bigcup_{k=1}^{ \infty }{A_k} } = \sum_{k=1}^{\infty}{\p{A_k}}$.\\ 
+Auf beiden Seiten werden die gleichen Zahlen aufaddiert, nur in anderer Reihenfolge. Da diese bei Summen nichtnegativer Zahlen keine Rolle spielt, folgt Gleichheit. \\
+Mit Lemma 4.14 folgt, dass P ein \WM \, ist.
 \end{itemize}
 \end{proof}
-
 \begin{bemerkung}
-Satz 4.20 gilt analog auch im endlichen
+Satz 4.20 gilt analog auch im Endlichen.
 \end{bemerkung}
-
 \begin{definition}
-Die Folge $(p_k)_{k \in \mathbb{N}}$ heißt Zähldichte des W-Maßes in Satz 4.20
+Die Folge $(p_k)_{k \in \N}$ heißt Zähldichte des \WM es in Satz 4.20.
 \end{definition}
-
 \begin{beispiel}
-Bei einer Umfrage werden $n$ Personen rein zufällig ausgewählt und gefragt, welche Partei sie nächsten Sonntag Wählen würden. Wie groß ist \Wk , dass relativer Anteil an SPD Wählern unter den Befragten um nicht mehr als 1% vom entsprechenden Amteil p in der gesamten Bevölkerung abweicht? \\
-
-Vereinfachung: Anteil SPD-Wähler ändert sich nach Herausgreifen eines Befragten nicht. \\
-
-Sei N die Anzahl der befragten Personen \Wk , dass genau k SPD-Wähler unter n Befragten sind 
+Bei einer Umfrage werden $n$ Personen rein zufällig ausgewählt und gefragt, welche Partei sie nächsten Sonntag wählen würden. Wie groß ist die \Wk , dass der relative Anteil an SPD-Wählern unter den Befragten um nicht mehr als 1 \% vom entsprechenden Anteil $p$ in der gesamten Bevölkerung abweicht? \\
+Vereinfachung: Der Anteil SPD-Wähler ändert sich nach Herausgreifen eines Befragten nicht. \\ \\
+Sei $N$ die Anzahl der befragten Personen. Die \Wk , dass genau $k$ SPD-Wähler unter $n$ Befragten sind ist
+\[\frac{\text{\# günstige Fälle}}{\text{\# mögliche Fälle}} = \frac{\binom{n}{k} (Np)^k (N-Np)^{n-k}}{N^n}\]
+Wegen $|\frac{k}{n} - p | \leq 0.01 \iff np-n0,01 \leq np + n0,01$ ist die gesuchte \Wk \, gleich :
 \begin{align*}
-\frac{\text{\# günstige Fälle}}{\text{\# mögliche Fälle}}
-&= \frac{\binom{n}{k} (Np)^k (N-Np)^{n-k}}{N^n}
+&\p{ \{ k \in \{ 0,1, \ldots ,n \} : |\frac{k}{n} -p| \leq 0,01 \}} \\
+=& \sum_{k \in \{ 0,1, \ldots ,n \}: np-n0.01 \leq k \leq np+n0.01}{  \binom{n}{k} p^k (1-p)^{n-k}}.
 \end{align*}
-Wegen $|\frac{k}{n} - p | \leq 0.01 \iff np-n0,01 \leq np + n0,01$ ist gesuchte \Wk gleich : $ \p{ \{ k \in \{ 0,1,...,n \} : |\frac{k}{n} -p| \leq 0,01 \}}$
-\begin{align*}
-&= \sum_{k \in \{ 0,1,...,n \}: np-n0.01 \leq k \leq np+n0.01}{  \binom{n}{k} p^k (1-p)^{n-k}}
-\end{align*}
-Hängt also nicht von N ab 
+Die \Wk \, hängt also nicht von $N$ ab.
 \end{beispiel}
-
-
 
 % 23.5. Johannes
 \begin{definition}
@@ -527,11 +504,11 @@ Sei $n\in\N,p\in\left[ 0,1\right]$. Das gemäß Satz 4.20 durch $\Omega=\N_0$ un
 \binom{n}{k}p^k(1-p)^{n-k}&,k\in\{ 0,1,\ldots,n\}\\
 0&,sonst
 \end{cases}\]
-festgelegte \WM heißt \emph{Binomialverteilung} mit Parametern $n$ und $p$.
+festgelegte \WM \, heißt \emph{Binomialverteilung} mit Parametern $n$ und $p$.
 \end{definition}
 \begin{bemerkung}
 Zähldichte, da
-\[1=(p+(1-p))^n=\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}\]
+\[1=(p+(1-p))^n=\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}.\]
 \end{bemerkung}
 \begin{lemma}
 Für $p_n\in\left[ 0,1\right]$ mit $n\cdot p_n\to\lambda\in\R_{\geq 0}$ gilt für jedes $k\in\N_0$:
@@ -545,19 +522,19 @@ p_n=&\frac{n\cdot p_n}{n}\to 0\\
 =&\frac{n(n-1)\cdot\ldots\cdot(n-k+1)}{k!}p_n^k(1-p_n)^{n-k}\\
 =&\frac{1}{k!}np_n(np_n-p_n)\ldots(np_n-(k-1)p_n)(1-p_n)^{-k}(1-p_n)^n\\ 
 =&\frac{1}{k!}np_n(np_n-p_n)\ldots(np_n-(k-1)p_n)(1-p_n)^{-k}\exp(np_n\frac{\log(1-p_n)}{p_n})\\ 
-\rightarrow\frac{\lambda^k}{k!}e^{-\lambda}
+&\rightarrow\frac{\lambda^k}{k!}e^{-\lambda}
 \end{align}
 (Die mittleren Faktoren in $(4)$ konvergieren jeweils gegen $\lambda$ und mit de l'Hopital folgt die Konvergenz zu $\exp(-\lambda)$)
 \end{proof}
 \begin{definition}
 Sei $\lambda>0$. Das gemäß Satz 4.20 durch $\Omega=\N_0$ und die Zähldichte
 \[\pi(\lambda;k)=\frac{\lambda^k}{n!}e^{-\lambda}\]
-für $k\in\N_0$ festgelegte \WM heißt \emph{Poisson-Verteilung} mit Paramter $\lambda$
+für $k\in\N_0$ festgelegte \WM \, heißt \emph{Poisson-Verteilung} mit Parameter $\lambda$.
 \end{definition}
 \begin{bemerkung}
 Zähldichte, da
 \begin{align*}
-\sum_{k\in\N_0}\frac{\lambda^k}{k!}e^{-\lambda}=e^{-\lambda}\sum_{k\in\N_0}\frac{\lambda^k}{k!}=1
+\sum_{k\in\N_0}\frac{\lambda^k}{k!}e^{-\lambda}=e^{-\lambda}\sum_{k\in\N_0}\frac{\lambda^k}{k!}=1.
 \end{align*}
 \end{bemerkung}
 \subsection{Wahrscheinlichkeitsräume mit Dichten}
@@ -574,7 +551,7 @@ so wird durch $(\Omega,\m{A},\text{P})$ mit $\Omega=\R$, $\m{A}=\m{B}$ und
 \begin{equation*}\label{eq:4.3}
 \prob{B}=\int_{B}f(x)\mathrm{d}x,(B\in\m{B})
 \end{equation*}
-ein \WR definiert.
+ein \WR \, definiert.
 \end{satz}
 \begin{proof}
 Wegen \eqref{eq:4.2} gilt:
@@ -596,7 +573,7 @@ Nach Lemma 4.14 genügt es daher zu zeigen: Sind $A_1,A_2,...\in \m{B}$ paarweis
 \begin{definition}
 Die Funktion $f:\R\to\R$ mit $f\geq 0$ und
 \[\int_{\R}f(x)\mathrm{d}x=1\]
-heißt \emph{Dichte} bezüglich des Lebesgue-Borel-Maßes vom \WM in Satz 4.26.
+heißt \emph{Dichte} bezüglich des Lebesgue-Borel-Maßes vom \WM \, in Satz 4.26.
 \end{definition}
 \begin{bemerkung}
 Ist P das zu einer Dichte $f$ gehörende \WM, so gilt für jedes $x\in\R$:
@@ -662,38 +639,36 @@ Folglich gilt z.B. $\p{A^C \mid B} = 1 - \p{A \mid B}, \p{A_1 \cup A_2 \mid B} =
 In Beispiel 4.30 gesucht: $\p{A \mid B}$ mit $A=$ \glqq Neuerkrankung Hautkrebs\grqq, $B=$ \glqq Verdachtsfall Hautkrebsscreen\grqq. Bekannt sind $\p{A} \approx 0.00328, \p{B \mid A} \approx 0.78, \p{B \mid A^C} \approx 0.26$. Wie bekommt man daraus $\p{A \mid B}$?
 
 \begin{satz}
-W-Raum ($ \Omega, \m{A}, P $) , $N \in \mathbb{N}$ , $B_1 , ... , B_N \in \m{A}$ paarweise disjunkt mit $\bigcup_{n = 1}^{N}{B_n} = \Omega$ und $P(B_n) > 0 $
-\begin{itemize}
-\item a) Für $A \in \m{A}: P(A) = \sum_{n=1}^{N}{P(A|B_n)P(B_N)}$ (Formel für totale Wahrscheinlichkeit)
-\item b) Für $k \in \{ 1,...,N \} $ und jedes $A \in \m{A}$ mit $P(A) > 0$
+Sei $(\Omega, \m{A}, P)$ ein \WR, $N \in \mathbb{N}$ , $B_1 , ... , B_N \in \m{A}$ paarweise disjunkt mit $\bigcup_{n = 1}^{N}{B_n} = \Omega$ und $P(B_n) > 0 $. Dann gilt:
+\begin{enumerate}[a)]
+\item Für $A \in \m{A}: P(A) = \sum_{n=1}^{N}{P(A|B_n)P(B_N)}$ (Formel für totale Wahrscheinlichkeit)
+\item Für $k \in \{ 1,...,N \} $ und jedes $A \in \m{A}$ mit $P(A) > 0$
 \begin{align*}
 P(B_K | A) = \frac{P(A|B_k)P(B_k)}{\sum_{n=1}^{N}{P(A|B_k)P(B_n)}}
 \end{align*}
-\end{itemize} 
+\end{enumerate} 
 \end{satz}
 \begin{proof}
-a)$B_1 \cap A,...,B_N \cap A \in \m{A}$ paarweise disjunkt mit 
- $ \bigcup_{n=1}^{N}{(B_n \cap A)} = ( \bigcup_{n=1}^{N}{B_n}) \cap A = \Omega \cap A = A $
-\begin{align*} % doesn't look good
-\Rightarrow P(A) = P( \bigcup_{n=1}^{N}{(B_n \cap A)} ) \\
- &= \sum_{n=1}^{N}{P(B_n \cap A)} \\
- &= \sum_{n=1}^{N}{ \frac{P(A \cap B_n)}{P(B_n)}P(B_n)} \\
- &= \sum_{n=1}^{N}{P(A|B_n)P(B_n)} \\
- P(B_k|A) = \frac{P(B_k \cap A)}{P(A)} = \frac{P(A|B_k)P(B_k)}{P(A)}
+\begin{enumerate}[a)]
+\item Seien $B_1 \cap A,...,B_N \cap A \in \m{A}$ paarweise disjunkt mit $ \bigcup_{n=1}^{N}{(B_n \cap A)} = ( \bigcup_{n=1}^{N}{B_n}) \cap A = \Omega \cap A = A $, dann ist
+\begin{align*}
+P(A) &= P( \bigcup_{n=1}^{N}{(B_n \cap A)} ) = \sum_{n=1}^{N}{P(B_n \cap A)} \\
+ &= \sum_{n=1}^{N}{ \frac{P(A \cap B_n)}{P(B_n)}P(B_n)} = \sum_{n=1}^{N}{P(A|B_n)P(B_n)}.
 \end{align*}
-Mit a) folgt die Behauptung.
+\item Es gilt
+\[P(B_k|A) = \frac{P(B_k \cap A)}{P(A)} = \frac{P(A|B_k)P(B_k)}{P(A)},\]
+woraus mit a) die Behauptung folgt.
+\end{enumerate}
 \end{proof}
 
-Anwendung in Beispiel 4.30: \\
+Anwendung in Beispiel 4.30:\\
 $P(A) \approx 0.00328$ \\
 $P(B | A ) = 0.78 $\\
-$P(B|A^c) = 0.26$ \\
-
+$P(B|A^c) = 0.26$
 \begin{align*}
-p(A|B) \\
-&= \frac{P(A \cap B)}{P(B)} \\
+P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
 &= \frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A^c}P(A^c) \\
-&= \frac{0.78 \cdot 0.00328}{0.78 \cdot 0.00328 + 0.26 \cdot (1-0.00328)}
+&= \frac{0.78 \cdot 0.00328}{0.78 \cdot 0.00328 + 0.26 \cdot (1-0.00328)}\\
 &= 0.01 
 \end{align*}
 \section{Zufallsvariablen und ihre Eigenschaften}
