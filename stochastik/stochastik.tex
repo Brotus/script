@@ -960,7 +960,7 @@ In diesem Fall heißt $(\Omega, \m{A}, \mu)$ \emph{Maßraum}.
 $P$ ist ein \WM \, $\Leftrightarrow P$ ist ein Maß und $P(\Omega)=1$.
 \end{bemerkung}
 \begin{definition}
-Sei $(\Omega, \m{A})$ ein Messraum. Eine Funktion $f: \Omega \rightarrow \R$ heißt $\m{A}-\m{B}-$messbar (kurz: messbar), wenn
+Sei $(\Omega, \m{A})$ ein Messraum. Eine Funktion $f: \Omega \rightarrow \R$ heißt $\m{A}$-$\m{B}$-messbar (kurz: messbar), wenn
 \[f^{-1}(B) \in \m{A} \text{ für alle } B \in \m{B}\]
 gilt.
 \end{definition}
@@ -974,9 +974,89 @@ Die Definition erfolgt in drei Schritten:
 \begin{definition}
 Sei $(\Omega, \m{A})$ ein Messraum. Jede Funktion
 \[h = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}\]
-mit $n \in \N, A_1, \ldots, A_n \in \m{A}$ Partionen von $\Omega$ und $\alpha_1, \ldots, \alpha_n \in \R$ heißt \emph{einfache Funktion}.\\
-\\
+mit $n \in \N, A_1, \ldots, A_n \in \m{A}$ Partition von $\Omega$ und $\alpha_1, \ldots, \alpha_n \in \R$ heißt \emph{einfache Funktion}.\\
+\end{definition}
 Schritt 1: Ist $h = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}$ eine nichtnegative einfache Funktion, so setzen wir
 \[\int_\Omega h \mathrm{d}\mu = \sum_{i=1}^n \alpha_i \cdot \mu(A_i).\]
+
+% 13.06. Timo
+\begin{bemerkung}
+Das Integral in Schritt 1 ist wohldefiniert:
+\begin{enumerate}[a)]
+\item Wegen $\alpha_i \geq 0$ tritt in der Summe nicht der Fall $\infty - \infty$ auf.
+\item Ist
+\[\sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i} = \sum_{j=1}^m \beta_j \cdot \m{X}_{B_j}\]
+mit $n, m \in \N$, $\alpha_1 , \ldots , \alpha_n, \beta_1 , \ldots , \beta_n \in \R$, $A_1, \ldots , A_n \in \m{A}$ und $B_1, \ldots , B_m \in \m{A}$ Partition von $\Omega$, so gilt
+\[\sum_{i=1}^n \alpha_i \cdot \mu(A_i) = \sum_{j=1}^m \beta_j \cdot \mu(B_j).\]
+\end{enumerate}
+\end{bemerkung}
+\begin{proof}
+Wegen $B_1, \ldots , B_m \in \m{A}$ Partition von $\Omega$ ist
+\[A_i \cap B_1 , \ldots , A_i \cap B_m \in \m{A}\]
+eine Partition von $A_i$. Da $\mu$ ein \WM \, ist, gilt
+\begin{align*}
+&\mu(A_i) = \sum_{j=1}^m \mu(A_i \cap B_j)\\
+\impl & \sum_{i=1}^n \alpha_i \cdot \mu(A_i) = \sum_{i=1}^n \sum_{j=1}^m \alpha_i \cdot \mu(A_i \cap B_j).
+\end{align*}
+Analog gilt:
+\begin{align*}
+\sum_{j=1}^m \beta_j \cdot \mu(B_j) &= \sum_{j=1}^m \sum_{i=1}^n \beta_j \cdot \mu(B_j \cap A_i)\\
+&= \sum_{i=1}^n \sum_{j=1}^m \beta_j \cdot \mu(A_i \cap B_j).
+\end{align*}
+Im Fall $\mu(A_{i_0} \cap B_{j_0}) \neq \emptyset$ existiert ein $\omega \in A_{i_0} \cap B_{j_0}$, woraus folgt:
+\[\alpha_{i_0} = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}(\omega) = \sum_{j=1}^m \beta_j \cdot \m{X}_{B_j}(\omega) = \beta_{j_0},\]
+da $\omega \in A_{i_0}$ und $\omega \in B_{i_0}$. Daraus folgt
+\[\alpha_{i_0} \cdot \mu(A_{i_0} \cap B_{j_0}) = B_{j_0} \cdot \mu(A_{i_0} \cap B_{j_0}).\]
+Letzteres gilt auch für $\mu(A_{i_0} \cap B_{j_0}) = 0$. Damit folgt die Behauptung.
+\end{proof}
+\begin{definition}
+Eine Folge $(f_n)_n$ von Funktionen $f_n: \Omega \rightarrow \R$ \emph{konvergiert von unten} gegen $f: \Omega \rightarrow \R$, falls gilt:
+\[f_1(\omega) \leq f_2(\omega) \leq \ldots \text{ und } \lim_{n \rightarrow \infty} f_n(\omega) = f(\omega)\]
+für alle $\omega \in \Omega$. Schreibweise: $f_n \uparrow f$.
 \end{definition}
+\begin{bemerkung}
+Man kann zeigen: Zu jeder nichtnegativen messbaren Funktion $f: \Omega \rightarrow \R$ existieren nichtnegative einfache Funktionen $f_n: \Omega \rightarrow \R$ mit $f_n \uparrow f$.
+\end{bemerkung}
+Schritt 2: Ist $f: \Omega \rightarrow \R$ nichtnegativ und messbar, so wählen wir nichtnegative einfache Funktionen $f_n$ mit $f_n \uparrow f$ und setzen
+\[\int_\Omega f \mathrm{d}\mu = \lim_{n \rightarrow \infty} \int_\Omega f_n \mathrm{d}\mu.\]
+\begin{bemerkung}
+Man kann zeigen: Der Grenzwert oben existiert und hängt nicht von der Wahl der $f_n$ mit $f_n \uparrow f$ ab.
+\end{bemerkung}
+Schritt 3: Nimmt die messbare Funktion $f: \Omega \rightarrow \R$ auch negative Werte an, so zerlegen wir $f$ gemäß
+\[f = f^+ - f^-\]
+mit
+\begin{align*}
+&f^+(\omega) = max\{f(\omega), 0\} \\&f^-(\omega) = max\{-f(\omega), 0\}
+\end{align*}
+in zwei nichtnegative messbare Funktionen $f^+$ und $f^-$ und setzen im Falle
+\begin{align*}
+&\int_\Omega f^+ \mathrm{d}\mu < \infty \text{ oder } \int_\Omega f^- \mathrm{d}\mu < \infty: \\
+&\int_\Omega f \mathrm{d}\mu = \int_\Omega f^+ \mathrm{d}\mu - \int_\Omega f^- \mathrm{d}\mu.
+\end{align*}
+\begin{bemerkung}
+Obiges $f^+$ ist als Verkettung der Abbildung $u \rightarrow max\{u, 0\}$ (messbar, da stetig) und der messbaren Abbildung $f$ selbst messbar. Analog gilt das auch für $f^-$. Schreibweisen:
+\[\int_\Omega f \mathrm{d}\mu = \int f \mathrm{d}\mu = \int_\Omega f(\omega) \mu(d\omega) = \int f(\omega) \mu(d\omega)\]
+\end{bemerkung}
+\begin{definition}
+Sei $(\Omega, \m{A}, P)$ ein \WR \, und $X: \Omega \rightarrow \R$ eine reelle \ZV. Dann heißt
+\[EX := \int_\Omega X \mathrm{d}P\]
+(sofern existent) \emph{Erwartungswert} von $X$.
+\end{definition}
+In Beispiel 5.15 gilt für die Zahl $X$ der überlebenden Enten:
+\[X(\omega) = \sum_{k=0}^9 k \cdot \m{X}_{\{\bar{\omega} \in \Omega : X(\bar{\omega}) = k\}}(\omega),\]
+d.h. $X$ ist eine nichtnegative einfache \ZV. Damit:
+\begin{align*}
+EX &= \int X \mathrm{d}P \\
+&= \sum_{k=0}^9 k \cdot P(\{\bar{\omega} \in \Omega : X(\bar{\omega}) = k\}\\
+&= \sum_{k=0}^9 k \cdot P[X=k].
+\end{align*}
+\begin{bemerkung}
+Diese Definition von $EX$ als \glqq Mittelwert\grqq \, ist plausibel, denn: \\
+Sind $x_1, \ldots , x_n$ Werte von $X$ bei $n$-maliger unbeeinflusster Wiederholung des \ZE s, so gilt
+\begin{align*}
+\text{\glqq Mittelwert\grqq \,} &\approx \frac{1}{n} \sum_{i=1}^n x_i = \frac{1}{n} \sum_{k=0}^9 k \cdot \# \{1 \leq i \leq n : x_i = k\} \\
+&= \sum_{k=0}^9 k \cdot \frac{\# \{1 \leq i \leq n : x_i = k\}}{n} \\
+&\approx \sum_{k=0}^9 k \cdot P[X=k].
+\end{align*}
+\end{bemerkung}
 \end{document}
