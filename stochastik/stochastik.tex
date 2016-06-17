@@ -31,6 +31,7 @@
 % Für Wahrscheinlichkeit, \prob{A}=P(A)
 \newcommand{\prob}[1]{\text{P(} #1 \text{)}}
 \newcommand{\p}[1]{\text{P(} #1 \text{)}}
+\newcommand{\pe}[1]{\text{P[} #1 \text{]}}
 % Abkürzungen
 \newcommand{\ZE}{Zufallsexperiment}
 \newcommand{\WR}{Wahrscheinlichkeitsraum}
@@ -1034,4 +1035,43 @@ Sind $x_1, \ldots , x_n$ Werte von $X$ bei $n$-maliger unbeeinflusster Wiederhol
 &\approx \sum_{k=0}^9 k \cdot P[X=k].
 \end{align*}
 \end{bemerkung}
+
+% johannes 17.6.
+\begin{bemerkung}[Problem in Bsp. 5.15]
+$\mathrm{P}[X=k]$ schwierig bestimmbar. Ausweg:
+\[X=\sum_{i=1}^{10}X_i\]
+mit
+\[X_i=\begin{cases}1,&\text{falls i-te Ente überlebt}\\0,&\text{sonst}
+\end{cases}
+\]
+Es gilt:
+\begin{align*}
+\text{P}[X_i=1]=&\text{P}[\text{Schützen 1,2,...,10 schießen nicht auf Ente i}]\\
+=&\prod_{j=1}^{10}\text{P}[\text{Schütze j schießt nicht auf Ente i}]\\
+=&(\frac{9}{10})^{10}
+\end{align*}
+Der Erwartungswert beträgt
+\[EX_i=1\cdot \pe{ X_1=1}+0\cdot \pe{ X_i=0}=(\frac{9}{10})^{10}\]
+Also
+\[E(X)=E(\sum_{i=1}^{10}X_i)=\sum_{i=1}^{10}EX_i=10(\frac{9}{10})^{10}\]
+Das folgt aus
+\end{bemerkung}
+\begin{satz}
+Sei $(\Omega,\m{A},\mu)$ ein Maßraum, $f,g:\Omega\to\R$ messbar und integrierbar, $\alpha\in\R$. Dann gilt:
+\begin{enumerate}[a)]
+\item \[\int f+g\mathrm{d}\mu =\int f\mathrm{d}\mu +\int g\mathrm{d}\mu\]
+\item \[\int \alpha\cdot f\mathrm{d}\mu=\alpha\cdot\int f\mathrm{d}\mu\]
+\item \[\fa{\omega\in\Omega}:f(\omega)\leq g(\omega)\impl\int f\mathrm{d}\mu\leq\int g\mathrm{d}\mu\]
+\end{enumerate}
+\end{satz}
+\begin{korollar}
+Der Erwartungswert ist linear bzgl. Addition und skalarer Multiplikation, und monoton.
+\end{korollar}
+\begin{bemerkung}
+Hierbei sind $X_1+X_2$ bzw. $\alpha\cdot X$ die \ZV mit Werten $X_1(\omega)+X_2(\omega)$ bzw. $\alpha\cdot X(\omega)$. 
+\end{bemerkung}
+\begin{proof}
+Folgt aus Definition es Erwartungswertes als Maßintegral und Satz 5.22.
+\end{proof}
+
 \end{document}
