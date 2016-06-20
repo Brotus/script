@@ -61,7 +61,7 @@
 \theoremstyle{plain}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem*{lemma*}{Lemma}
-\newtheorem*{korollar}{Korollar}
+\newtheorem{korollar}[definition]{Korollar}
 
 \theoremstyle{remark}
 \newtheorem*{bemerkung}{Bemerkung}
@@ -1071,7 +1071,96 @@ Der Erwartungswert ist linear bzgl. Addition und skalarer Multiplikation, und mo
 Hierbei sind $X_1+X_2$ bzw. $\alpha\cdot X$ die \ZV mit Werten $X_1(\omega)+X_2(\omega)$ bzw. $\alpha\cdot X(\omega)$. 
 \end{bemerkung}
 \begin{proof}
-Folgt aus Definition es Erwartungswertes als Maßintegral und Satz 5.22.
+Folgt aus Definition des Erwartungswertes als Maßintegral und Satz 5.22.
 \end{proof}
 
+% Timo 20.06.
+\begin{satz}[Transformationssatz für Integrale]
+Sei $(\Omega , \m{A} , P)$ ein \WR, $X: \Omega \rightarrow \R$ eine Zufallsvariable und $h: \R \rightarrow \R$ messbar. Dann gilt:
+\[\int_\Omega h(X(\omega)) \mathrm{d}P(\omega) = \int_\R h(x) \mathrm{d}P_X(x),\]
+wobei $P_X(B) = P(X^{-1}(B)) \, (B \in \m{B})$ ist.
+\end{satz}
+\begin{proof}
+Fall 1: Sei $h$ nichtnegativ einfach, d.h. $h = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}, \alpha_1 , \ldots , \alpha_n \in \R_+, A_1 , \ldots , A_n \in \m{B}$ eine Partition von $\R$. Dann ist
+\[h(X(\omega)) = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i} (X(\omega)) = \sum_{i=1}^n \alpha_i \cdot \m{X}_{x^{-1}(A_i)} (\omega),\]
+da
+\begin{align*}
+\m{X}_{A_i} (X(\omega)) = 1 &\Leftrightarrow X(\omega) \in A_i \\
+&\Leftrightarrow \omega \in X^{-1} (A_i) \\
+&\Leftrightarrow \m{X}_{X^{-1} (A_i)} (\omega) = 1
+\end{align*}
+gilt. Damit folgt
+\begin{align*}
+\int_\Omega h(X(\omega)) \mathrm{d} P(\omega) &= \sum_{i=1}^n \alpha_i P(X^{-1} (A_i)) \\
+&= \sum_{i=1}^n P_X \alpha_i (A_i) \\
+&= \int_\R h(x) \mathrm{d} P_X (x).
+\end{align*}
+Fall 2: Sei $h$ nichtnegativ messbar. Wähle $h_n$ nichtnegativ einfach mit $h_n \uparrow h$. Dann folgt mit Fall 1, dass $h_n \circ X: \Omega \rightarrow \R$ nichtnegativ einfach mit $h_n \circ X \uparrow h \circ X$ ist, denn $h_1(X(\omega)) \leq h_2(X(\omega)) \leq \ldots \leq h_n(X(\omega)) \rightarrow h(X(\omega))$ für $n \rightarrow \infty, \omega \in \Omega$. Damit folgt
+\begin{align*}
+\int_\Omega h(X(\omega)) \mathrm{d}P(\omega) &= \lim_{n \rightarrow \infty} \int_\Omega h_n (X(\omega)) \mathrm{d}P(\omega) \\
+&= \lim_{n \rightarrow \infty} \int_\R h_n(x) \mathrm{d}P_X(x) \\
+&= \int_\R h(x) \mathrm{d}P_X(x).
+\end{align*}
+Fall 3: Sei $h$ messbar, dann gilt nach Fall 2:
+\begin{align*}
+\int_\Omega h(X(\omega)) \mathrm{d}P(\omega) &= \int_\Omega (h \circ X)^+ (\omega) \mathrm{d}P(\omega) - \int_\Omega (h \circ X)^- (\omega) \mathrm{d}P(\omega) \\
+&= \int_\Omega h^+(X(\omega)) \mathrm{d}P(\omega) - \int_\Omega h^-(X(\omega)) \mathrm{d}P(\omega) \\
+&= \int_\R h^+(x) \mathrm{d}P_X(x) - \int_\R h^-(x) \mathrm{d}P_X(x) \\
+&= \int_\R h(x) \mathrm{d}P_X(x)
+\end{align*}
+\end{proof}
+\begin{satz}
+Sei $(\Omega, \m{A}, P)$ ein \WR, $X: \Omega \rightarrow \R$ eine reelle \ZV \, und $g: \R \rightarrow \R$ messbar.
+\begin{enumerate}[a)]
+\item Ist $X$ eine reelle \ZV \, mit $P_X(\{x_1, x_2, \ldots\}) = 1$, wobei $x_1, x_2, \ldots \in \R$ paarweise verschieden sind, so gilt:
+\[\int_\R g(x) \mathrm{d}P_X(x) = \sum_{k=1}^\infty g(x_k) \cdot P[X = x_k].\]
+\item Ist $X$ stetig verteilt mit Dichte $f$, so gilt:
+\[\int_\R g(x) \mathrm{d}P_X(x) = \int_\R g(x) \cdot f(x) \mathrm{d}x.\]
+\end{enumerate}
+\end{satz}
+\begin{proof}
+\begin{enumerate}[a)]
+\item Ohne Beschränkung der Allgemeinheit sei $g \geq 0$, sonst zerlegen wir gemäß $g = g^+ - g^-$. Es gilt
+\begin{align*}
+\int_\R g(x) \mathrm{d}P_X(x) &= \int_\R g(x) \cdot \m{X}_{\{x_1, x_2, \ldots\}} (x) \mathrm{d}P_X(x) + \int_\R g(x) \cdot \m{X}_{\{x_1, x_2, \ldots\}^C} (x) \mathrm{d}P_X(x) \\
+&= \int_\R g(x) \cdot \m{X}_{\{x_1, x_2, \ldots\}} (x) \mathrm{d}P_X(x) + 0,
+\end{align*}
+denn für nichtnegative $g_n$ mit $g_n \uparrow g$ gilt:
+\begin{align*}
+\int_\R g(x) \cdot \m{X}_{\{x_1, x_2, \ldots\}^C} (x) \mathrm{d}P_X(x) &= \lim_{n \rightarrow \infty} \int_\R g_n(x) \cdot \m{X}_{\{x_1, x_2, \ldots\}^C} (x) \mathrm{d}P_X(x) \\
+&\leq \sup_{x \in \R} g_n(x) \cdot \int_\R \m{X}_{\{x_1, x_2, \ldots\}^C} (x) \mathrm{d}P_X(x) \\
+&= \sup_{x \in \R} g_n(x) \cdot P_X(\{x_1, x_2, \ldots\}^C) \\
+&= \sup_{x \in \R} g_n(x) \cdot (1 - P_X(\{x_1, x_2, \ldots\})) \\
+&= 0.
+\end{align*}
+Die Behauptung folgt nun mit
+\begin{align*}
+\int_\R g(x) \cdot \m{X}_{\{x_1, x_2, \ldots\}} (x) \mathrm{d}P_X(x) &= \int_\R \sum_{k=1}^\infty g(x_k) \cdot \m{X}_{\{x\}} (x) \mathrm{d}P_X(x) \\
+&= \lim_{n \rightarrow \infty} \int_\R \sum_{k=1}^n g(x_k) \cdot \m{X}_{\{x\}} (x) \mathrm{d}P_X(x) \\
+&= \lim_{n \rightarrow \infty} \sum_{k=1}^n g(x_k) \cdot P_X(\{x_k\}) \\
+&= \sum_{k=1}^\infty g(x_k) \cdot P[X=x_k].
+\end{align*}
+\item Ist $g = \sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i}$ nichtnegativ einfach, d.h. für $n \in \N$ seien $\alpha_1, \ldots, \alpha_n \in \R_+, A_1, \ldots, A_n \in \m{B}$ eine Partition von $\R$, so gilt:
+\begin{align*}
+\int_\R g(x) \mathrm{d}P_X(x) &= \sum_{i=1}^n \alpha_i \cdot P_X(A_i) \\
+&= \sum_{i=1}^n \alpha_i \cdot \int_{A_i} f(x) \mathrm{d}x \\
+&= \sum_{i=1}^n \alpha_i \cdot \int_{\R} \m{X}_{A_i} \cdot f(x) \mathrm{d}x \\
+&= \int_\R (\sum_{i=1}^n \alpha_i \cdot \m{X}_{A_i} (x)) \cdot f(x) \mathrm{d}x \\
+&= \int_\R g(x) \cdot f(x) \mathrm{d}x,
+\end{align*}
+da $f$ eine Dichte ist. Der allgemeine Fall funktioniert analog.
+\end{enumerate}
+\end{proof}
+\begin{korollar}
+Sei $X$ eine reelle \ZV \, und $h: \R \rightarrow \R$ messbar.
+\begin{enumerate}[a)]
+\item Ist $X$ die diskrete \ZV \, mit $P_X(\{x_1, x_2, \ldots\}) = 1$ (wobei $x_1, x_2, \ldots \in \R$ paarweise verschieden sind), so gilt:
+\[Eh(X) = \sum_{k=1}^\infty h(x_k) \cdot P[X=x_k].\]
+Insbesondere für $h(x)=x$: $EX = \sum_{k=1}^\infty x_k \cdot P[X=x_k]$.
+\item Ist $X$ stetig verteilt mit Dichte $f$, so gilt
+\[Eh(X) = \int_\R h(x) \cdot f(x) \mathrm{d}x,\]
+insbesondere gilt
+\[EX = \int_\R x \cdot f(x) \mathrm{d}x.\]
+\end{enumerate}
+\end{korollar}
 \end{document}
