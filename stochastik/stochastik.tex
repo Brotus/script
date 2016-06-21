@@ -674,188 +674,168 @@ P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
 \end{align*}
 \section{Zufallsvariablen und ihre Eigenschaften}
 \subsection{Zufallsvariablen}
-W-Raum $( \Omega , \m{A} , P)$ oft interessieren nur Teilaspekte des Ergebnisses $\omega$ eines \ZE. \\
-Betrachte daher $X( \omega ) $ für ein $X : \Omega \rightarrow \Omega^\prime$ \\
+Sei $( \Omega , \m{A} , P)$ ein \WR. Oft interessieren uns nur Teilaspekte des Ergebnisses $\omega$ eines \ZE s. Wir betrachten daher $X( \omega ) $ für ein $X : \Omega \rightarrow \Omega^\prime$.
 \begin{beispiel}
-Abstimmung über 2 Vorschläge A und B. r=3000 Personen Stimmen für A, n=1000000 Personen entscheiden sich unbeeinflusst voneinander rein zufällig. \Wk, dass A angenommen wird? \\
-Modellierung: Abstimmunsverhalten der n=1000000 Personen wird beschrieben durch $\omega = ( \omega_1, ...., \omega_n) \in \{ 0,1 \}^n$ mit $\omega_i =\begin{cases}1&\text{falls i-te Person für A stimmt}\\0&\text{sonst}\end{cases}$
-Wir modellieren es durch Laplaceschen W-Raum $(\Omega , \m{A} , P)$ mit $ \Omega = \{ 0,1 \}^n , \m{A} = \m{P}(\Omega) , P(A) = \frac{|A|}{| \Omega|}$ \\
-Interessiert sind wir an der Anzahl Stimmen für A bei diesen n Personen, d.h. $X( \omega) = \sum_{i=1}^{n}{ \omega_i }$. \\
-Frage: wie bestimmt man W-Raum, der \ZE \  mit Ergebnis $X( \omega)$ beschreibt? \\
-Idee: Für Menge $A^\prime \subset \Omega^\prime$ setze $P_x(A^\prime) := P[X \in A^\prime] := P( \{ \omega \in \Omega : X( \omega ) \in A^\prime \} = P(X^{-1}(A^\prime))$ \\
-Damit diese \Wk \ definiert ist muss gelten $X^{-1}(A^\prime) = \{ \omega \in \Omega : X( \omega ) \in A^\prime \}$
+Abstimmung über 2 Vorschläge $A$ und $B$. Sei $r=3000$ die Anzahl der Personen, die für $A$ stimmen, $n=1000000$ Personen entscheiden sich unbeeinflusst voneinander rein zufällig. Wie groß ist die \Wk, dass $A$ angenommen wird? \\
+Modellierung: Abstimmungsverhalten der $n=1000000$ Personen wird beschrieben durch $\omega = ( \omega_1, \ldots , \omega_n) \in \{ 0,1 \}^n$ mit 
+\[\omega_i =\begin{cases}1,&\text{falls i-te Person für A stimmt,}\\0,&\text{sonst.}\end{cases}\]
+Wir modellieren es durch einen Laplaceschen \WR \, $(\Omega , \m{A} , P)$ mit $ \Omega = \{ 0,1 \}^n , \m{A} = \m{P}(\Omega) , P(A) = \frac{|A|}{| \Omega|}$. Interessiert sind wir an der Anzahl Stimmen für $A$ bei diesen $n$ Personen, d.h. $X( \omega) = \sum_{i=1}^{n}{ \omega_i }$. \\
+Frage: Wie bestimmt man einen \WR, der ein \ZE \, mit Ergebnis $X( \omega)$ beschreibt? \\
+Idee: Für die Menge $A^\prime \subset \Omega^\prime$ setze man 
+\[P_x(A^\prime) := P[X \in A^\prime] := P( \{ \omega \in \Omega : X( \omega ) \in A^\prime \} = P(X^{-1}(A^\prime))\]
+Damit diese \Wk \, definiert ist, muss $X^{-1}(A^\prime) = \{ \omega \in \Omega : X( \omega ) \in A^\prime \}$ gelten.
 \end{beispiel}
 \begin{definition}
-$\Omega \neq \emptyset , \m{A}^\prime \sigma$-Algebra über $\Omega^\prime$. Dann heißt $(\Omega^\prime, \m{A}^\prime)$ Messraum.
+Sei $\Omega \neq \emptyset$ und $\m{A}^\prime$ eine $\sigma$-Algebra über $\Omega^\prime$. Dann heißt $(\Omega^\prime, \m{A}^\prime)$ \emph{Messraum}.
 \end{definition}
 \begin{definition}
-Sei $( \Omega , \m{A} , P)$ W-Raum , $(\Omega^\prime, \m{A}^\prime)$ Messraum. Dann heißt jede Abbildung $X: \Omega \rightarrow \Omega^\prime$ mit
+Sei $( \Omega , \m{A} , P)$ ein \WR \, und $(\Omega^\prime, \m{A}^\prime)$ ein Messraum. Dann heißt jede Abbildung $X: \Omega \rightarrow \Omega^\prime$ mit
 \begin{align*}
- X^{-1}(A^\prime) \in \m{A} \ \forall A^\prime \in \m{A}^\prime \text{ (*) }
+ X^{-1}(A^\prime) \in \m{A} \, \forall A^\prime \in \m{A}^\prime \tag{*}
 \end{align*} 
-Zufallsvariable. \\
-Im Falle $\Omega^\prime = \R, \m{A}^\prime = \m{B}$ heißt X reele \ZV.
+\emph{Zufallsvariable}. Im Falle $\Omega^\prime = \R, \m{A}^\prime = \m{B}$ heißt $X$ \emph{reelle \ZV}.
 \end{definition}
 \begin{bemerkung}
 \begin{itemize}
-\item (*) heißt auch $ \m{A} - \m{A}^\prime$-Messbarkeit der Abbildung $X$.
-\item Im Falle $\m{A} = \m{P}( \Omega ) oder A^\prime = \{ \emptyset , \Omega \}$ erfüllt jede Abbildung (*).
-\item Im Falle $( \Omega , \m{A}) = ( \Omega^\prime , \m{A}^\prime) = ( \R , \m{B} ) $ kann man nur schwer Abbildungen " anschaulich konstruieren", die (*) nicht erfüllen.
+\item (*) heißt auch $\m{A}$-$\m{A}^\prime$-Messbarkeit der Abbildung $X$.
+\item Im Falle $\m{A} = \m{P}( \Omega )$ oder $A^\prime = \{ \emptyset , \Omega \}$ erfüllt jede Abbildung (*).
+\item Im Falle $( \Omega , \m{A}) = ( \Omega^\prime , \m{A}^\prime) = ( \R , \m{B} ) $ kann man nur schwer Abbildungen \glqq anschaulich konstruieren\grqq, die (*) nicht erfüllen.
 \end{itemize}
 \end{bemerkung}
 \begin{satz}
-$( \Omega , \m{A} , P)$ W-Raum , $(\Omega^\prime, \m{A}^\prime)$ Messraum, $X : \Omega \rightarrow \Omega^\prime$ \ZV. Dann ist $( \Omega^\prime , \m{A}^\prime , P_x) $ mit $ P_x(A^\prime) = P(X^{-1}(A^\prime)), ( A^\prime \in \m{A}^\prime ) $.
+Sei $( \Omega , \m{A} , P)$ ein \WR , $(\Omega^\prime, \m{A}^\prime)$ ein Messraum und $X : \Omega \rightarrow \Omega^\prime$ eine \ZV. Dann ist $( \Omega^\prime , \m{A}^\prime , P_X) $ mit $ P_X(A^\prime) = P(X^{-1}(A^\prime)) \, ( A^\prime \in \m{A}^\prime ) $ ein \WR.
 \end{satz}
 \begin{proof}
 \begin{itemize}
-\item Für $ A^\prime \in \m{A}^\prime, P_X(A^\prime) \geq 0 $ da $P(A) \geq 0$
-\item $P_X(\Omega^\prime ) = P(\Omega) = 1$
-\item $A_1^\prime, A_2^\prime, ... \in \m{A}^\prime $ paarweise disjunkt. Wegen X \ZV gilt $X^{-1}(A_1^\prime, X^{-1}(A_2^\prime,... \in \m{A}$ paarweise disjunkt da für $ \omega \in \Omega $ gilt: 
+\item Für $ A^\prime \in \m{A}^\prime$ gilt $P_X(A^\prime) \geq 0 $, da $P(A) \geq 0$.
+\item $P_X(\Omega^\prime ) = P(\Omega) = 1$.
+\item Seien $A_1^\prime, A_2^\prime, \ldots \in \m{A}^\prime $ paarweise disjunkt. Da $X$ eine \ZV \, ist, sind $X^{-1}(A_1^\prime), X^{-1}(A_2^\prime), \ldots \in \m{A}$ paarweise disjunkt, da für $ \omega \in \Omega $ gilt: 
 \begin{align*}
-\omega \in X^{-1}(A_i^\prime) \cap X^{-1}(A_j^\prime) \\
-\Leftrightarrow \omega \in X^{-1}(A_i^\prime) \land X^{-1}(A_j^\prime) \\
-\Leftrightarrow X(\omega) \in A_i^\prime \land X(\omega) \in A_j^\prime \\
-\Leftrightarrow X(\omega) \in A_i^\prime \cap A_j^\prime
+&\omega \in X^{-1}(A_i^\prime) \cap X^{-1}(A_j^\prime) \\
+\Leftrightarrow &\omega \in X^{-1}(A_i^\prime) \land \omega \in X^{-1}(A_j^\prime) \\
+\Leftrightarrow &X(\omega) \in A_i^\prime \land X(\omega) \in A_j^\prime \\
+\Leftrightarrow &X(\omega) \in A_i^\prime \cap A_j^\prime
 \end{align*} 
 Mit $X^{-1}( \bigcup_{n=1}^{ \infty }{A_n^\prime} ) = \bigcup_{n=1}^{ \infty }{X^{-1}(A_n^\prime)}$ folgt
 \begin{align*}
-P_X(\bigcup_{n=1}^{ \infty }{A_n^\prime}) \\
-&= P(X^{-1} ( \bigcup_{n=1}^{ \infty }{A_n^\prime} )) \\
+P_X(\bigcup_{n=1}^{ \infty }{A_n^\prime}) &= P(X^{-1} ( \bigcup_{n=1}^{ \infty }{A_n^\prime} )) \\
 &= P(\bigcup_{n=1}^{ \infty }{X^{-1}(A_n^\prime)}) \\
 &= \sum_{n=1}^{\infty}{P(X^{-1}(A_n^\prime)} \\
-&= \sum_n=1^\infty {P_X(A_n^\prime)}
+&= \sum_n=1^\infty {P_X(A_n^\prime)}.
 \end{align*}
 \end{itemize}
-Mit Lemma 4.14 folgt die Behauptung \\
+Mit Lemma 4.14 folgt die Behauptung.
 \end{proof}
-Anwendung in Beispiel 5.1 \\
-Wegen $\m{A} = \m{P}( \Omega) $ ist X \ZV. Vorschlag A wird anngenommen, falls gilt
+Anwendung in Beispiel 5.1: Wegen $\m{A} = \m{P}( \Omega) $ ist $X$ eine \ZV. Vorschlag $A$ wird anngenommen, falls gilt
 \begin{align*}
-r + X(\omega) > n - X( \omega ) \\
-\Leftrightarrow X( \omega) > \frac{n-r}{2} \\
-\Leftrightarrow X( \omega) \in \{ \frac{n-r}{2}+1,\frac{n-r}{2}+2,...,n \}
+&r + X(\omega) > n - X( \omega ) \\
+\Leftrightarrow &X( \omega) > \frac{n-r}{2} \\
+\Leftrightarrow &X( \omega) \in \{ \frac{n-r}{2}+1,\frac{n-r}{2}+2, \ldots ,n \}.
 \end{align*}  
-Die \Wk für die Annahme von Vorschlag A ist damit 
+Die \Wk \, für die Annahme von Vorschlag $A$ ist damit 
 \begin{align*}
-P[X > \frac{n-r}{2} ] \\
-&= P( \{ \omega \in \Omega : X( \omega >  \frac{n-r}{2}) \\
-&= P_X( \{ \frac{n-r}{2}+1,\frac{n-r}{2}+2,...,n \} ) \\
-&= \sum_{k = \frac{n-r}{2}+1}^n {P_X( \{ k \} )}
+P[X > \frac{n-r}{2} ] &= P( \{ \omega \in \Omega : X( \omega >  \frac{n-r}{2})\}) \\
+&= P_X( \{ \frac{n-r}{2}+1,\frac{n-r}{2}+2, \ldots ,n \} ) \\
+&= \sum_{k = \frac{n-r}{2}+1}^n {P_X( \{ k \} )}.
 \end{align*}  
-Bestimmung von $P_X( \{ k \} ) = P( \{ \omega \in \Omega : \omega_1 + ... + \omega_n = k \} )$.  Diese Menge besteht aus allen n-Tupeln von Nullen und Einsen, die genau k Einsen enthalten. Da es genau  $\binom{n}{k}$   solcher n-Tupel gibt und jedes dieser n-Tupel im Laplaceschen W-Raum  $( \Omega , \m{A} , P)$ die \Wk $\frac{1}{2^n}$ hat gilt $P_X(k) = \binom{n}{k} \cdot \frac{1}{2^n}. P_X$  ist also Binomialverteilung mit Parametern n und p = 0.5. Die gesuchte \Wk ist $\sum_{k= \frac{n-r}{2} +1}^n{\binom{n}{k} \cdot \frac{1}{2^n}}$
-
+Bestimmung von $P_X( \{ k \} ) = P( \{ \omega \in \Omega : \omega_1 + ... + \omega_n = k \} )$:  Diese Menge besteht aus allen $n$-Tupeln von Nullen und Einsen, die genau $k$ Einsen enthalten. Da es genau  $\binom{n}{k}$ solcher $n$-Tupel gibt und jedes dieser $n$-Tupel im Laplaceschen \WR \, $( \Omega , \m{A} , P)$ die \Wk \, $\frac{1}{2^n}$ hat, gilt $P_X(k) = \binom{n}{k} \cdot \frac{1}{2^n}. \, P_X$  ist also eine Binomialverteilung mit Parametern $n$ und $p = 0.5$. Die gesuchte \Wk \, ist $\sum_{k= \frac{n-r}{2} +1}^n{\binom{n}{k} \cdot \frac{1}{2^n}}$.
 \begin{definition}
-Das W-Maß $P_X$ im Satz 5.4 heißt Verteilung der \ZV  \ X.
+Das \WM \, $P_X$ im Satz 5.4 heißt \emph{Verteilung} der \ZV \, $X$.
 \end{definition}
-
 \begin{bemerkung}
-Die Begriffe W-Maß und Verteilung werden Synonym verwendet, denn: \\
-Jede Verteilung ist W-Maß \\
-Jedes W-Maß ist Verteilung einer \ZV, nämlich $X: \Omega \rightarrow \Omega X( \omega) = \omega $
+Die Begriffe \WM \, und Verteilung werden synonym verwendet, denn jede Verteilung ist ein \WM \, und jedes \WM \, ist die Verteilung einer \ZV, nämlich $X: \Omega \rightarrow \Omega, X( \omega) = \omega $.
 \end{bemerkung}
-Im Folgenden: Ubertragung der Bezeichnungen für W-Maße auf Verteilungen. \\
-Schreibweisen : 
+Im Folgenden: Übertragung der Bezeichnungen für \WM e auf Verteilungen. Schreibweisen: 
 \begin{align*}
 P[X \in A] := P( \{ \omega \in \Omega : X(\omega ) \in A \} ) \\
 P[X = x] := P( \{ \omega \in \Omega : X(\omega ) = x \} )
 \end{align*}
-
 \begin{definition}
-Reelle \ZV \ heißt diskrete \ZV \ , falls für abzählbar undendliche Menge $ A \subset \R $ gilt $ P_X(A) = 1 $. In diesem Fall heißt für $(x_k)_{k \in \N } \subset A $ die folge $ (P[x = x_k])_{k \in \N } $ bzw. $(P[x = x_k])_{k = 1,...,N } $ mit $P_X( \{ x_k \} ) = 1$ bzw. $P_X( \{ x_k \} k = 1,...,N ) = 1$ Zähldichte von X. \\
-Und stetig verteilte \ZV \ mit Dichte $ f: \R \rightarrow \R $ falls gilt $ P_X(B) = \int_B f(x) dx ( B \in \m{B} ) $ In diesem Fall heißt f Dichte von X. 
-\end{definition}
-
-\begin{definition}
-Reelle \ZV X mit $P[x = k] = \binom{n}{k} p^k (1-p)^{n-k}$ heißt binomialverteilt mit Parametern n und p kurz b(n,p)-verteilt.
+Eine reelle \ZV \, heißt \emph{diskrete \ZV}, falls für die abzählbar unendliche Menge $ A \subset \R $ gilt, dass $ P_X(A) = 1 $ ist. In diesem Fall heißt für $(x_k)_{k \in \N } \subset A $ die Folge $ (P[x = x_k])_{k \in \N } $ bzw. $(P[x = x_k])_{k = 1,...,N } $ mit $P_X( \{ x_k \} ) = 1$ bzw. $P_X( \{ x_k \} k = 1,...,N ) = 1$ \emph{Zähldichte} von $X$ und stetig verteilte \ZV \, mit Dichte $ f: \R \rightarrow \R $, falls $ P_X(B) = \int_B f(x) \mathrm{d}x \, ( B \in \m{B} ) $ gilt. In diesem Fall heißt $f$ \emph{Dichte} von $X$. 
 \end{definition}
 \begin{definition}
-Reelle \ZV X mit
+Sei $X$ eine reelle \ZV \, mit $P[x = k] = \binom{n}{k} p^k (1-p)^{n-k}$. Dann heißt $X$ \emph{binomialverteilt mit Parametern $n$ und $p$} (kurz: $b(n,p)$-verteilt).
+\end{definition}
+\begin{definition}
+Eine reelle \ZV \, $X$ mit
  \begin{align*}
 f(x)=\begin{cases}\frac{1}{b-a}&,a\leq x\leq b\\
 0&,sonst
 \end{cases}\
 \end{align*}
-heißt gleichverteilt auf [a,b] order kurz $\m{U}[a,b]$-verteilt. \\
-Analog für exponential-verteilt exp( $\lambda$)-verteilt \\
-und für die Normalverteilung $ \m{N}( \mu , \sigma^2)$-verteilt
+heißt \emph{gleichverteilt} auf $[a,b]$ oder kurz $\m{U}[a,b]$-verteilt. Analog für die Exponentialverteilung \emph{exponential-verteilt} (oder $exp(\lambda)$-verteilt) und für die Normalverteilung \emph{normalverteilt} (oder $ \m{N}( \mu , \sigma^2)$-verteilt). Siehe hierzu Beispiel 4.28.
 \end{definition}
 \subsection{Unabhängigkeit}
-Wann beeinflussen sich Ergebnisse von \ZE gegenseitig nicht? W-Raum $( \Omega , \m{A} , P), A,B \in \m{A} $ mit $ P(A) > 0, P(B) > 0$ \\
-Idee: A,B beeinflussen sich gegenseitig nicht 
+Wann beeinflussen sich Ergebnisse von \ZE en gegenseitig nicht? Sei $( \Omega , \m{A} , P)$ ein \WR, $A,B \in \m{A} $ mit $ P(A) > 0, P(B) > 0$. \\
+Idee: $A$ und $B$ beeinflussen sich gegenseitig nicht.
 \begin{align*}
-\Leftrightarrow P(A|B) = P(A) \land P(B|A) = P(B) \\
-\Leftrightarrow \frac{P(A \cap B}{P(B)} = P(A) \land \frac{P(B \cap A}{P(A)} = P(B) \\
-\Leftrightarrow P(A \cap B) = P(A)P(B)
+\Leftrightarrow & P(A|B) = P(A) \land P(B|A) = P(B) \\
+\Leftrightarrow & \frac{P(A \cap B)}{P(B)} = P(A) \land \frac{P(B \cap A)}{P(A)} = P(B) \\
+\Leftrightarrow & P(A \cap B) = P(A)P(B)
 \end{align*}
-
 \begin{definition}
-$( \Omega , \m{A} , P), A,B \in \m{A} $ W-Raum $ A,B \in \m{A} $ heißen unabhängig genau dann wenn $ P(A \cap B) = P(A)P(B) $
+Sei $( \Omega , \m{A} , P)$ ein \WR \, und $A,B \in \m{A}$. Die Mengen $ A,B \in \m{A} $ heißen genau dann \emph{unabhängig}, wenn $ P(A \cap B) = P(A) \cdot P(B) $ gilt.
 \end{definition}
-
 \begin{beispiel}
-Rein zufälliges Werfen zweier echter Würfel \\
-A = " 1. Würfel 6" \\
-B = " 2. Würfel 3 " \\
-C = " \ Summe $\geq$ 11 \\
-Dann gilt A,B unabhängig und A,C nicht unabhängig. \\
-
-Begründung: Laplacescher W-Raum mit $ \Omega = \{ (i,j) i,j \in \{ 1,...,6 \} \}$ Dann 
+Rein zufälliges Werfen zweier echter Würfel mit den folgenden definierten Ereignissen:\\
+$A$ = \glqq 1. Würfel 6\grqq \\
+$B$ = \glqq 2. Würfel 3\grqq \\
+$C$ = \glqq Summe $\geq$ 11 \grqq\\
+Dann sind $A$ und $B$ unabhängig voneinander; $A$ und $C$ hingegen nicht.
+\\ \\
+Begründung: Wir betrachten einen Laplaceschen \WR \, mit $ \Omega = \{ (i,j) : i,j \in \{ 1,...,6 \} \}$. Dann 
 \begin{align*}
-A = \{ (6,1),(6,2),...,(6,6) \} \\
-B = \{ (1,3),(2,3),...,(6,3) \} \\
-C = \{ (6,5),(5,6),(6,6) \} \\
-\Rightarrow P(A \cap B) = P( \{ (6,3) \} ) = \frac{1}{36} \\
-P(A)P(B) = \frac{6}{36} \frac{6}{36} = \frac{1}{36}
+& A = \{ (6,1),(6,2),...,(6,6) \}, \\
+& B = \{ (1,3),(2,3),...,(6,3) \}, \\
+& C = \{ (6,5),(5,6),(6,6) \} \\
+\Rightarrow & P(A \cap B) = P( \{ (6,3) \} ) = \frac{1}{36}, \\
+& P(A)P(B) = \frac{6}{36} \frac{6}{36} = \frac{1}{36}.
 \end{align*}
-Also sind A,B unabhängig 
+Also sind $A$ und $B$ unabhängig. Weiterhin sind
 \begin{align*}
-P(A \cap C ) = P(\{ (6,5),(6,6) \} ) = \frac{2}{36} \\
-P(A)P(C) = \frac{6}{36} \frac{3}{36} = \frac{1}{6} \frac{1}{12} \neq \frac{2}{36} 
+& P(A \cap C ) = P(\{ (6,5),(6,6) \} ) = \frac{2}{36} \\
+& P(A)P(C) = \frac{6}{36} \frac{3}{36} = \frac{1}{6} \frac{1}{12} \neq \frac{2}{36},
 \end{align*}
-also sind A,C nicht unabhängig \\
+also sind $A$ und $C$ nicht unabhängig.
 \end{beispiel}
-Idee: \ZV  X,Y unabhängig genau dann wenn Alle Ereignisse der Form  $[x \in A] = x^{-1}(A) $ und $ [Y \in B] = Y^{-1}(B)$ sind unabhängig.
-
+Idee: \ZV n $X$ und $Y$ sind genau dann unabhängig, wenn alle Ereignisse der Form  $[X \in A] = X^{-1}(A) $ und $[Y \in B] = Y^{-1}(B)$ unabhängig sind.
 \begin{definition}
-$( \Omega , \m{A} , P) $ W-Raum , $ ( \Omega_X , \m{A}_X ) , (\Omega_Y , \m{A}_Y ) $ Messräume , $X: \Omega \rightarrow \Omega_X , Y: \Omega \rightarrow \Omega_Y$ Zuffalsvariablen. 
-\begin{align*}
-X,Y \text{unabhängig} \Leftrightarrow \forall A \in \m{A}_X , B \in \m{A}_Y = P[x \in A]P[Y \in B]
-\end{align*}
+Sei $( \Omega , \m{A} , P)$ ein \WR \, und seien $ ( \Omega_X , \m{A}_X )$ und $(\Omega_Y , \m{A}_Y ) $ Messräume sowie $X: \Omega \rightarrow \Omega_X$ und $Y: \Omega \rightarrow \Omega_Y$ \ZV n. Die \ZV n $X$ und $Y$ heißen \emph{unabhängig}, wenn für alle $A \in \m{A}_X$ und für alle $B \in \m{A}_Y$ gilt, dass
+\[P[X \in A, Y \in B]= P[X \in A] \cdot P[Y \in B].\]
 \end{definition}
-
 \begin{bemerkung}
 \begin{itemize}
-\item $ P[X \in A , Y \in B] = P(X^{-1}(A) \cap Y^{-1}(B)) $ \\
- und $ P[X \in A]P[ Y \in B ] = P(X^{-1}(A))P(Y^{-1}(B)) $
-\item Um von Unabhängigkeit bei Zufallsvariablen sprechen zu können müssen diese auf dem gleichen W-Raum definiert sein.
-\item Anschaulich: Werte unabhängiger Zufallsvariablen beeinflussen sich gegenseitig nicht.
-\item Zusammenhang mit Definition 5.9: Zwei Ereignisse A,B sind unabhängig genau dann wenn $1_A, 1_b$ unabhängig. 
+\item Es gilt: $ P[X \in A , Y \in B] = P(X^{-1}(A) \cap Y^{-1}(B)) $ und $ P[X \in A]P[ Y \in B ] = P(X^{-1}(A))P(Y^{-1}(B)) $.
+\item Um von Unabhängigkeit bei Zufallsvariablen sprechen zu können, müssen diese auf dem gleichen \WR \, definiert sein.
+\item Anschaulich heißt das, dass Werte unabhängiger Zufallsvariablen sich gegenseitig nicht beeinflussen.
+\item Zusammenhang mit Definition 5.9: Zwei Ereignisse $A, B$ sind genau dann unabhängig, wenn $\m{X}_A, \m{X}_B$ unabhängig sind. 
 \end{itemize}
 \end{bemerkung}
 \begin{beispiel}
-Werfen zweier echter Würfel \\
-X = " \  Augenzahl 1. Würfel " \\
-Y = " \  Augenzahl 2. Würfel " \\
-Z = " \  Summe Augenzahl " \\
-Dann gilt a) X,Y unabhängig und b) X,Z nicht unabhängig \\
-Begründung: b) Wie in bsp. 5.10 folgt $P[ X \in \{ 6 \} , Z \in \{ 11 , 12 \} ] \neq P[X \in \{ 6 \} ]P[Z \in \{ 11 , 12 \} ]$ \\
-a) Laplacescher W-Raum mit $ \Omega \{ ( i,j) i,j \in \{ 1,..,6 \} \} , X,Y ; \Omega \rightarrow \{ 1,..,6 \} , \m{A}_X = \m{A}_Y = P( \{ 1,...,6 \} ) , X((i,j)) = i , Y((i,j))=j$ \\
-Dann gilt für A,B $\leq \{1,...,6 \} $
+Wir betrachten das Werfen zweier echter Würfel mit folgenden definierten Ereignissen: \\
+$X$ = \glqq Augenzahl 1. Würfel\grqq \\
+$Y$ = \glqq Augenzahl 2. Würfel\grqq \\
+$Z$ = \glqq Summe Augenzahl\grqq \\
+Dann gilt, dass a) $X, Y$ unabhängig und b) $X, Z$ nicht unabhängig sind.\\
+Begründung: 
+\begin{enumerate}[a)]
+\item Wir betrachten einen Laplaceschen \WR \, mit $ \Omega = \{ ( i,j) : i,j \in \{ 1,..,6 \} \}$, Zufallsvariablen $X, Y: \Omega \rightarrow \{ 1,..,6 \}$ mit $X((i,j)) = i$ und $Y((i,j))=j$ sowie $\m{A}_X = \m{A}_Y = \m{P}( \{ 1,...,6 \} )$. \\
+Dann gilt für $A, B \subseteq \{1,...,6 \} $
 \begin{align*}
-P[X \in A , Y \in B] \\
-&= P( \{ (i,j) \in \Omega : i \in A , j \in B \} ) \\
+P[X \in A , Y \in B] &= P( \{ (i,j) \in \Omega : i \in A , j \in B \} ) \\
 &= P( A \times B ) \\
-&= \frac{| A \times B |}{| \Omega  |} = \frac{|A| |B|}{36} = \frac{|A|}{6} \frac{|B|}{6}
+&= \frac{| A \times B |}{| \Omega  |} = \frac{|A| \cdot |B|}{36} = \frac{|A|}{6} \cdot \frac{|B|}{6}
 \end{align*} 
 sowie 
 \begin{align*}
-P[X \in A] \\
-&= P( \{ (i,j) \in \Omega : i \in A ) \\
+P[X \in A] &= P( \{ (i,j) \in \Omega : i \in A \}) \\
 &= P( A \times \{ 1,...,6 \} ) \\
-&= \frac{|A| 6}{36} \\
+&= \frac{|A| \cdot 6}{36} \\
 &= \frac{|A|}{6}
 \end{align*}
-und analog $P[Y \in B] = \frac{|B|}{6}$. Also sind X und Y unabhängig.
+und analog $P[Y \in B] = \frac{|B|}{6}$. Also sind $X$ und $Y$ unabhängig.
+\item Wie in Beispiel 5.10 folgt $P[ X \in \{ 6 \} , Z \in \{ 11 , 12 \} ] \neq P[X \in \{ 6 \} ] \cdot P[Z \in \{ 11 , 12 \} ]$.
+\end{enumerate}
 \end{beispiel}
 
 % 10.06. Timo
@@ -1038,10 +1018,10 @@ Sind $x_1, \ldots , x_n$ Werte von $X$ bei $n$-maliger unbeeinflusster Wiederhol
 
 % johannes 17.6.
 \begin{bemerkung}[Problem in Bsp. 5.15]
-$\mathrm{P}[X=k]$ schwierig bestimmbar. Ausweg:
+$\mathrm{P}[X=k]$ ist schwierig bestimmbar. Ausweg:
 \[X=\sum_{i=1}^{10}X_i\]
 mit
-\[X_i=\begin{cases}1,&\text{falls i-te Ente überlebt}\\0,&\text{sonst}
+\[X_i=\begin{cases}1,&\text{falls i-te Ente überlebt,}\\0,&\text{sonst.}
 \end{cases}
 \]
 Es gilt:
@@ -1051,9 +1031,9 @@ Es gilt:
 =&(\frac{9}{10})^{10}
 \end{align*}
 Der Erwartungswert beträgt
-\[EX_i=1\cdot \pe{ X_1=1}+0\cdot \pe{ X_i=0}=(\frac{9}{10})^{10}\]
-Also
-\[E(X)=E(\sum_{i=1}^{10}X_i)=\sum_{i=1}^{10}EX_i=10(\frac{9}{10})^{10}\]
+\[EX_i=1\cdot \pe{ X_1=1}+0\cdot \pe{ X_i=0}=(\frac{9}{10})^{10}.\]
+Also ist
+\[E(X)=E(\sum_{i=1}^{10}X_i)=\sum_{i=1}^{10}EX_i=10(\frac{9}{10})^{10}.\]
 Das folgt aus
 \end{bemerkung}
 \begin{satz}
@@ -1068,7 +1048,7 @@ Sei $(\Omega,\m{A},\mu)$ ein Maßraum, $f,g:\Omega\to\R$ messbar und integrierba
 Der Erwartungswert ist linear bzgl. Addition und skalarer Multiplikation, und monoton.
 \end{korollar}
 \begin{bemerkung}
-Hierbei sind $X_1+X_2$ bzw. $\alpha\cdot X$ die \ZV mit Werten $X_1(\omega)+X_2(\omega)$ bzw. $\alpha\cdot X(\omega)$. 
+Hierbei sind $X_1+X_2$ bzw. $\alpha\cdot X$ die \ZV n mit Werten $X_1(\omega)+X_2(\omega)$ bzw. $\alpha\cdot X(\omega)$. 
 \end{bemerkung}
 \begin{proof}
 Folgt aus Definition des Erwartungswertes als Maßintegral und Satz 5.22.
@@ -1159,8 +1139,7 @@ Sei $X$ eine reelle \ZV \, und $h: \R \rightarrow \R$ messbar.
 Insbesondere für $h(x)=x$: $EX = \sum_{k=1}^\infty x_k \cdot P[X=x_k]$.
 \item Ist $X$ stetig verteilt mit Dichte $f$, so gilt
 \[Eh(X) = \int_\R h(x) \cdot f(x) \mathrm{d}x,\]
-insbesondere gilt
-\[EX = \int_\R x \cdot f(x) \mathrm{d}x.\]
+insbesondere gilt für $h(x)=x$: $EX = \int_\R x \cdot f(x) \mathrm{d}x$.
 \end{enumerate}
 \end{korollar}
 \end{document}
