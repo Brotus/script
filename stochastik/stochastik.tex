@@ -1177,3 +1177,31 @@ EZ&=Eh(X)=\int_{\R}\: h(x)f(x)\mathrm{d}x\text{  Korollar 5.26}\\
 &=-x\exp(-\lambda x)|_{x=0}^t-\frac{\exp(-\lambda x)}{\lambda}|_{x=0}^t-t\exp(-\lambda x)|_{x=t}^{\infty}
 \end{align*}
 \end{beispiel*}
+\begin{beispiel}
+$X \m{N}(a,\sigma^2)$-verteilt. Dann gilt
+\begin{align*}
+EX=&\int_{-\infty}^{\infty}\: x\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-a)^2}{2\sigma^2}\mathrm{d}x\\
+=&\underbrace{\int_{-\infty}^{\infty}\: \frac{x-a}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-a)^2}{2\sigma^2}\mathrm{d}x}_{=0\text{, da Integrand punktsymmetrisch zu }x=a}+a\cdot\underbrace{\int_{-\infty}^{\infty}\: \frac{exp(-\frac{(x-a)^2}{2\sigma^2}}{\sqrt{2\pi}\sigma}\mathrm{d}x}_{=1\text{, da Integrand Dichte}}\\
+=&0+a\cdot 1=a
+\end{align*}
+\end{beispiel}
+\subsection{Die Varianz einer \ZV}
+Wie stark schwankt $X$ um $EX$?
+\begin{definition}
+Reelle \ZV $X$, für die $EX$ existiert. Dann heißt
+\[V(X):=E(\| X-EX\|^2)\]
+die \emph{Varianz} von $X$.
+\end{definition}
+\begin{bemerkung}
+$V(X)$ ist die mittlere quadratische Abweichung zwischen $X(\omega)$ und $EX$.
+\end{bemerkung}
+\begin{beispiel}
+Ist $X$ $\m{N}(a,\sigma^2)$-verteilt, dann gilt
+\begin{align*}
+V(X)=&E(\| X-A\|^2)\\
+=& \int_{-\infty}^{\infty}\: |x-a|^2\frac{1}{\sqrt(2\pi)\sigma}\exp(-\frac{(x-a)^2}{2\sigma^2}\mathrm{d}x\text{  (Kor.5.26)}\\
+=&\sigma^2\cdot\int_{-\infty}^{\infty}\: \frac{u^2}{\sqrt{2\pi}}\exp(-\frac{u^2}{2}\mathrm{d}u\\
+=&\sigma^2(-\frac{u}{\sqrt{2\pi}}\exp(-\frac{u^2}{2}|_{u=-\infty}^{\infty}+\int_{-\infty}^{\infty}\: \frac{\exp(-\frac{u^2}{2}}{\sqrt{2\pi}}\mathrm{d}u)\\
+=&\sigma^2(0+1)=\sigma^2
+\end{align*}
+\end{beispiel}
