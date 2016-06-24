@@ -1143,3 +1143,37 @@ insbesondere gilt für $h(x)=x$: $EX = \int_\R x \cdot f(x) \mathrm{d}x$.
 \end{enumerate}
 \end{korollar}
 \end{document}
+\begin{proof}
+\begin{align*}
+Eh(X)&=\int_{\Omega}\: h(X(\omega))\mathrm{d}P(\omega)\text{  Def.}\\
+=&\int_{\R}\: h(x)\mathrm{d}P_X(x)\text{  Satz 5.24}\\
+\end{align*}
+Mit Satz 5.25 folgt die Behauptung.
+\end{proof}
+\begin{beispiel}
+$X$ sei $exp(\lambda)$-verteilt, d.h. $X$ hat Dichte
+\[f(x)=\begin{cases}\lambda\exp(-\lambda x),&x\geq 0\\
+0,&sonst
+\end{cases}\]
+\begin{align*}
+\impl EX&=\int_{\R}\: x\cdot f(x)\mathrm{d}x\\
+&=\int_0^{\infty}\: x\cdot\lambda\cdot\exp(-\lambda x)\\
+&=-x\exp(-\lambda x)|_{x=0}^{\infty}-\int_0^{\infty}\:-\exp(-\lambda x)\mathrm{d}x\\
+&=0-0-\frac{exp(-\lambda x)}{\lambda}|_{x=0}^{\infty}\\
+&=\frac{1}{\lambda}
+\end{align*}
+\end{beispiel}
+\begin{beispiel*}
+Für $t>0$ setze
+\[Z=\min\{ X,t\}.\]
+Wir definieren
+\[h(x)=\min\{ x,t\}.\]
+Dann ist
+\begin{align*}
+EZ&=Eh(X)=\int_{\R}\: h(x)f(x)\mathrm{d}x\text{  Korollar 5.26}\\
+&=\int_{-\infty}^0\ldots\mathrm{d}x+\int_0^{\infty}\ldots\mathrm{d}x\\
+&=\int_0^{\infty}\:\min\{ x,t\}\lambda\exp(-\lambda x)\mathrm{d} x\\
+&=\int_0^t\: x\lambda\exp(-\lambda x)\mathrm{d}x+\int_t^{\infty}\: t\lambda\exp(-\lambda x)\mathrm{d}x\\
+&=-x\exp(-\lambda x)|_{x=0}^t-\frac{\exp(-\lambda x)}{\lambda}|_{x=0}^t-t\exp(-\lambda x)|_{x=t}^{\infty}
+\end{align*}
+\end{beispiel*}
