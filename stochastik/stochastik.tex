@@ -1268,4 +1268,82 @@ Z(\omega)&:=\frac{|X(\omega)|^r}{\varepsilon^r}\\
 \item folgt aus $a)$ angewendet auf $X-EX$ und $r=2$.
 \end{enumerate}
 \end{proof}
+\begin{satz}
+$X_1,X_2$ unabhängige reelle \ZV mit $E(|X_1|),E(|X_2|)<\infty$. Dann gilt:
+\[E(X_1\cdot X_2)=EX_1\cdot EX_2\]
+\end{satz}
+\begin{proof}
+Siehe Wahrscheinlichkeitstheorie.
+\end{proof}
+\begin{satz}
+$X_1,X_2$ unabhängige reelle \ZV mit $E(|X_1|),E(|X_2|)<\infty$. Dann gilt:
+\[V(X_1+X_2)=V(X_1)+V(X_2)\]
+\end{satz}
+\begin{proof}
+\begin{align*}
+V(X_1+X_2)&=E((X_1+X_2)-(E(X_1+X_2)))^2)\\
+&=E((X_1-EX_1+X_2-EX_2)^2)\\
+&=E(|X_1-EX_1|^2)+E(|X_2-EX_2|^2)\\
+&+2E((X_1-EX_1)(X_2-EX_2))\\
+&=V(X_1)+0+V(X_2),\\
+\text{denn:}\\
+E((X_1-EX_1)(X_2-EX_2))\\
+=&E(X_1X_2-X_1EX_2-X_2EX_1+EX_1EX_2)\\
+=&E(X_1X_2)-EX_2EX_1-EX_2EX_1+EX_1EX_2\\
+=&0&\text{(Satz 5.34)}
+\end{align*}
+\end{proof}
+\begin{beispiel}
+Ist $X$ $b(n,p)$-verteilt, d.h. für $k\in\{ 0,\ldots,n\}$ ist
+\[\text{P}[X=k]=\binom{n}{k}p^k(1-p)^{n-k}\]
+so gilt
+\[EX=np,V(X)=np(1-p).\]
+Dies folgt aus\\
+$(*)$ Sind $Z_1,\ldots,Z_n$ unabhängig $b(n,p)$-verteilt, so ist $Z=Z_1+\ldots+Z_n$ $b(n,p)$-verteilt.\\
+Die Behauptung folgt aus $(*)$, denn
+\[(*)\impl P_X=P_Z\impl EX=EZ=EZ_1+\ldots+EZ_n=nEZ_1=n(1p+0(1-p))=np\]
+und
+\begin{align*}
+V(X)&=V(Z)=V(Z_1+\ldots+Z_n)=V(Z_1)+\ldots+V(Z_n)=nV(Z_1)\\&=n(E(Z_1^2)-(EZ_1)^2)=n(1^2p+0^2(1-p)-p^2)=np(1-p)
+\end{align*}
+Nachweis von $(*)$: Für $s\in(-1,1)$ setze
+\begin{align*}
+g(s):=&E\{ s^z\}
+=&\sum_{k=0}^ns^k\text{P}[Z=k]&(P_Z(\{ 0,\ldots,n\})=1)
+\end{align*}
+Andererseits:
+\begin{align*}
+g(s)=&E\{ s^{Z_1+\ldots+Z_n}\}\\
+=&E\{\prod_{i=1}^ns^{Z_i}\}\\
+=&\prod_{i=1}^nE\{ s^{Z_i}\}\\
+&\text{(Satz 5.34 impliziert: mit }Z_1,\ldots,Z_n\text{ sind auch }s^{Z_1},\ldots,S^{Z_n}\text{ unabhängig.)}\\
+=&(E(s^{Z_1}))^n\\
+=&(s^1P[Z_1=1]+s^0P[Z_1=0])^n\\
+=&(sp+(1-p))^n\\
+=&\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}s^k
+\end{align*}
+Da Koeffizienten von Polynomen eindeutig sind, folgt
+\[P[Z=k]=\binom{n}{k}p^k(1-p)^{n-k}\]
+für $k\in\{1,\ldots,n\}$.
+\end{beispiel}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
