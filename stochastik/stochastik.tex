@@ -1205,4 +1205,67 @@ V(X)&=E(|X-A|^2)\\
 &=\sigma^2(0+1)=\sigma^2.
 \end{align*}
 \end{beispiel}
+\begin{satz}
+$X$ reelle \ZV, für die $EX$ existiert.
+\begin{enumerate}[a)]
+\item \[V(X)=E(X^2)-(EX)^2\]
+\item \[\fa{\alpha,\beta\in\R}:V(\alpha\cdot X+\beta)=\alpha^2\cdot V(X)\]
+\end{enumerate}
+\end{satz}
+\begin{proof}
+\begin{enumerate}[a)]
+\item \begin{align*}
+V(X)=&E((X-EX)^2)\\
+=&E(X^2-2\cdot X\cdot EX + (EX)^2)\\
+=&E(X^2)-2(EX)^2+E((EX)^2)\\
+=&E(X^2)-(EX)^2
+\end{align*}
+\item \begin{align*}
+V(\alpha\cdot X+\beta)=&E(|\alpha\cdot X+\beta-E(\alpha\cdot X+\beta)|^2)\\
+=&E(|\alpha\cdot X+\beta-(\alpha\cdot EX+\beta)|^2)\\
+=&E(|\alpha\cdot X-\alpha\cdot EX|^2)\\
+=&\alpha^2\cdot E(|X-EX|^2)=\alpha^2\cdot V(X)
+\end{align*}
+\end{enumerate}
+\end{proof}
+\begin{beispiel}
+Sei $X$ $\pi(\lambda)$-verteilt, d.h. für $k\in\N_0$:
+\[P[X=k]=\frac{\lambda^k}{k!}\exp(-\lambda).\]
+Dann gilt
+\begin{align*}
+EX=&\sum_{k=0}^{\infty}k\frac{\lambda^k}{k!}\exp(-\lambda)\\
+=&\lambda(\sum_{k=1}^{\infty}\frac{\lambda^{k-1}}{(k-1)!})\exp(-\lambda)\\
+=&\lambda\exp(\lambda)\exp(-\lambda)=\lambda\\
+E(X^2)=&\sum_{k\in\N_0}k^2\frac{\lambda^k}{k!}\exp(-\lambda)\\
+=&\sum_{k\in\N}(k(k-1)+k)\frac{\lambda^k}{k!}\exp(-\lambda)\\
+=&\sum_{k\in\N}k(k-1)\frac{\lambda^k}{k!}\exp(-\lambda)+sum_{k\in\N}k\frac{\lambda^k}{k!}\exp(-\lambda)\\
+=&\lambda^2\sum_{k=2}^{\infty}\frac{\lambda^{k-2}}{(k-2)!}\exp(-\lambda)+\lambda\\
+=&\lambda^2\exp(\lambda)\exp(-\lambda)+\lambda=\lambda^2+\lambda\\
+\impl V(X)=&E(X^2)-(EX)^2=\lambda^2+\lambda-(\lambda)^2=\lambda
+\end{align*}
+\end{beispiel}
+\begin{satz}
+$X$ reelle \ZV, für die $EX$ existiert, $\varepsilon>0$.
+\begin{enumerate}[a)]
+\item "Markovsche Ungleichung"
+\[\fa{r\geq 0}:\text{P}[|X|\geq\varepsilon]\leq\frac{E(|X|^r)}{\varepsilon^r}\]
+\item "Tschebyscheffsche Ungleichung"
+\[\text{P}[|X-EX|\geq\varepsilon]\leq\frac{V(X)}{\varepsilon^2}\]
+\end{enumerate}
+\end{satz}
+\begin{proof}
+\begin{enumerate}[a)]
+\item \begin{align*}
+Y(\omega)&:=\begin{cases}1,&|X(\omega)|\geq\varepsilon\\
+0,&\text{sonst}
+\end{cases}\\
+Z(\omega)&:=\frac{|X(\omega)|^r}{\varepsilon^r}\\
+\impl&\fa{\omega\in\Omega}:Y(\omega)\leq Z(\omega)\\
+\impl \text{P}[|X|\geq\varepsilon]&=EY\leq EZ\text{  Monontonie Erwartungswert}\\
+&=E(\frac{|X|^r}{\varepsilon^r}\\
+&=\frac{E(|X|^r)}{\varepsilon^r}
+\end{align*}
+\item folgt aus $a)$ angewendet auf $X-EX$ und $r=2$.
+\end{enumerate}
+\end{proof}
 \end{document}
