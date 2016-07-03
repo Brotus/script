@@ -1238,14 +1238,14 @@ EX=&\sum_{k=0}^{\infty}k\frac{\lambda^k}{k!}\exp(-\lambda)\\
 =&\lambda\exp(\lambda)\exp(-\lambda)=\lambda\\
 E(X^2)=&\sum_{k\in\N_0}k^2\frac{\lambda^k}{k!}\exp(-\lambda)\\
 =&\sum_{k\in\N}(k(k-1)+k)\frac{\lambda^k}{k!}\exp(-\lambda)\\
-=&\sum_{k\in\N}k(k-1)\frac{\lambda^k}{k!}\exp(-\lambda)+sum_{k\in\N}k\frac{\lambda^k}{k!}\exp(-\lambda)\\
+=&\sum_{k\in\N}k(k-1)\frac{\lambda^k}{k!}\exp(-\lambda)+\sum_{k\in\N}k\frac{\lambda^k}{k!}\exp(-\lambda)\\
 =&\lambda^2\sum_{k=2}^{\infty}\frac{\lambda^{k-2}}{(k-2)!}\exp(-\lambda)+\lambda\\
 =&\lambda^2\exp(\lambda)\exp(-\lambda)+\lambda=\lambda^2+\lambda\\
 \impl V(X)=&E(X^2)-(EX)^2=\lambda^2+\lambda-(\lambda)^2=\lambda
 \end{align*}
 \end{beispiel}
 \begin{satz}
-$X$ reelle \ZV, für die $EX$ existiert, $\varepsilon>0$.
+Sei $X$ eine reelle \ZV \, für die $EX$ existiert, $\varepsilon>0$.
 \begin{enumerate}[a)]
 \item "Markovsche Ungleichung"
 \[\fa{r\geq 0}:\text{P}[|X|\geq\varepsilon]\leq\frac{E(|X|^r)}{\varepsilon^r}\]
@@ -1261,7 +1261,7 @@ Y(\omega)&:=\begin{cases}1,&|X(\omega)|\geq\varepsilon\\
 \end{cases}\\
 Z(\omega)&:=\frac{|X(\omega)|^r}{\varepsilon^r}\\
 \impl&\fa{\omega\in\Omega}:Y(\omega)\leq Z(\omega)\\
-\impl \text{P}[|X|\geq\varepsilon]&=EY\leq EZ\text{  Monontonie Erwartungswert}\\
+\impl \text{P}[|X|\geq\varepsilon]&=EY\leq EZ \tag{Monotonie Erwartungswert}\\
 &=E(\frac{|X|^r}{\varepsilon^r}\\
 &=\frac{E(|X|^r)}{\varepsilon^r}
 \end{align*}
@@ -1281,16 +1281,18 @@ $X_1,X_2$ unabhängige reelle \ZV mit $E(|X_1|),E(|X_2|)<\infty$. Dann gilt:
 \end{satz}
 \begin{proof}
 \begin{align*}
-V(X_1+X_2)&=E((X_1+X_2)-(E(X_1+X_2)))^2)\\
-&=E((X_1-EX_1+X_2-EX_2)^2)\\
-&=E(|X_1-EX_1|^2)+E(|X_2-EX_2|^2)\\
-&+2E((X_1-EX_1)(X_2-EX_2))\\
-&=V(X_1)+0+V(X_2),\\
-\text{denn:}\\
-E((X_1-EX_1)(X_2-EX_2))\\
+&V(X_1+X_2)\\
+=&E((X_1+X_2)-(E(X_1+X_2)))^2)\\
+=&E((X_1-EX_1+X_2-EX_2)^2)\\
+=&E(|X_1-EX_1|^2)+E(|X_2-EX_2|^2)+2E((X_1-EX_1)(X_2-EX_2))\\
+=&V(X_1)+0+V(X_2),
+\end{align*}
+denn:
+\begin{align*}
+&E((X_1-EX_1)(X_2-EX_2))\\
 =&E(X_1X_2-X_1EX_2-X_2EX_1+EX_1EX_2)\\
 =&E(X_1X_2)-EX_2EX_1-EX_2EX_1+EX_1EX_2\\
-=&0&\text{(Satz 5.34)}
+=&0 \tag{Satz 5.34}
 \end{align*}
 \end{proof}
 \begin{beispiel}
@@ -1308,8 +1310,8 @@ V(X)&=V(Z)=V(Z_1+\ldots+Z_n)=V(Z_1)+\ldots+V(Z_n)=nV(Z_1)\\&=n(E(Z_1^2)-(EZ_1)^2
 \end{align*}
 Nachweis von $(*)$: Für $s\in(-1,1)$ setze
 \begin{align*}
-g(s):=&E\{ s^z\}
-=&\sum_{k=0}^ns^k\text{P}[Z=k]&(P_Z(\{ 0,\ldots,n\})=1)
+g(s):=&E\{ s^z\} \\
+=&\sum_{k=0}^ns^k\text{P}[Z=k] \tag{$P_Z(\{ 0,\ldots,n\})=1$}
 \end{align*}
 Andererseits:
 \begin{align*}
@@ -1326,24 +1328,101 @@ Da Koeffizienten von Polynomen eindeutig sind, folgt
 \[P[Z=k]=\binom{n}{k}p^k(1-p)^{n-k}\]
 für $k\in\{1,\ldots,n\}$.
 \end{beispiel}
+
+% Timo 01.07.
+\subsection{Gesetz der großen Zahlen}
+Sei $(\Omega, \m{A}, P)$ ein \WR \, und seien $X, X_1, X_2, \ldots : \Omega \rightarrow \R$ reelle \ZV n mit
+\begin{enumerate}[(i)]
+\item $X_1, X_2, \ldots$ unabhängig
+\item $X_1, X_2, \ldots$ identisch verteilt, d.h. $ P_{X_1} = P_{X_2} = \ldots$
+\item $P_X = P_{X_1}$
+\end{enumerate}
+Wir schreiben $X_1, X_2, \ldots$ u.i.v. für (i) und (ii). Wir begründen im Folgenden:
+\[\frac{1}{n} \sum_{i=1}^n X_i \text{ \glqq nähert sich\grqq \, für große } n \text{ immer mehr } EX \text{ an.}\]
+\begin{definition}
+Sei $(\Omega, \m{A}, P)$ ein \WR \, und seien $Z, Z_1, Z_2, \ldots : \Omega \rightarrow \R$ reelle \ZV n.
+\begin{enumerate}[a)]
+\item $Z_n$ \emph{konvergiert nach Wahrscheinlichkeit} gegen $Z$ (kurz: $Z_n \rightarrow^P Z$) genau dann wenn
+\[\fa{\varepsilon > 0}: P[|Z_n - Z| > \varepsilon] \rightarrow 0 \quad (n \rightarrow \infty).\]
+\item $Z_n$ \emph{konvergiert fast sicher} gegen $Z$ (kurz: $Z_n \rightarrow Z$ f.s.) genau dann wenn
+\[P(\{\omega \in \Omega : Z_n(\omega) \rightarrow Z(\omega) \quad (n \rightarrow \infty)\}) = 1.\]
+\end{enumerate}
+\end{definition}
+\begin{bemerkung}
+\begin{enumerate}[a)]
+\item Man kann zeigen; $Z_n \rightarrow Z$ f.s. $\impl Z_n \rightarrow^P Z$. Die Umkehrung ist im Allgemeinen falsch (vgl. Wahrscheinlichkeitstheorie 16/17).
+\item Mit der fast sicheren Konvergenz kann man rechnen wie mit der Konvergenz der reellen Zahlen. Zum Beispiel gilt
+\begin{align*}
+&X_n \rightarrow X \text{ f.s.} , Y_n \rightarrow Y \text{ f.s. } \\
+\impl& \alpha \cdot X_n + \beta \cdot Y_n \rightarrow \alpha \cdot X + \beta \cdot Y \text{ f.s.} 
+\end{align*}
+für alle $\alpha, \beta \in \R$.
+\end{enumerate}
+\end{bemerkung}
+\begin{proof}
+Für $X_n(\omega) \rightarrow X(\omega) \, (n \rightarrow \infty), Y_n(\omega) \rightarrow Y(\omega) \, (n \rightarrow \infty)$ gilt $\alpha \cdot X_n(\omega) + \beta \cdot Y_n(\omega) \rightarrow \alpha \cdot X(\omega) + \beta \cdot Y(\omega) \, (n \rightarrow \infty)$. Damit folgt
+\begin{align*}
+&[X_n \rightarrow X \quad (n \rightarrow \infty)] \cap [Y_n \rightarrow Y \quad (n \rightarrow \infty)] \\
+\subseteq&[\alpha \cdot X_n + \beta \cdot Y_n \rightarrow \alpha \cdot X + \beta \cdot Y \quad (n \rightarrow \infty)].
+\end{align*}
+Nach de Morgan ist dann
+\begin{align*}
+&[\alpha \cdot X_n + \beta \cdot Y_n \rightarrow \alpha \cdot X + \beta \cdot Y \quad (n \rightarrow \infty)]^C \\
+\subseteq&[X_n \rightarrow X \quad (n \rightarrow \infty)]^C \cup [Y_n \rightarrow Y \quad (n \rightarrow \infty)]^C.
+\end{align*}
+Also folgt aus $X_n \rightarrow X$ f.s. und $Y_n \rightarrow Y$ f.s.:
+\begin{align*}
+&P(\{\omega \in \Omega : \alpha \cdot X_n(\omega) + \beta \cdot Y_n(\omega) \rightarrow \alpha \cdot X(\omega) + \beta \cdot Y(\omega) \quad (n \rightarrow \infty)\}) \\
+=&1 - P(\{\omega \in \Omega : \alpha \cdot X_n(\omega) + \beta \cdot Y_n(\omega) \rightarrow \alpha \cdot X(\omega) + \beta \cdot Y(\omega) \quad (n \rightarrow \infty)\}^C) \\
+=&1 - P[\alpha \cdot X_n + \beta \cdot Y_n \not\rightarrow \alpha \cdot X + \beta \cdot Y \quad (n \rightarrow \infty)] \\
+\geq& 1 - P([X_n \rightarrow X \quad (n \rightarrow \infty)]^C \cup [Y_n \rightarrow Y \quad (n \rightarrow \infty)]^C) \tag{$P$ monoton} \\
+\geq& 1 - P([X_n \not\rightarrow X \quad (n \rightarrow \infty)] - [Y_n \not\rightarrow Y \quad (n \rightarrow \infty)]) \tag{$P$ subadditiv}\\
+=& 1 - 0 - 0 \\
+=& 1
+\end{align*}
+Damit gilt $\alpha \cdot X_n + \beta \cdot Y_n \rightarrow \alpha \cdot X + \beta \cdot Y$ fast sicher.
+\end{proof}
+\begin{satz}[Schwaches Gesetz der großen Zahlen]
+Seien $X, X_1, X_2, \ldots$ u.i.v. reelle \ZV n definiert auf dem gleichen \WR \,mit $E(X^2) < \infty$. Dann gilt
+\[\frac{1}{n} \sum_{i=1}^n X_i \rightarrow^P EX.\]
+\end{satz}
+\begin{bemerkung}
+Wegen $|x| \leq 1 + x^2 \, (x \in \R)$ gilt $E(X^\pm) \leq1 + E(X^2)$. Also existiert $EX$ in Satz 5.38.
+\end{bemerkung}
+\begin{proof}[Beweis von Satz 5.38]
+Sei $\varepsilon > 0$ beliebig. Wegen
+\[E(\frac{1}{n} \sum_{i=1}^{n} X_i) \overset{\text{Lin. Erw.}}{=} \frac{1}{n} \sum_{i=1}^{n} EX_i \overset{\text{id. Vert.}}{=} \frac{1}{n} \sum_{i=1}^{n} EX = EX\]
+gilt nach der Ungleichung von Tschebycheff:
+\begin{align*}
+&P[|\frac{1}{n} \sum_{i=1}^{n} X_i - EX| > \varepsilon] \\
+\leq&\frac{V(\frac{1}{n} \sum_{i=1}^{n} X_i)}{\varepsilon^2} \\
+=&\frac{\frac{1}{n^2} V(\sum_{i=1}^{n} X_i)}{\varepsilon^2}  \\
+=&\frac{\frac{1}{n^2} \sum_{i=1}^{n} V(X_i)}{\varepsilon^2} \tag{$X_i$ unabhängig} \\
+=&\frac{\frac{1}{n^2} \cdot n \cdot V(X)}{\varepsilon^2} \tag{id. Vert.} \\
+=&\frac{1}{n} \cdot \frac{V(X)}{\varepsilon^2} \rightarrow 0 \quad (n \rightarrow \infty),
+\end{align*}
+da $V(X) = E(X^2) - (EX)^2 \leq E(X^2) < \infty$ nach Voraussetzung. Daraus folgt die Behauptung.
+\end{proof}
+\begin{satz}[Starkes Gesetz der großen Zahlenvon Kolmogoroff]
+Seien $X, X_1, X_2, \ldots$ u.i.v. reelle \ZV n mit $E(|X|) < \infty$ definiert auf dem gleichen \WR . Dann gilt
+\[\frac{1}{n} \sum_{i=1}^n X_i \rightarrow EX \text{ f.s.}\]
+\end{satz}
+\begin{proof}
+Siehe Wahrscheinlichkeitstheorie WS 16/17.
+\end{proof}
+\begin{bemerkung}
+In unserer Theorie gilt ein Analogon zum empirischen Gesetz der großen Zahlen: \\
+Seien $X, X_1, X_2,\ldots$ u.i.v. reelle \ZV n. Für $A \in \m{B}$ setze
+\[\mu_n(A) = \frac{|\{1 \leq i \leq n : X_i \in A\}|}{n} = \frac{1}{n} \sum_{i=1}^n \m{X}_A(X_i)\]
+und 
+\[\mu(A) = P[X \in A] = P_X(A).\]
+Mit $X, X_1, X_2, \ldots$ sind auch $\m{X}_A(X), \m{X}_A(X_1), \m{X}_A(X_2), \ldots$ u.i.v. und es gilt weiter
+\[E(|\m{X}_A(X)|) \leq 1 < \infty.\]
+Mit Satz 5.39 folgt
+\begin{align*}
+&\mu_n(A) = \frac{1}{n} \sum_{i=1}^n \m{X}_A(X_i) \\
+\stackrel{f.s.}{\rightarrow} & E(\m{X}_A(X)) = P[X \in A] = \mu(A).
+\end{align*}
+Somit konvergieren die relativen Häufigkeiten fast sicher gegen die Wahrscheinlichkeit.
+\end{bemerkung}
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
