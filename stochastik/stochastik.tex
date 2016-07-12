@@ -1430,4 +1430,84 @@ Mit Satz 5.39 folgt
 \end{align*}
 Somit konvergieren die relativen Häufigkeiten fast sicher gegen die Wahrscheinlichkeit.
 \end{bemerkung}
+
+% späte Vl zentraler Grenzwertsatz
+\subsection{Der zentrale Grenzwertsatz}
+\WR $(\Omega,\m{A},\text{P}), X,X_1,X_2,\ldots:\Omega\to\R$ u.i.v. relle Zuvallsvariablen mit $E(|X|)<\infty$. nach Satz 5.39 gilt dann
+\begin{align*}
+Z_n:=\frac{1}{n}\sum_{i=1}^nX_i-EX\to 0\text{ f.s.}
+\end{align*}
+Hierbei:
+\begin{itemize}
+\item
+\begin{align*}
+E(Z_n)&=\frac{1}{n}\sum_{i=1}^nEX_i-EX=0
+\end{align*}
+\item
+\begin{align*}
+V(Z_n)=V(\frac{1}{n}\sum_{i=1}^nX_i)=\frac{1}{n^2}\sum_{i=1}^nV(X_i)=\frac{V(X)}{n}
+\end{align*}
+\end{itemize}
+Bilden wir im Falle $0<V(X)<\infty$:
+\begin{align*}
+\frac{Z_n}{\sqrt{V(Z_n)}}=\frac{\sqrt{n}}{\sqrt{V(X)}}\cdot(\frac{1}{n}\sum_{i=1}^nX_i-EX)
+\end{align*}
+So hat diese \ZV Erwartungswert $0$ und Varianz
+\begin{align*}
+V(\frac{Z_n}{\sqrt{V(Z_n)}})=\frac{1}{V(Z_n)}V(Z_n)=1
+\end{align*}
+Der zentrale Grenzwertsatz besagt, dass sich diese \ZV für große $n$ annähernd wie eine $\m{N}(0,1)$-verteilte \ZV verhält.
+\begin{bemerkung}
+\begin{align*}
+\frac{Z_n}{\sqrt{V(Z_n)}}=\frac{\sum_{i=1}^nX_i-E(\sum_{i=1}^nX_i}{\sqrt{V(\sum_{i=1}^nX_i)}}
+\end{align*}
+\end{bemerkung}
+\begin{beispiel*}
+Zufallsvariablen $X_1,\ldots,X_n$ u.i.v. mit $\pe{X_1=k}=1/6$ für $k\in\{ 1,2,3,4,5,6\}$. Es folgt
+\begin{align*}
+&EX_1=\sum_{i=1}^6k\cdot\pe{X_1=k}=\ldots=\frac{7}{2},\\
+&V(X_1)=E(X_1^2)-(EX_1)^2=\sum_{k=1}^6\frac{k^2}{6}=\ldots=\frac{35}{12}
+\end{align*}
+Behauptung: Für $n$ 'groß' verhält sich
+\[\frac{\sqrt{n}}{\sqrt{V(X_1)}}(\frac{1}{n}\sum_{i=1}^nX_i-EX_1)=\frac{\sqrt{n}}{\sqrt{\frac{35}{12}}}(\frac{1}{n}\sum_{i=1}^nX_i-\frac{7}{2})\]
+annähernd wie eine $\m{N}(0,1)$-verteilte \ZV.
+\end{beispiel*}
+\begin{satz}[Zentraler Grenzwertsatz von Lindeberg-Lévi]
+\WR $(\Omega,\m{A},\text{P}), X_1,X_2,\ldots:\Omega\to\R$ u.i.v. Zufallsvariablen mit $E(X_1^2)<\infty$ und $0<V(X_1)<\infty$. Dann konvergiert die Verteilungsfunktion von
+\[\frac{\sqrt{n}}{\sqrt{V(X_1)}}(\frac{1}{n}\sum_{i=1}^nX_i-EX_1)\]
+punktweise gegen die Verteilungsfunktion einer $\m{N}(0,1)$-verteilten \ZV, d.h.
+\begin{align*}
+\fa{x\in\R}:\pe{\frac{\sqrt{n}}{\sqrt{V(X_1)}}(\frac{1}{n}\sum_{i=1}^nX_i-EX_1)\leq x}\to\int_{-\infty}^x\frac{\exp{-t^2/2}}{\sqrt{2\pi}}\mathrm{d}t=:\Phi(x)
+\end{align*}
+\end{satz}
+\begin{proof}
+Siehe Wahrscheinlichkeitstheorie.
+\end{proof}
+\begin{bemerkung}
+Aus obigem Satz folgt für beliebige $\alpha,\beta\in\R,\alpha\leq\beta$:
+\begin{align*}
+&\pe{\alpha<\frac{\sqrt{n}}{\sqrt{V(X_1)}}(\frac{1}{n}\sum_{i=1}^nX_i-EX_1)\leq\beta}\\
+=&\pe{\frac{\sqrt{n}}{\sqrt{V(X_1)}}(\frac{1}{n}\sum_{i=1}^nX_i-EX_1)\leq\beta}-\pe{\frac{\sqrt{n}}{\sqrt{V(X_1)}}(\frac{1}{n}\sum_{i=1}^nX_i-EX_1)\leq\alpha}\\
+\to&\Phi(\beta)-\Phi(\alpa)
+\end{align*}
+\end{bemerkung}
+\underline{Anwendung in Bsp. 5.1:}
+$r=3000,n=1000000$, Zufallsvariablen $X_1,\ldots,X_n$ u.i.v. mit $\pe{X_1=1}=1/2=\pe{X_1=0}$. Dann gilt
+\begin{align*}
+p=&\pe{r+\sum_{i=1}^nX_i>n-\sum_{i=1}^nX_i}\\
+=&\pe{
+\end{align*}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
